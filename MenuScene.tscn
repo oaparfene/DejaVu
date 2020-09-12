@@ -57,3 +57,4 @@ margin_right = 648.0
 margin_bottom = 487.0
 text = "Settings"
 [connection signal="pressed" from="VBoxContainer/labPlay" to="." method="_on_labPlay_pressed"]
+[connection signal="pressed" from="VBoxContainer/labGarage" to="." method="_on_labGarage_pressed"]
