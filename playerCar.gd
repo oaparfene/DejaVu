@@ -1,11 +1,16 @@
 extends KinematicBody2D
 
-
 var events = {}
+onready var partDirt = get_node("partDirt")
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	pass
+
+
+func _physics_process(delta):
+	partDirt.initial_velocity = Globals.speed*delta*17
+	pass
 
 func _input(event):
 

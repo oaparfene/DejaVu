@@ -7,27 +7,45 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 960 )
 
-[node name="Runway" type="Node2D"]
+[node name="Runway" type="Control"]
+margin_right = 1080.0
+margin_bottom = 1920.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ctnViewport" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.9
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Viewport" type="Viewport" parent="ctnViewport"]
+size = Vector2( 1080, 1728 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="ctnViewport/Viewport"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ctnViewport/Viewport/ParallaxBackground"]
 motion_mirroring = Vector2( 0, 1620 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite" type="Sprite" parent="ctnViewport/Viewport/ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 1 )
 centered = false
 
-[node name="playerCar" parent="." instance=ExtResource( 3 )]
+[node name="playerCar" parent="ctnViewport/Viewport" instance=ExtResource( 3 )]
 position = Vector2( 180.28, 784.359 )
 
-[node name="bodyBorder" type="StaticBody2D" parent="."]
+[node name="bodyBorder" type="StaticBody2D" parent="ctnViewport/Viewport"]
 
-[node name="shapeLeft" type="CollisionShape2D" parent="bodyBorder"]
+[node name="shapeLeft" type="CollisionShape2D" parent="ctnViewport/Viewport/bodyBorder"]
 position = Vector2( 0, 960 )
 shape = SubResource( 1 )
 
-[node name="shapeRight" type="CollisionShape2D" parent="bodyBorder"]
+[node name="shapeRight" type="CollisionShape2D" parent="ctnViewport/Viewport/bodyBorder"]
 position = Vector2( 1080, 960 )
 shape = SubResource( 1 )

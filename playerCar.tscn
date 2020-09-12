@@ -4,15 +4,28 @@
 [ext_resource path="res://playerCar.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 45, 70 )
+extents = Vector2( 13, 18 )
 
 [node name="playerCar" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
 script = ExtResource( 2 )
 
+[node name="partDirt" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 15 )
+amount = 24
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 1 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 125.0
+scale_amount = 3.0
+scale_amount_random = 0.5
+color = Color( 0.113725, 0.0823529, 0.0823529, 1 )
+
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2 )
 shape = SubResource( 1 )
