@@ -27,4 +27,4 @@ func _input(event):
 		
 		# The user is dragging ONE finger across the viewport (DRAG)
 		if events.size() == 1:
-			position += event.relative
+			move_and_collide(event.relative)
