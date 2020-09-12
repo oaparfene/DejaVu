@@ -9,6 +9,7 @@ extents = Vector2( 13, 18 )
 
 [node name="bodyCar" type="KinematicBody2D"]
 scale = Vector2( 4, 4 )
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="partTyre" type="CPUParticles2D" parent="."]
@@ -24,6 +25,7 @@ direction = Vector2( 0, 1 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 125.0
+color = Color( 1, 1, 1, 0.486275 )
 
 [node name="partDirt" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 15 )
@@ -45,3 +47,7 @@ texture = ExtResource( 1 )
 
 [node name="shapeCar" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="timerAttack" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="timerAttack" to="." method="_on_timerAttack_timeout"]

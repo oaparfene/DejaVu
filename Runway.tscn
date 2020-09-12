@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/VanHunter Asset pixel pack Street racing/background/bg desert_custom.png" type="Texture" id=1]
 [ext_resource path="res://Runway.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://areaMove.gd" type="Script" id=4]
 [ext_resource path="res://Assets/img_joystick.png" type="Texture" id=5]
 [ext_resource path="res://Assets/img_center.png" type="Texture" id=6]
+[ext_resource path="res://areaAttack.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 768 )
@@ -14,7 +15,7 @@ extents = Vector2( 5, 768 )
 extents = Vector2( 1080, 5 )
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 312.859
+radius = 281.214
 
 [node name="Runway" type="Control"]
 margin_right = 1080.0
@@ -71,7 +72,7 @@ gravity = 0.0
 linear_damp = 0.0
 script = ExtResource( 4 )
 
-[node name="sprMove" type="TextureRect" parent="areaMove"]
+[node name="sprCircle" type="TextureRect" parent="areaMove"]
 margin_left = -150.0
 margin_top = -150.0
 margin_right = 150.0
@@ -83,9 +84,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shapeMove" type="CollisionShape2D" parent="areaMove"]
+[node name="shapeCircle" type="CollisionShape2D" parent="areaMove"]
+visible = false
 shape = SubResource( 3 )
 
 [node name="sprCenter" type="Sprite" parent="areaMove"]
 texture = ExtResource( 6 )
+
+[node name="areaAttack" type="Area2D" parent="."]
+position = Vector2( 250, 1736 )
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+script = ExtResource( 7 )
+
+[node name="sprCircle" type="TextureRect" parent="areaAttack"]
+modulate = Color( 1, 0.321569, 0.321569, 1 )
+margin_left = -150.0
+margin_top = -150.0
+margin_right = 150.0
+margin_bottom = 150.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shapeCircle" type="CollisionShape2D" parent="areaAttack"]
+visible = false
+shape = SubResource( 3 )
+
+[node name="sprSafe" type="Sprite" parent="areaAttack"]
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 5 )
+
+[node name="sprCenter" type="Sprite" parent="areaAttack"]
+texture = ExtResource( 6 )
 [connection signal="input_event" from="areaMove" to="areaMove" method="_on_areaMove_input_event"]
+[connection signal="input_event" from="areaAttack" to="areaAttack" method="_on_areaAttack_input_event"]

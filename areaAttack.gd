@@ -5,7 +5,7 @@ onready var sprCenter = $sprCenter
 func _ready():
 	pass # Replace with function body.
 
-func _on_areaMove_input_event(viewport, event, shape_idx):
+func _on_areaAttack_input_event(viewport, event, shape_idx):
 	
 	if event is InputEventScreenDrag:
 		
@@ -14,10 +14,15 @@ func _on_areaMove_input_event(viewport, event, shape_idx):
 	elif event is InputEventScreenTouch:
 		
 		if event.pressed == false:
-		
+
 			sprCenter.position = Vector2.ZERO
 	
 	if sprCenter.position.length() > 150:
-			sprCenter.position = sprCenter.position.normalized() * 150
+		sprCenter.position = sprCenter.position.normalized() * 150
 	
-	Globals.carVector = sprCenter.position
+	Globals.fireVector = sprCenter.position.normalized()
+	
+	if sprCenter.position.length() > 110:
+		Globals.fire = true
+	else:
+		Globals.fire = false
