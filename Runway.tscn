@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/VanHunter Asset pixel pack Street racing/background/bg desert_custom.png" type="Texture" id=1]
 [ext_resource path="res://Runway.gd" type="Script" id=2]
 [ext_resource path="res://playerCar.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 960 )
 
 [node name="Runway" type="Node2D"]
 script = ExtResource( 2 )
@@ -10,7 +13,7 @@ script = ExtResource( 2 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 0, 960 )
+motion_mirroring = Vector2( 0, 1620 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 1 )
@@ -18,3 +21,13 @@ centered = false
 
 [node name="playerCar" parent="." instance=ExtResource( 3 )]
 position = Vector2( 180.28, 784.359 )
+
+[node name="bodyBorder" type="StaticBody2D" parent="."]
+
+[node name="shapeLeft" type="CollisionShape2D" parent="bodyBorder"]
+position = Vector2( 0, 960 )
+shape = SubResource( 1 )
+
+[node name="shapeRight" type="CollisionShape2D" parent="bodyBorder"]
+position = Vector2( 1080, 960 )
+shape = SubResource( 1 )
