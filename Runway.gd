@@ -7,4 +7,4 @@ func _ready():
 
 func _physics_process(delta):
 	
-	$ctnViewport/Viewport/ParallaxBackground.scroll_offset += Vector2(0, Globals.speed*delta)
+	$ParallaxBackground.scroll_offset += Vector2(0, Globals.parSpeed*delta)
