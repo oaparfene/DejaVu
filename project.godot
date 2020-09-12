@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DejaVu"
-run/main_scene="res://Runway.tscn"
+run/main_scene="res://MenuScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]

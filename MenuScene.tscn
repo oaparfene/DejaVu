@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ThemeMain.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Cool Text - Deja-Vu 362357651890889.png" type="Texture" id=2]
+[ext_resource path="res://MenuScene.gd" type="Script" id=3]
 
 [node name="MenuScene" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,30 +33,27 @@ margin_top = 111.0
 margin_right = 648.0
 margin_bottom = 115.0
 
-[node name="labPlay" type="Label" parent="VBoxContainer"]
+[node name="labPlay" type="Button" parent="VBoxContainer"]
 margin_top = 119.0
 margin_right = 648.0
 margin_bottom = 208.0
 text = "Play"
-align = 1
 
-[node name="labGarage" type="Label" parent="VBoxContainer"]
+[node name="labGarage" type="Button" parent="VBoxContainer"]
 margin_top = 212.0
 margin_right = 648.0
 margin_bottom = 301.0
 text = "Garage"
-align = 1
 
-[node name="labLeaderboards" type="Label" parent="VBoxContainer"]
+[node name="labLeaderboards" type="Button" parent="VBoxContainer"]
 margin_top = 305.0
 margin_right = 648.0
 margin_bottom = 394.0
 text = "Leaderboards"
-align = 1
 
-[node name="labSettings" type="Label" parent="VBoxContainer"]
+[node name="labSettings" type="Button" parent="VBoxContainer"]
 margin_top = 398.0
 margin_right = 648.0
 margin_bottom = 487.0
 text = "Settings"
-align = 1
+[connection signal="pressed" from="VBoxContainer/labPlay" to="." method="_on_labPlay_pressed"]
