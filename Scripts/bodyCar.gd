@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var partDirt = $partDirt
-onready var partTyre = $partTyre
+#onready var partTyre = $partTyre
 onready var timerAttack = $timerAttack
 onready var sprBro = $sprBro
 
