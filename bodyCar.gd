@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var partDirt = $partDirt
 onready var partTyre = $partTyre
 onready var timerAttack = $timerAttack
+onready var sprBro = $sprBro
 
 var bodyBullet_load = preload("res://bodyBullet.tscn")
 var velocity = Vector2.ZERO
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	
 	partTyre.emitting = Globals.carVector.y > 50
 	Globals.changeFuel(-4*delta)
-
+	sprBro.rotation = Globals.fireVector.angle()
 
 func _on_timerAttack_timeout():
 	if Globals.fire == true:
