@@ -6,7 +6,7 @@
 extents = Vector2( 10, 2 )
 
 [node name="bodyBullet" type="KinematicBody2D"]
-z_index = -1
+show_behind_parent = true
 collision_layer = 4
 script = ExtResource( 1 )
 

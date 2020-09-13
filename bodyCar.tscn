@@ -13,6 +13,7 @@ collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="partTyre" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2( 0, 15 )
 amount = 2000
 lifetime = 8.0

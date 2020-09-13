@@ -20,4 +20,4 @@ func _on_areaMove_input_event(viewport, event, shape_idx):
 	if sprCenter.position.length() > 150:
 			sprCenter.position = sprCenter.position.normalized() * 150
 	
-	Globals.carVector = sprCenter.position
+	Globals.carVector = sprCenter.position/150
