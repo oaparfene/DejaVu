@@ -23,7 +23,7 @@ func _physics_process(delta):
 		if "Lose" in kinCollisionInfo.collider.name:
 			get_tree().change_scene("res://Garage.tscn")
 	partTyre.emitting = Globals.carVector.y > 50
-	#Globals.changeFuel(-16*delta)
+	Globals.changeFuel(-16*delta)
 	sprBro.rotation = Globals.fireVector.angle()
 
 func _on_timerAttack_timeout():

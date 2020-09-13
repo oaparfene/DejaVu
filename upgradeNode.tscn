@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ThemeMain.tres" type="Theme" id=1]
+[ext_resource path="res://FjallaOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/VanHunter/interface/nitro 1.png" type="Texture" id=3]
+[ext_resource path="res://upgradeNode.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="upgradeNode" type="Panel"]
+margin_right = -720.0
+margin_bottom = -1728.0
+rect_min_size = Vector2( 360, 192 )
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labName" type="Label" parent="."]
+margin_right = 100.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 1 )
+text = "Engine:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texLevel" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labLevel" type="Label" parent="."]
+margin_top = 141.0
+margin_right = 100.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 1 )
+text = "Level:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnUpg" type="Button" parent="."]
+anchor_left = 0.45
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.55
+text = "100$"
+[connection signal="pressed" from="btnUpg" to="." method="_on_btnUpg_pressed"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ThemeMain.tres" type="Theme" id=1]
+[ext_resource path="res://EnergyShop.gd" type="Script" id=2]
+
+[node name="EnergyShop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+alignment = 1
+
+[node name="btnCars" type="Button" parent="HBoxContainer"]
+margin_right = 267.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+text = "Cars"
+
+[node name="btnGuns" type="Button" parent="HBoxContainer"]
+margin_left = 271.0
+margin_right = 538.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+text = "Guns"
+
+[node name="btnCoins" type="Button" parent="HBoxContainer"]
+margin_left = 542.0
+margin_right = 809.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+text = "Coins"
+
+[node name="btnEnergy" type="Button" parent="HBoxContainer"]
+margin_left = 813.0
+margin_right = 1080.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+text = "Energy"
+[connection signal="pressed" from="HBoxContainer/btnCars" to="." method="_on_btnCars_pressed"]
+[connection signal="pressed" from="HBoxContainer/btnGuns" to="." method="_on_btnGuns_pressed"]
+[connection signal="pressed" from="HBoxContainer/btnCoins" to="." method="_on_btnCoins_pressed"]
