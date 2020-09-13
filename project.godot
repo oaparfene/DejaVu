@@ -39,12 +39,6 @@ window/stretch/aspect="keep_width"
 
 pointing/emulate_touch_from_mouse=true
 
-[layer_names]
-
-2d_physics/layer_1="Border"
-2d_physics/layer_2="Car"
-2d_physics/layer_3="Bullets"
-
 [rendering]
 
 quality/driver/driver_name="GLES2"
