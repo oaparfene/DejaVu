@@ -12,7 +12,7 @@ func _ready():
 func _physics_process(delta):
 	partDirt.initial_velocity = Globals.parSpeed*delta*17
 	move_and_collide(Globals.carVector*delta*Globals.carSpeed)
-	partTyre.emitting = Globals.carVector.y > 0
+	partTyre.emitting = Globals.carVector.y > 50
 
 
 func _on_timerAttack_timeout():
