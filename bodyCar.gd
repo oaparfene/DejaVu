@@ -9,6 +9,7 @@ var velocity = Vector2.ZERO
 
 func _ready():
 	timerAttack.wait_time = 0.1
+	Globals.resetFuel()
 
 func _physics_process(delta):
 	partDirt.initial_velocity = Globals.parSpeed*delta*17

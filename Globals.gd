@@ -11,3 +11,6 @@ var fire = false
 func changeFuel(amount):
 	carFuel["current"] += amount
 	get_tree().call_group("fuelUI","updateFuelUI")
+
+func resetFuel():
+	carFuel["current"] = carFuel["max"]
