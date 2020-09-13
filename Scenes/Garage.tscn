@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Garage.gd" type="Script" id=1]
+[ext_resource path="res://ThemeMain.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/VanHunter/cars/car.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/contButtons.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/upgradeNode.tscn" type="PackedScene" id=5]
+
+[node name="Garage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="contButtons" parent="." instance=ExtResource( 4 )]
+margin_bottom = 89.0
+
+[node name="btnBack" type="Button" parent="."]
+margin_top = 1830.0
+margin_right = 130.0
+margin_bottom = 1920.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnReset" type="Button" parent="."]
+margin_left = 440.0
+margin_top = 1830.0
+margin_right = 570.0
+margin_bottom = 1920.0
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnPlay" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -89.0
+margin_bottom = -100.0
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnLeft" type="Button" parent="."]
+margin_left = 68.541
+margin_top = 569.081
+margin_right = 227.541
+margin_bottom = 921.081
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnRight" type="Button" parent="."]
+margin_left = 822.498
+margin_top = 569.081
+margin_right = 981.498
+margin_bottom = 921.081
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texCar" type="TextureRect" parent="."]
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.6
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upgradeEngine" parent="." instance=ExtResource( 5 )]
+margin_left = 95.3517
+margin_top = 190.703
+margin_right = 455.352
+margin_bottom = 382.703
+
+[node name="upgradeSteering" parent="." instance=ExtResource( 5 )]
+margin_left = 612.37
+margin_top = 207.655
+margin_right = 972.37
+margin_bottom = 399.655
+
+[node name="upgradeArmor" parent="." instance=ExtResource( 5 )]
+margin_left = 88.995
+margin_top = 1127.27
+margin_right = 448.995
+margin_bottom = 1319.27
+
+[node name="upgradeFuel" parent="." instance=ExtResource( 5 )]
+margin_left = 639.916
+margin_top = 1133.63
+margin_right = 999.916
+margin_bottom = 1325.63
+[connection signal="pressed" from="btnBack" to="." method="_on_btnBack_pressed"]
+[connection signal="pressed" from="btnReset" to="." method="_on_btnReset_pressed"]
+[connection signal="pressed" from="btnPlay" to="." method="_on_btnPlay_pressed"]
+[connection signal="pressed" from="btnLeft" to="." method="_on_btnLeft_pressed"]
+[connection signal="pressed" from="btnRight" to="." method="_on_btnRight_pressed"]

@@ -16,12 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="DejaVu"
-run/main_scene="res://MenuScene.tscn"
+run/main_scene="res://Scenes/MenuScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://Globals.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [display]
 

@@ -1,27 +1,26 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/VanHunter/background/bg desert_custom.png" type="Texture" id=1]
-[ext_resource path="res://Runway.gd" type="Script" id=2]
-[ext_resource path="res://bodyCar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://areaMove.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Runway.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/bodyCar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/areaMove.gd" type="Script" id=4]
 [ext_resource path="res://Assets/img_joystick.png" type="Texture" id=5]
 [ext_resource path="res://Assets/img_center.png" type="Texture" id=6]
-[ext_resource path="res://areaAttack.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/areaAttack.gd" type="Script" id=7]
 [ext_resource path="res://Assets/img_gas_can.png" type="Texture" id=8]
 [ext_resource path="res://Assets/img_gas_back.png" type="Texture" id=9]
 [ext_resource path="res://Assets/img_gas.png" type="Texture" id=10]
-[ext_resource path="res://progFuel.gd" type="Script" id=11]
-[ext_resource path="res://texRoad.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/progFuel.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/texRoad.gd" type="Script" id=12]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 radius = 281.214
 
-
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 768 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 1080, 5 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 625.754, 5 )
 
 [node name="Runway" type="Control"]
 margin_right = 1080.0
@@ -53,8 +52,10 @@ position = Vector2( 532.771, 745.157 )
 ]]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -216.0
-margin_bottom = 256.0
+margin_left = -236.976
+margin_top = 23.9729
+margin_right = -20.9763
+margin_bottom = 279.973
 value = 50.0
 texture_under = ExtResource( 9 )
 texture_over = ExtResource( 8 )
@@ -67,7 +68,7 @@ __meta__ = {
 }
 
 [node name="Joysticks" type="Panel" parent="."]
-anchor_top = 0.8
+anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -76,28 +77,30 @@ __meta__ = {
 }
 
 [node name="areaAttack" type="Area2D" parent="."]
-position = Vector2( 250, 1736 )
+position = Vector2( 250, 1686 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
 script = ExtResource( 7 )
 
-[node name="sprCircle" type="TextureRect" parent="areaAttack"]
+[node name="sprCircle" type="TextureProgress" parent="areaAttack"]
 modulate = Color( 1, 0.321569, 0.321569, 1 )
 margin_left = -150.0
 margin_top = -150.0
-margin_right = 150.0
-margin_bottom = 150.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_scale = Vector2( 1.5, 1.5 )
 mouse_filter = 2
-texture = ExtResource( 5 )
-expand = true
+value = 100.0
+texture_progress = ExtResource( 5 )
+fill_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="shapeCircle" type="CollisionShape2D" parent="areaAttack"]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="sprSafe" type="Sprite" parent="areaAttack"]
 scale = Vector2( 1.2, 1.2 )
@@ -107,7 +110,7 @@ texture = ExtResource( 5 )
 texture = ExtResource( 6 )
 
 [node name="areaMove" type="Area2D" parent="."]
-position = Vector2( 830, 1736 )
+position = Vector2( 830, 1686 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
@@ -127,7 +130,7 @@ __meta__ = {
 
 [node name="shapeCircle" type="CollisionShape2D" parent="areaMove"]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="sprCenter" type="Sprite" parent="areaMove"]
 texture = ExtResource( 6 )
@@ -136,22 +139,22 @@ texture = ExtResource( 6 )
 collision_mask = 0
 
 [node name="shapeLeft" type="CollisionShape2D" parent="bodyBorder"]
-position = Vector2( 108, 768 )
-shape = SubResource( 1 )
+position = Vector2( 27.0916, 773.993 )
+shape = SubResource( 2 )
 
 [node name="shapeRight" type="CollisionShape2D" parent="bodyBorder"]
-position = Vector2( 972, 768 )
-shape = SubResource( 1 )
+position = Vector2( 1061.9, 759.01 )
+shape = SubResource( 2 )
 
 [node name="shapeTop" type="CollisionShape2D" parent="bodyBorder"]
-position = Vector2( 540, 108 )
-shape = SubResource( 2 )
+position = Vector2( 531.01, 30.088 )
+shape = SubResource( 3 )
 
 [node name="bodyBorderLose" type="StaticBody2D" parent="."]
 collision_mask = 0
 
 [node name="shapeBottom" type="CollisionShape2D" parent="bodyBorderLose"]
-position = Vector2( 540, 1628 )
-shape = SubResource( 2 )
+position = Vector2( 531.01, 1514.13 )
+shape = SubResource( 3 )
 [connection signal="input_event" from="areaAttack" to="areaAttack" method="_on_areaAttack_input_event"]
 [connection signal="input_event" from="areaMove" to="areaMove" method="_on_areaMove_input_event"]

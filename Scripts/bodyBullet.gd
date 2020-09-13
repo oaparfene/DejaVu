@@ -4,7 +4,7 @@ var fireVector = Vector2.ZERO
 var speed = 0
 
 func _physics_process(delta):
-	var kinCollisionInfo = move_and_collide(fireVector*speed)
+	var kinCollisionInfo = move_and_collide(fireVector*speed*delta)
 	if kinCollisionInfo:
 		if "Border" in kinCollisionInfo.collider.name:
 			queue_free()
