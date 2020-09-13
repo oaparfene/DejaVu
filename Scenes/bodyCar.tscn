@@ -8,6 +8,7 @@
 extents = Vector2( 13, 18 )
 
 [node name="bodyCar" type="KinematicBody2D"]
+show_behind_parent = true
 scale = Vector2( 4, 4 )
 collision_layer = 2
 script = ExtResource( 2 )

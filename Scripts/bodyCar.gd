@@ -10,7 +10,7 @@ var velocity = Vector2.ZERO
 var haveFuel = true
 
 func _ready():
-	timerAttack.wait_time = 1
+	timerAttack.wait_time = 0.3
 	Globals.setCarVariables()
 	Globals.resetFuel()
 	Globals.resetInputs()
@@ -32,6 +32,7 @@ func _physics_process(delta):
 	if kinCollisionInfo: # If we collided
 		if "Lose" in kinCollisionInfo.collider.name:
 			var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
+			return
 	
 	sprBro.rotation = Globals.fireVector.angle() # Update bro's aiming position
 	
