@@ -30,6 +30,8 @@ func _physics_process(delta):
 		if "Player" in kinCollisionInfo.collider.name:
 			queue_free()
 			return
+		elif "Enemy" in kinCollisionInfo.collider.name and kinCollisionInfo!=self:
+			pass
 	
 	sprBro.rotation = Globals.fireVector.angle() # Update bro's aiming position
 	
