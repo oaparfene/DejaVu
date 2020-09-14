@@ -7,12 +7,6 @@ var fire = false
 
 var posCarPlayer
 
-# UPGRADABLES
-var carSpeed = 300
-var carSteer = 100
-var carFuel = {"current":100,"max":100}
-var carArmor = 0
-
 var activeCarIndex = 0
 
 var carNameArray = []
@@ -57,12 +51,18 @@ func getCarName():
 func getNoOfCars():
 	return carNameArray.size()
 
-func setCarVariables():
-	carSpeed = cars[carNameArray[activeCarIndex]]["engine"][upgs[carNameArray[activeCarIndex]]["engine"]]
-	carSteer = cars[carNameArray[activeCarIndex]]["steering"][upgs[carNameArray[activeCarIndex]]["steering"]]
-	carFuel["max"] = cars[carNameArray[activeCarIndex]]["fuel"][upgs[carNameArray[activeCarIndex]]["fuel"]]
-	carArmor = cars[carNameArray[activeCarIndex]]["armor"][upgs[carNameArray[activeCarIndex]]["armor"]]
-	roadSpeed = carSpeed*2
+func getCarVariables():
+	var carName = carNameArray[activeCarIndex]
+	var carData = {}
+	carData["name"] = carName
+	carData["health"] = cars[carName]["health"]
+	carData["speed"] = cars[carName]["engine"][upgs[carName]["engine"]]
+	carData["steer"] = cars[carName]["steering"][upgs[carName]["steering"]]
+	carData["maxFuel"] = cars[carName]["fuel"][upgs[carName]["fuel"]]
+	carData["fuel"] = carData["maxFuel"]
+	carData["armor"] = cars[carName]["armor"][upgs[carName]["armor"]]
+	roadSpeed = carData["speed"]*2
+	return carData.duplicate(true)
 
 func upgrade(upgName):
 	if upgs[carNameArray[activeCarIndex]][upgName] < 5:
@@ -70,13 +70,6 @@ func upgrade(upgName):
 
 func getUpgradeLevel(upgName):
 	return upgs[carNameArray[activeCarIndex]][upgName]
-
-func changeFuel(amount):
-	carFuel["current"] += amount
-	get_tree().call_group("fuelUI","updateFuelUI")
-
-func resetFuel():
-	carFuel["current"] = carFuel["max"]
 
 func resetInputs():
 	carVector = Vector2.ZERO

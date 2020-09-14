@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/rocketlauncherSide.obj-7f0633d39aa909f55b13abc2c982be46.mesh"
+
+[deps]
+
+files=[ "res://.import/rocketlauncherSide.obj-7f0633d39aa909f55b13abc2c982be46.mesh" ]
+
+source_file="res://Assets/Guns/Models/rocketlauncherSide.obj"
+dest_files=[ "res://.import/rocketlauncherSide.obj-7f0633d39aa909f55b13abc2c982be46.mesh", "res://.import/rocketlauncherSide.obj-7f0633d39aa909f55b13abc2c982be46.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

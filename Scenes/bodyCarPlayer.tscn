@@ -7,10 +7,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 18 )
 
-[node name="bodyCarPlayer" type="KinematicBody2D"]
+[node name="bodyCarPlayer" type="KinematicBody2D" groups=[
+"player",
+]]
 show_behind_parent = true
 scale = Vector2( 4, 4 )
 collision_layer = 2
+collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="shapeCar" type="CollisionShape2D" parent="."]
@@ -38,5 +41,13 @@ texture = ExtResource( 4 )
 texture = ExtResource( 1 )
 
 [node name="timerAttack" type="Timer" parent="."]
+process_mode = 0
 autostart = true
+
+[node name="prgHealth" type="TextureProgress" parent="."]
+margin_right = 1.0
+margin_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="timerAttack" to="." method="_on_timerAttack_timeout"]

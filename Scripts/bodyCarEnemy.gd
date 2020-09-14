@@ -1,38 +1,29 @@
-extends KinematicBody2D
+extends "res://Scripts/classCar.gd"
 
-onready var partDirt = $partDirt
-#onready var partTyre = $partTyre
-onready var timerAttack = $timerAttack
-onready var sprBro = $sprBro
+var state
 
-var ai_mode = 1
-
-var rng = RandomNumberGenerator.new()
-
-var bodyBullet_load = preload("res://Scenes/bodyBullet.tscn")
 var velocity = Vector2.ZERO
-var haveFuel = true
+
+var carVector = Vector2.ZERO
+var fireVector = Vector2.ZERO
+var fire = false
 
 func _ready():
-	rng.randomize()
-	ai_mode = rng.randi_range(1, 4)
-	pass # Replace with function body.
-
+	carName = "bad"
+	maxHealth = 100
+	health = maxHealth
+	speed = 300
+	steer = 100
+	armor = 0
+	state = "maintain"
 
 func _physics_process(delta):
 	
-	#haveFuel = Globals.carFuel["current"] > 0
-	
 	partDirt.initial_velocity = Globals.roadSpeed*delta*17
 	
-	if haveFuel:
-		rotation = AI.get_carVector(ai_mode, position).x/3 # Handle rotation
+	AI.getBehaviour(state,self)
 	
-	if haveFuel:
-		velocity.y = AI.get_carVector(ai_mode, position).y*delta*Globals.carSpeed*(1+int(velocity.y > 0)*0.40)
-		velocity.x = AI.get_carVector(ai_mode, position).x*delta*Globals.carSteer
-	else:
-		velocity = Vector2(0,Globals.roadSpeed*delta)
+	velocity = carVector*speed*delta
 	
 	var kinCollisionInfo = move_and_collide(velocity)
 	if kinCollisionInfo: # If we collided
@@ -44,6 +35,19 @@ func _physics_process(delta):
 			pass
 	
 	sprBro.rotation = Globals.fireVector.angle() # Update bro's aiming position
-	
-	
-		
+
+
+func _on_timerState_timeout():
+	state = AI.getNewState(state)
+	print(name," is now is state: ",state)
+
+
+func _on_timerAttack_timeout():
+	if fire == true:
+		var bodyBullet = bodyBullet_load.instance()
+		bodyBullet.position = position
+		bodyBullet.rotation = fireVector.angle()
+		bodyBullet.fireVector = fireVector
+		bodyBullet.speed = 1600
+		bodyBullet.set_collision_mask_bit(1,true)
+		get_parent().add_child(bodyBullet)

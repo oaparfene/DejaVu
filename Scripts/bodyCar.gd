@@ -1,32 +1,33 @@
-extends KinematicBody2D
+extends "res://Scripts/classCar.gd"
 
-onready var partDirt = $partDirt
-#onready var partTyre = $partTyre
-onready var timerAttack = $timerAttack
-onready var sprBro = $sprBro
-
-var bodyBullet_load = preload("res://Scenes/bodyBullet.tscn")
 var velocity = Vector2.ZERO
 var haveFuel = true
 
 func _ready():
 	timerAttack.wait_time = 0.3
-	Globals.setCarVariables()
-	Globals.resetFuel()
+	var carData = Globals.getCarVariables()
+	carName = carData["name"]
+	maxHealth = carData["health"]
+	health = maxHealth
+	speed = carData["speed"]
+	steer = carData["steer"]
+	fuel = carData["fuel"]
+	maxFuel = carData["maxFuel"]
+	armor = carData["armor"]
 	Globals.resetInputs()
-	$sprCar.texture = load("res://Assets/Cars/img_"+str(Globals.getCarName())+".png")
+	$sprCar.texture = load("res://Assets/Cars/img_"+str(carData["name"])+".png")
 
 func _physics_process(delta):
 	
 	Globals.set_posCarPlayer(position)
 	
-	haveFuel = Globals.carFuel["current"] > 0
+	haveFuel = fuel > 0
 	
 	partDirt.initial_velocity = Globals.roadSpeed*delta*17
 	
 	if haveFuel:
-		velocity.y = Globals.carVector.y*delta*Globals.carSpeed*(1+int(velocity.y > 0)*0.40)
-		velocity.x = Globals.carVector.x*delta*Globals.carSteer
+		velocity.y = Globals.carVector.y*delta*speed*(1+int(velocity.y > 0)*0.40)
+		velocity.x = Globals.carVector.x*delta*steer
 	else:
 		velocity = Vector2(0,Globals.roadSpeed*delta)
 	
@@ -34,14 +35,17 @@ func _physics_process(delta):
 	if kinCollisionInfo: # If we collided
 		if "Lose" in kinCollisionInfo.collider.name:
 			var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
-			return
 	
 	sprBro.rotation = Globals.fireVector.angle() # Update bro's aiming position
 	
 	if haveFuel:
 		rotation = Globals.carVector.x/3 # Handle rotation
 		#partTyre.emitting = Globals.carVector.y > 0.6 # Handle tyre marks
-		Globals.changeFuel(-4*delta) # Deplete fuel
+		changeFuel(-4*delta) # Deplete fuel
+
+func changeFuel(amount):
+	fuel += amount
+	get_tree().call_group("fuelUI","updateFuelUI",fuel,maxFuel)
 
 func _on_timerAttack_timeout():
 	if Globals.fire == true:
@@ -50,4 +54,5 @@ func _on_timerAttack_timeout():
 		bodyBullet.rotation = Globals.fireVector.angle()
 		bodyBullet.fireVector = Globals.fireVector
 		bodyBullet.speed = 1600
+		bodyBullet.set_collision_mask_bit(3,true)
 		get_parent().add_child(bodyBullet)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/knife_sharp.obj-78552e5e138cf1c4687c9efe0f3fd545.mesh"
+
+[deps]
+
+files=[ "res://.import/knife_sharp.obj-78552e5e138cf1c4687c9efe0f3fd545.mesh" ]
+
+source_file="res://Assets/Guns/Models/knife_sharp.obj"
+dest_files=[ "res://.import/knife_sharp.obj-78552e5e138cf1c4687c9efe0f3fd545.mesh", "res://.import/knife_sharp.obj-78552e5e138cf1c4687c9efe0f3fd545.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

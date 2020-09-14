@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/grenadeFlash.obj-f3b343046faa792ebbe8b6006965db12.mesh"
+
+[deps]
+
+files=[ "res://.import/grenadeFlash.obj-f3b343046faa792ebbe8b6006965db12.mesh" ]
+
+source_file="res://Assets/Guns/Models/grenadeFlash.obj"
+dest_files=[ "res://.import/grenadeFlash.obj-f3b343046faa792ebbe8b6006965db12.mesh", "res://.import/grenadeFlash.obj-f3b343046faa792ebbe8b6006965db12.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
