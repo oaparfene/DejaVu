@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/VanHunter/background/bg desert_custom.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Runway.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/bodyCar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/bodyCarPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/areaMove.gd" type="Script" id=4]
 [ext_resource path="res://Assets/img_joystick.png" type="Texture" id=5]
 [ext_resource path="res://Assets/img_center.png" type="Texture" id=6]
@@ -44,8 +44,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bodyCar" parent="." instance=ExtResource( 3 )]
-position = Vector2( 532.771, 745.157 )
+[node name="bodyCarPlayer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 747.51, 624.705 )
 
 [node name="progFuel" type="TextureProgress" parent="." groups=[
 "fuelUI",
@@ -156,5 +156,11 @@ collision_mask = 0
 [node name="shapeBottom" type="CollisionShape2D" parent="bodyBorderLose"]
 position = Vector2( 531.01, 1514.13 )
 shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 5.0
+autostart = true
 [connection signal="input_event" from="areaAttack" to="areaAttack" method="_on_areaAttack_input_event"]
 [connection signal="input_event" from="areaMove" to="areaMove" method="_on_areaMove_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
