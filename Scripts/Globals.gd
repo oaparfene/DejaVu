@@ -79,6 +79,7 @@ func resetFuel():
 func resetInputs():
 	carVector = Vector2.ZERO
 	fireVector = Vector2.ZERO
+	fire = false
 
 func resetCarUpgrades():
 	upgs[carNameArray[activeCarIndex]] = {"engine":0,"steering":0,"fuel":0,"armor":0}
