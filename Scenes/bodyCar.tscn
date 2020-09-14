@@ -13,6 +13,9 @@ scale = Vector2( 4, 4 )
 collision_layer = 2
 script = ExtResource( 2 )
 
+[node name="shapeCar" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
 [node name="partDirt" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 15 )
 amount = 24
@@ -33,9 +36,6 @@ texture = ExtResource( 4 )
 
 [node name="sprBro" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-
-[node name="shapeCar" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
 
 [node name="timerAttack" type="Timer" parent="."]
 autostart = true
