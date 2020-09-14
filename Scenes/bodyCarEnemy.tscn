@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/VanHunter/cars/bluebro.png" type="Texture" id=1]
-[ext_resource path="res://Assets/VanHunter/cars/car green.png" type="Texture" id=2]
+[ext_resource path="res://Assets/img_bad2.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/bodyCarEnemy.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13, 18 )
+extents = Vector2( 14, 22 )
 
 [node name="bodyCarEnemy" type="KinematicBody2D"]
 show_behind_parent = true
