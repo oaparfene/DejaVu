@@ -45,7 +45,7 @@ __meta__ = {
 }
 
 [node name="bodyCarPlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 747.51, 624.705 )
+position = Vector2( 731.492, 878.321 )
 
 [node name="progFuel" type="TextureProgress" parent="." groups=[
 "fuelUI",

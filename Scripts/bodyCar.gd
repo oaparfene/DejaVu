@@ -18,6 +18,8 @@ func _ready():
 
 func _physics_process(delta):
 	
+	Globals.set_posCarPlayer(position)
+	
 	haveFuel = Globals.carFuel["current"] > 0
 	
 	partDirt.initial_velocity = Globals.roadSpeed*delta*17

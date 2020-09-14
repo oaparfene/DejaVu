@@ -5,6 +5,8 @@ var carVector = Vector2.ZERO
 var fireVector = Vector2.ZERO
 var fire = false
 
+var posCarPlayer
+
 # UPGRADABLES
 var carSpeed = 300
 var carSteer = 100
@@ -83,6 +85,9 @@ func resetInputs():
 
 func resetCarUpgrades():
 	upgs[carNameArray[activeCarIndex]] = {"engine":0,"steering":0,"fuel":0,"armor":0}
+
+func set_posCarPlayer(position):
+	posCarPlayer = position
 
 # SAVE / LOAD
 
