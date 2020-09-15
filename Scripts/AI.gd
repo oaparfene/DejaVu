@@ -4,6 +4,7 @@ var states = ["idle","shoot","ram","maintain"]
 var rng = RandomNumberGenerator.new()
 
 var heights = {"top":250, "bottom":1250}
+var widths = {"left":100,"right":980}
 
 func getBehaviour(state,bodyEntity):
 	
@@ -11,7 +12,7 @@ func getBehaviour(state,bodyEntity):
 	var player_relVector = playerEntity.position - bodyEntity.position
 	
 	bodyEntity.fire = false
-	var new_fireVector = Vector2.ZERO
+	var new_fireVector = player_relVector.normalized()
 	var new_carVector = Vector2.ZERO
 	
 	match state:
@@ -20,7 +21,6 @@ func getBehaviour(state,bodyEntity):
 		
 		"shoot":
 			bodyEntity.fire = true
-			new_fireVector = player_relVector.normalized()
 		
 		"ram":
 			var collInfo = bodyEntity.move_and_collide(player_relVector,true,true,true)
@@ -34,17 +34,34 @@ func getBehaviour(state,bodyEntity):
 				var collInfo = bodyEntity.move_and_collide(Vector2(0,1)*50,true,true,true)
 				if not collInfo:
 					new_carVector = Vector2(0,1)
+				else:
+					new_carVector = Vector2(0,-1)
 			elif bodyEntity.position.y > heights["bottom"]:
 				var collInfo = bodyEntity.move_and_collide(Vector2(0,-1)*50,true,true,true)
 				if not collInfo:
 					new_carVector = Vector2(0,-1)
-			else:
-				bodyEntity.state = getNewState()
+				else:
+					new_carVector = Vector2(0,1)
+			
+			if bodyEntity.position.x < widths["left"]:
+				var collInfo = bodyEntity.move_and_collide(Vector2(1,0)*50,true,true,true)
+				if not collInfo:
+					new_carVector = Vector2(1,0)
+				else:
+					new_carVector = Vector2(-1,0)
+			elif bodyEntity.position.x > widths["right"]:
+				var collInfo = bodyEntity.move_and_collide(Vector2(-1,0)*50,true,true,true)
+				if not collInfo:
+					new_carVector = Vector2(-1,0)
+				else:
+					new_carVector = Vector2(1,0)
 	
 	bodyEntity.carVector = new_carVector.normalized()
 	bodyEntity.fireVector = new_fireVector
 
-func getNewState(_state=""):
+func getNewState(state=""):
 	rng.randomize()
-	return states[rng.randi_range(0,states.size()-1)]
+	var newStates = states.duplicate()
+	newStates.remove(state)
+	return newStates[rng.randi_range(0,newStates.size()-1)]
 

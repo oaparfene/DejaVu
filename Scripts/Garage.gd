@@ -20,11 +20,9 @@ func _on_btnRight_pressed():
 
 func _on_btnBack_pressed():
 	var _currentScene = get_tree().change_scene("res://Scenes/MenuScene.tscn")
-	print("change")
 
 func _on_btnReset_pressed():
 	Globals.resetCarUpgrades()
-	Globals.saveGame()
 	get_tree().call_group("upgrade","updateUI")
 
 func _on_btnPlay_pressed():

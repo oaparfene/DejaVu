@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/img_health.png" type="Texture" id=1]
+
+[node name="prgHealth" type="TextureProgress"]
+margin_left = -13.8067
+margin_top = -27.9822
+margin_right = 14.1933
+margin_bottom = -23.9822
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 1 )
+tint_under = Color( 0.266667, 0.239216, 0.239216, 1 )
+tint_progress = Color( 0.741176, 0.972549, 0.533333, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

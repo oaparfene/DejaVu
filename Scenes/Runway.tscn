@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/VanHunter/background/bg desert_custom.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Runway.gd" type="Script" id=2]
@@ -6,15 +6,17 @@
 [ext_resource path="res://Scripts/areaMove.gd" type="Script" id=4]
 [ext_resource path="res://Assets/img_joystick.png" type="Texture" id=5]
 [ext_resource path="res://Assets/img_center.png" type="Texture" id=6]
-[ext_resource path="res://Scripts/areaAttack.gd" type="Script" id=7]
 [ext_resource path="res://Assets/img_gas_can.png" type="Texture" id=8]
 [ext_resource path="res://Assets/img_gas_back.png" type="Texture" id=9]
 [ext_resource path="res://Assets/img_gas.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/progFuel.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/texRoad.gd" type="Script" id=12]
+[ext_resource path="res://Assets/img_health.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/prgHealth.gd" type="Script" id=14]
+[ext_resource path="res://Assets/img_safe.png" type="Texture" id=15]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 281.214
+radius = 424.261
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 768 )
@@ -45,7 +47,7 @@ __meta__ = {
 }
 
 [node name="bodyCarPlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 731.492, 878.321 )
+position = Vector2( 729.905, 1251.36 )
 
 [node name="progFuel" type="TextureProgress" parent="." groups=[
 "fuelUI",
@@ -56,6 +58,7 @@ margin_left = -236.976
 margin_top = 23.9729
 margin_right = -20.9763
 margin_bottom = 279.973
+mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 9 )
 texture_over = ExtResource( 8 )
@@ -76,12 +79,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="areaAttack" type="Area2D" parent="."]
+[node name="areaAttack" type="Node2D" parent="."]
 position = Vector2( 830, 1686 )
-gravity_vec = Vector2( 0, 0 )
-gravity = 0.0
-linear_damp = 0.0
-script = ExtResource( 7 )
 
 [node name="sprCircle" type="TextureProgress" parent="areaAttack"]
 modulate = Color( 1, 0.321569, 0.321569, 1 )
@@ -98,16 +97,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shapeCircle" type="CollisionShape2D" parent="areaAttack"]
-visible = false
-shape = SubResource( 1 )
-
-[node name="sprSafe" type="Sprite" parent="areaAttack"]
+[node name="btnFire" type="TouchScreenButton" parent="areaAttack"]
+position = Vector2( -90, -90 )
 scale = Vector2( 1.2, 1.2 )
-texture = ExtResource( 5 )
-
-[node name="sprCenter" type="Sprite" parent="areaAttack"]
-texture = ExtResource( 6 )
+normal = ExtResource( 15 )
 
 [node name="areaMove" type="Area2D" parent="."]
 position = Vector2( 250, 1686 )
@@ -159,8 +152,29 @@ shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 0
-wait_time = 5.0
+wait_time = 4.0
 autostart = true
-[connection signal="input_event" from="areaAttack" to="areaAttack" method="_on_areaAttack_input_event"]
+
+[node name="prgHealth" type="TextureProgress" parent="." groups=[
+"healthUI",
+]]
+margin_left = 997.524
+margin_top = 296.888
+margin_right = 1054.52
+margin_bottom = 1416.89
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+fill_mode = 3
+tint_under = Color( 0.266667, 0.239216, 0.239216, 1 )
+tint_progress = Color( 0.741176, 0.972549, 0.533333, 1 )
+nine_patch_stretch = true
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="areaAttack/btnFire" to="bodyCarPlayer" method="_on_btnFire_pressed"]
+[connection signal="released" from="areaAttack/btnFire" to="bodyCarPlayer" method="_on_btnFire_released"]
 [connection signal="input_event" from="areaMove" to="areaMove" method="_on_areaMove_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
