@@ -1,6 +1,6 @@
-extends TextureRect
+extends Node2D
 
 func _physics_process(delta):
-	rect_position.y += delta*Globals.roadSpeed
-	if rect_position.y > 0:
-		rect_position.y -= 2430
+	position.y += delta*Globals.roadSpeed
+	if position.y > 0:
+		position.y -= 810

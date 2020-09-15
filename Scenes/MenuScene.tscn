@@ -56,5 +56,12 @@ margin_top = 398.0
 margin_right = 648.0
 margin_bottom = 487.0
 text = "Settings"
+
+[node name="labReset" type="Button" parent="VBoxContainer"]
+margin_top = 491.0
+margin_right = 648.0
+margin_bottom = 580.0
+text = "Reset"
 [connection signal="pressed" from="VBoxContainer/labPlay" to="." method="_on_labPlay_pressed"]
 [connection signal="pressed" from="VBoxContainer/labGarage" to="." method="_on_labGarage_pressed"]
+[connection signal="pressed" from="VBoxContainer/labReset" to="." method="_on_labReset_pressed"]

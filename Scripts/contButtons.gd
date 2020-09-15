@@ -2,6 +2,12 @@ extends HBoxContainer
 
 var currentScene
 
+func _ready():
+	updateUI()
+
+func updateUI():
+	$btnCoins.text = str(Globals.money) + "$"
+
 func _on_btnCars_pressed():
 	currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
 

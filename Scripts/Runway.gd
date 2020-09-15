@@ -2,7 +2,10 @@ extends Control
 
 var load_bodyCarEnemy = preload("res://Scenes/bodyCarEnemy.tscn")
 
-var enemyCarArray = ["bad","bad","bad2","bad","bad2","bad2","bad","bad2","bad3"]
+var enemyCarArray = [
+	"toad","toad","virtue","toad","virtue","virtue","toad","virtue","viper",
+	"virtue","virtue","viper","toad","virtue","virtue","viper","viper","baron"
+	]
 #var enemyCarArray = ["bad","bad2","bad3"]
 
 var simul = 2
@@ -23,4 +26,5 @@ func _on_Timer_timeout():
 		enemyCarArray.remove(0)
 	else:
 		if enemies == 0:
-			get_tree().change_scene("res://Scenes/Garage.tscn")
+			var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
+

@@ -13,20 +13,16 @@ func _ready():
 	for variable in carData:
 		set(variable,carData[variable])
 	health = maxHealth
-	fuel = maxFuel
 	mass *= 1 + float(armor)/100
 	Globals.resetInputs()
 	$sprCar.texture = load("res://Assets/Cars/img_"+carName+".png")
+	team = "player"
 
 func _physics_process(delta):
 	
-	Globals.set_posCarPlayer(position)
-	
-	haveFuel = fuel > 0
-	
 	partDirt.initial_velocity = Globals.roadSpeed*delta*17
 	
-	actVector += (Globals.carVector-actVector)*delta*2
+	actVector += (Globals.carVector-actVector)*delta*handling
 	
 	velocity.y = actVector.y*delta*speed*(1+int(velocity.y > 0)*0.40)
 	velocity.x = actVector.x*delta*steer
@@ -34,7 +30,7 @@ func _physics_process(delta):
 	var kinCollisionInfo = move_and_collide(velocity)
 	if kinCollisionInfo: # If we collided
 		if "Lose" in kinCollisionInfo.collider.name:
-			var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
+			var _currentScene = get_tree().change_scene("res://Scenes/GameOver.tscn")
 		elif "Car" in kinCollisionInfo.collider.name:
 			carCollision(kinCollisionInfo)
 	
@@ -42,19 +38,12 @@ func _physics_process(delta):
 	
 	$sprCar.rotation = actVector.x/3 # Handle rotation
 	#partTyre.emitting = actVector.y > 0.6 # Handle tyre marks
-	changeFuel(-2*delta) # Deplete fuel
 
 func getTargetVector():
 	if Globals.target == null:
 		return Vector2(0,-1) # Looking up
 	var relVector = Globals.target.position - position
 	return relVector.normalized()
-
-func changeFuel(amount):
-	fuel += amount
-	get_tree().call_group("fuelUI","updateFuelUI",fuel,maxFuel)
-	if fuel <= 0:
-		get_tree().change_scene("res://Scenes/Garage.tscn")
 
 func _on_timerAttack_timeout():
 	if Globals.fire == true and Globals.target != null:

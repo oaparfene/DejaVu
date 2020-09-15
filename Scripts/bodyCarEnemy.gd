@@ -17,6 +17,7 @@ func configure(carData):
 		set(variable,carData[variable])
 	health = maxHealth
 	$sprCar.texture = load("res://Assets/Cars/img_"+carName+".png")
+	team = "enemy"
 
 func _physics_process(delta):
 	
@@ -24,7 +25,7 @@ func _physics_process(delta):
 	
 	AI.getBehaviour(state,self)
 	
-	actVector += (carVector - actVector)*delta
+	actVector += (carVector - actVector)*delta*handling
 	
 	velocity = actVector*speed*delta
 	
@@ -66,7 +67,4 @@ func _on_bodyCarEnemy_input_event(_viewport, event, _shape_idx):
 	
 	if event is InputEventScreenTouch:
 		
-		if Globals.target != null:
-			Globals.target.targetted = false
-		Globals.target = self
-		targetted = true
+		Globals.setTarget(self)
