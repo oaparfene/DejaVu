@@ -1,45 +1,53 @@
 extends "res://Scripts/classCar.gd"
 
-var state
-
-var velocity = Vector2.ZERO
+var state = "maintain"
 
 var carVector = Vector2.ZERO
 var fireVector = Vector2.ZERO
 var fire = false
 
-func _ready():
-	carName = "bad"
-	maxHealth = 100
+var targetted = false
+
+var ammo = 0
+
+func configure(carData):
+	$timerAttack.wait_time = carData["fireRate"]
+	$timerState.wait_time = carData["stupid"]
+	for variable in carData:
+		set(variable,carData[variable])
 	health = maxHealth
-	speed = 300
-	steer = 100
-	armor = 0
-	state = "maintain"
+	$sprCar.texture = load("res://Assets/Cars/img_"+carName+".png")
 
 func _physics_process(delta):
 	
-	partDirt.initial_velocity = Globals.roadSpeed*delta*17
+	$partDirt.initial_velocity = Globals.roadSpeed*delta*17
 	
 	AI.getBehaviour(state,self)
 	
-	velocity = carVector*speed*delta
+	actVector += (carVector - actVector)*delta
+	
+	velocity = actVector*speed*delta
 	
 	var kinCollisionInfo = move_and_collide(velocity)
 	if kinCollisionInfo: # If we collided
-		if "Player" in kinCollisionInfo.collider.name:
-			queue_free()
-			return
-		elif "Enemy" in kinCollisionInfo.collider.name:
-			print("enemy to enemy collision")
-			pass
+		if "Car" in kinCollisionInfo.collider.name:
+			carCollision(kinCollisionInfo)
 	
-	sprBro.rotation = Globals.fireVector.angle() # Update bro's aiming position
-
+	$sprBro.rotation = fireVector.angle() # Update bro's aiming position
+	
+	$sprCar.rotation = actVector.x/3 # Handle rotation
+	
+	if ammo == 0 and state == "shoot":
+		_on_timerState_timeout()
+	
+	$sprCar/sprTarget.visible = targetted
+	
 
 func _on_timerState_timeout():
 	state = AI.getNewState(state)
-	print(name," is now is state: ",state)
+	if state == "shoot":
+		ammo = 5
+	#print(name," is now is state: ",state)
 
 
 func _on_timerAttack_timeout():
@@ -51,3 +59,14 @@ func _on_timerAttack_timeout():
 		bodyBullet.speed = 1600
 		bodyBullet.set_collision_mask_bit(1,true)
 		get_parent().add_child(bodyBullet)
+		ammo -= 1
+
+
+func _on_bodyCarEnemy_input_event(_viewport, event, _shape_idx):
+	
+	if event is InputEventScreenTouch:
+		
+		if Globals.target != null:
+			Globals.target.targetted = false
+		Globals.target = self
+		targetted = true

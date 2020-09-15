@@ -1,21 +1,22 @@
 extends "res://Scripts/classCar.gd"
 
-var velocity = Vector2.ZERO
+onready var partDirt = $partDirt
+#onready var partTyre = $partTyre
+onready var timerAttack = $timerAttack
+onready var sprBro = $sprBro
+
 var haveFuel = true
 
 func _ready():
 	timerAttack.wait_time = 0.3
 	var carData = Globals.getCarVariables()
-	carName = carData["name"]
-	maxHealth = carData["health"]
+	for variable in carData:
+		set(variable,carData[variable])
 	health = maxHealth
-	speed = carData["speed"]
-	steer = carData["steer"]
-	fuel = carData["fuel"]
-	maxFuel = carData["maxFuel"]
-	armor = carData["armor"]
+	fuel = maxFuel
+	mass *= 1 + float(armor)/100
 	Globals.resetInputs()
-	$sprCar.texture = load("res://Assets/Cars/img_"+str(carData["name"])+".png")
+	$sprCar.texture = load("res://Assets/Cars/img_"+carName+".png")
 
 func _physics_process(delta):
 	
@@ -25,34 +26,53 @@ func _physics_process(delta):
 	
 	partDirt.initial_velocity = Globals.roadSpeed*delta*17
 	
-	if haveFuel:
-		velocity.y = Globals.carVector.y*delta*speed*(1+int(velocity.y > 0)*0.40)
-		velocity.x = Globals.carVector.x*delta*steer
-	else:
-		velocity = Vector2(0,Globals.roadSpeed*delta)
+	actVector += (Globals.carVector-actVector)*delta*2
+	
+	velocity.y = actVector.y*delta*speed*(1+int(velocity.y > 0)*0.40)
+	velocity.x = actVector.x*delta*steer
 	
 	var kinCollisionInfo = move_and_collide(velocity)
 	if kinCollisionInfo: # If we collided
 		if "Lose" in kinCollisionInfo.collider.name:
 			var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
+		elif "Car" in kinCollisionInfo.collider.name:
+			carCollision(kinCollisionInfo)
 	
-	sprBro.rotation = Globals.fireVector.angle() # Update bro's aiming position
+	sprBro.rotation = getTargetVector().angle() # Update bro's aiming position
 	
-	if haveFuel:
-		rotation = Globals.carVector.x/3 # Handle rotation
-		#partTyre.emitting = Globals.carVector.y > 0.6 # Handle tyre marks
-		changeFuel(-4*delta) # Deplete fuel
+	$sprCar.rotation = actVector.x/3 # Handle rotation
+	#partTyre.emitting = actVector.y > 0.6 # Handle tyre marks
+	changeFuel(-2*delta) # Deplete fuel
+
+func getTargetVector():
+	if Globals.target == null:
+		return Vector2(0,-1) # Looking up
+	var relVector = Globals.target.position - position
+	return relVector.normalized()
 
 func changeFuel(amount):
 	fuel += amount
 	get_tree().call_group("fuelUI","updateFuelUI",fuel,maxFuel)
+	if fuel <= 0:
+		get_tree().change_scene("res://Scenes/Garage.tscn")
 
 func _on_timerAttack_timeout():
-	if Globals.fire == true:
+	if Globals.fire == true and Globals.target != null:
+		var relVector = getTargetVector()
 		var bodyBullet = bodyBullet_load.instance()
 		bodyBullet.position = position
-		bodyBullet.rotation = Globals.fireVector.angle()
-		bodyBullet.fireVector = Globals.fireVector
+		bodyBullet.rotation = relVector.angle()
+		bodyBullet.fireVector = relVector
 		bodyBullet.speed = 1600
 		bodyBullet.set_collision_mask_bit(3,true)
 		get_parent().add_child(bodyBullet)
+
+
+func _on_btnFire_pressed():
+	Globals.fire = true
+	get_node("../areaAttack/btnFire").modulate = Color(1,0,0)
+
+
+func _on_btnFire_released():
+	Globals.fire = false
+	get_node("../areaAttack/btnFire").modulate = Color(1,1,1)
