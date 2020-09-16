@@ -57,11 +57,11 @@ func _on_timerAttack_timeout():
 		get_parent().add_child(bodyBullet)
 
 
-func _on_btnFire_pressed():
+func btnFire_pressed():
 	Globals.fire = true
 	get_node("../areaAttack/btnFire").modulate = Color(1,0,0)
 
 
-func _on_btnFire_released():
+func btnFire_released():
 	Globals.fire = false
 	get_node("../areaAttack/btnFire").modulate = Color(1,1,1)
