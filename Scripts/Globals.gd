@@ -151,7 +151,7 @@ func initialiseData():
 	carNameArray = []
 	for carName in cars:
 		carNameArray.append(carName)
-		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":[]}
+		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":{0:"Pistol"}}
 	gunNameArray = []
 	for gunName in guns:
 		gunNameArray.append(gunName)
@@ -172,6 +172,9 @@ func getCarIndex():
 
 func getCarName():
 	return carNameArray[activeCarIndex]
+
+func getMaxSlots():
+	return cars[carNameArray[activeCarIndex]]["slots"]
 
 func getNoOfCars():
 	return carNameArray.size()
@@ -247,7 +250,7 @@ func resetInputs():
 	fire = false
 
 func resetCarUpgrades():
-	upgs[carNameArray[activeCarIndex]] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0}
+	upgs[carNameArray[activeCarIndex]] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":{0:"Pistol"}}
 	money = 0
 
 func setTarget(car):
@@ -266,7 +269,7 @@ func _physics_process(_delta):
 		fire = true
 
 func setWeaponSlotGlobal(slotNo, wpnName):
-	upgs[activeCarIndex]["slots"][slotNo] = wpnName
+	upgs[carNameArray[activeCarIndex]]["slots"][slotNo] = wpnName
 
 # SAVE / LOAD
 
