@@ -32,7 +32,8 @@ func _on_Timer_timeout():
 		if enemies == 0:
 			var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
 
-
+func setPlayerCarVector(vector):
+	get_tree().call_group("player","areaMove_changed",vector)
 
 func _on_btnFire_pressed():
 	get_tree().call_group("player","btnFire_pressed")

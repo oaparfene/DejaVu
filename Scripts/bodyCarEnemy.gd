@@ -2,8 +2,6 @@ extends "res://Scripts/classCar.gd"
 
 var state = "maintain"
 
-var carVector = Vector2.ZERO
-var fireVector = Vector2.ZERO
 var fire = false
 
 var targetted = false
@@ -21,22 +19,9 @@ func configure(carData):
 
 func _physics_process(delta):
 	
-	$partDirt.initial_velocity = Globals.roadSpeed*delta*17
-	
 	AI.getBehaviour(state,self)
 	
-	actVector += (carVector - actVector)*delta*handling
-	
-	velocity = actVector*speed*delta
-	
-	var kinCollisionInfo = move_and_collide(velocity)
-	if kinCollisionInfo: # If we collided
-		if "Car" in kinCollisionInfo.collider.name:
-			carCollision(kinCollisionInfo,delta)
-	
-	$sprBro.rotation = fireVector.angle() # Update bro's aiming position
-	
-	$sprCar.rotation = actVector.x/3 # Handle rotation
+	handleMovement(delta)
 	
 	if ammo == 0 and state == "shoot":
 		_on_timerState_timeout()

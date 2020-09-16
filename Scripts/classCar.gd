@@ -2,8 +2,16 @@ extends KinematicBody2D
 
 var bodyBullet_load = preload("res://Scenes/bodyBullet.tscn")
 
-var actVector = Vector2.ZERO
-var velocity = Vector2.ZERO
+var carVector = Vector2.ZERO		# Input movement vector
+var fireVector = Vector2.ZERO		# Shooting vector
+
+var actVector = Vector2.ZERO		# Trailing movement vector
+
+var velocity = Vector2.ZERO			# Movement vector for move_and_slide
+var actVelocity = Vector2.ZERO		# Actual velocity of the car
+var prevPos = Vector2.ZERO			# Last car position in _physics_process(delta)
+var collidedThisTick = false		# Have we collided with a car this _physics_process(delta)
+var appliedForce = Vector2.ZERO		# Any collision force being applied
 
 var team
 
@@ -18,8 +26,39 @@ var armor:float
 
 var money
 
+func handleMovement(delta):
+	
+	collidedThisTick = false
+	
+	prevPos = position
+	
+	$partDirt.initial_velocity = Globals.roadSpeed*delta*17
+	
+	actVector += (carVector - actVector)*delta*handling
+	appliedForce += (Vector2.ZERO - appliedForce)*delta
+	
+	velocity.y = actVector.y*speed*(1+int(velocity.y > 0)*0.40)
+	velocity.x = actVector.x*steer
+	velocity += appliedForce
+	
+	var _returnedVelocity = move_and_slide(velocity)
+	actVelocity = (position-prevPos)/delta
+	var noOfCollisions = get_slide_count()
+	if get_slide_count() > 0:
+		var kinCollisionInfo = get_slide_collision(noOfCollisions-1)
+		if kinCollisionInfo: # If we collided
+			if "Car" in kinCollisionInfo.collider.name:
+				carCollision(kinCollisionInfo)
+			elif "Lose" in kinCollisionInfo.collider.name and team == "player":
+				var _currentScene = get_tree().change_scene("res://Scenes/GameOver.tscn")
+	
+	$sprBro.rotation = fireVector.angle() # Update bro's aiming position
+	$sprCar.rotation = actVector.x/3 # Handle rotation
+
 func damage(dmg):
-	var damage = ( (1-armor/100.0)*dmg ) / 200
+	if dmg < 0:
+		return
+	var damage = ( (1-armor/100.0)*dmg ) / 600
 	health -= damage
 	if team == "enemy":
 		if health <= 0:
@@ -32,24 +71,22 @@ func damage(dmg):
 	$prgHealth.value = 100*(health/maxHealth)
 	#print(name," took ",damage," dmg")
 
-func carCollision(info:KinematicCollision2D,delta:float):
-	var enemy = info.collider
-	var colliderImpulse = -enemy.velocity.dot(info.normal) * enemy.mass # Calculate impact
-	var impulse = -velocity.dot(info.normal) * mass
-	var newImpulse = impulse + colliderImpulse
-	var newSpeed = newImpulse/mass
-	print(
-		team,"(",mass,") ",
-		"S:",stepify(-velocity.dot(info.normal),0.1)," I:",stepify(impulse,0.1),
-		" -> ",
-		"I:",stepify(colliderImpulse,0.1)," S:",stepify(-enemy.velocity.dot(info.normal),0.1),
-		" (",enemy.mass,")"+enemy.team
-	)
-	print(team,": [ nS:",newSpeed," nI:",newImpulse,"]")
-	print(team," Before: ",actVector)
-	actVector = actVector.normalized()*clamp(newSpeed/(speed*delta),-1,1)
-	print(team," After: ",actVector)
-	#print(name," took ",impactSpeed," impact")
-	if impulse > 0: # Ignore small collisions
-		enemy.damage(impulse)
-	#actVector = actVector.bounce(info.normal)*(enemy.mass/(enemy.mass+mass))
+
+func carCollision(info:KinematicCollision2D):
+	calculateCollision(info.normal,info.collider.actVelocity,info.collider.mass)
+	info.collider.calculateCollision(-info.normal,actVelocity,mass)
+
+func calculateCollision(normal,other_actVelocity,other_mass):
+	# Check if we've collided this turn
+	if collidedThisTick == true:
+		return
+	collidedThisTick = true
+	
+	var colliderSpeed = -other_actVelocity.dot(normal) # Calculate impact
+	var ourSpeed = -actVelocity.dot(normal)
+	var newSpeed = ( 1*other_mass*(colliderSpeed-ourSpeed) + mass*ourSpeed + other_mass*colliderSpeed )/( mass + other_mass )
+	var colliderImpulse = colliderSpeed * other_mass
+	if -colliderImpulse > mass*30: # Ignore small collisions
+		appliedForce += newSpeed*(-normal)
+		print(name," took ",-colliderImpulse," impact")
+		damage(-colliderImpulse)

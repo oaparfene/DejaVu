@@ -35,7 +35,7 @@ var cars = {
 		"handling":	{"levels":[3, 3.2, 3.4, 3.6, 3.8, 4], 			"baseCost":225, 	"mod":1.10},
 		"armor":	{"levels":[5, 10, 15, 20, 25, 30], 				"baseCost":250, 	"mod":1.10},
 		"slots":2,
-		"mass":50},
+		"mass":40},
 	"manta":{
 		"health":1000,
 		"unlockCost":4000,
@@ -44,7 +44,7 @@ var cars = {
 		"handling":	{"levels":[4, 4.2, 4.4, 4.6, 4.8, 5], 			"baseCost":425, 	"mod":1.10},
 		"armor":	{"levels":[0, 4, 8, 12, 16, 20], 				"baseCost":450, 	"mod":1.10},
 		"slots":2,
-		"mass":80},
+		"mass":60},
 	"goliath":{
 		"health":2000,
 		"unlockCost":10000,
@@ -53,7 +53,7 @@ var cars = {
 		"handling":	{"levels":[1, 1.2, 1.4, 1.6, 1.8, 2], 			"baseCost":625, 	"mod":1.10},
 		"armor":	{"levels":[25, 30, 35, 40, 45, 50], 			"baseCost":650, 	"mod":1.10},
 		"slots":3,
-		"mass":300}
+		"mass":100}
 }
 
 var enemies = {
