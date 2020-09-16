@@ -144,8 +144,18 @@ var guns = {
 var upgs = {}
 
 func _ready():
-	resetSaveData()
-	saveGame()
+	initialiseData()
+	loadGame()
+
+func initialiseData():
+	carNameArray = []
+	for carName in cars:
+		carNameArray.append(carName)
+		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":[]}
+	gunNameArray = []
+	for gunName in guns:
+		gunNameArray.append(gunName)
+		upgs[gunName] = {"unlocked":false,"fireRate":0,"spread":0,"damage":0,"misc":0}
 
 func transferFunds():
 	money += levelMoney
@@ -259,14 +269,7 @@ func _physics_process(_delta):
 var saveVariables = ["upgs","activeCarIndex","money"]
 
 func resetSaveData():
-	carNameArray = []
-	for carName in cars:
-		carNameArray.append(carName)
-		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":[]}
-	gunNameArray = []
-	for gunName in guns:
-		gunNameArray.append(gunName)
-		upgs[gunName] = {"unlocked":false,"fireRate":0,"spread":0,"damage":0,"misc":0}
+	initialiseData()
 	saveGame()
 
 func createSaveData(): # Copy the state of the game to a save dict

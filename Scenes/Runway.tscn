@@ -116,6 +116,10 @@ __meta__ = {
 visible = false
 shape = SubResource( 1 )
 
+[node name="sprActual" type="Sprite" parent="areaMove"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 15 )
+
 [node name="sprCenter" type="Sprite" parent="areaMove"]
 texture = ExtResource( 6 )
 
