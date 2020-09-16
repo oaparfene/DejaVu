@@ -25,4 +25,3 @@ func updateUI():
 	else:
 		$btnUpg.disabled = false
 		$btnUpg.text = str(cost)+"$"
-	Globals.saveGame()

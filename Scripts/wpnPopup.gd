@@ -5,7 +5,6 @@ var load_objGridItem = preload("res://Scenes/objGridItem.tscn")
 func _ready():
 	pass
 
-
 func _on_wpnPopup_about_to_show():
 	for gunName in Globals.gunNameArray:
 		if Globals.getUnlocked(gunName):

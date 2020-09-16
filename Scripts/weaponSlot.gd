@@ -1,16 +1,14 @@
 extends Button
 
-var popup
-export var slotNo:int
-var equipedWpn
+export var slot:int
 var wpnPopup
 
 var load_wpnPopup = preload("res://Scenes/wpnPopup.tscn")
 
 func _ready():
-	if slotNo == 0:
+	if slot == 0:
 		disabled = true
-	$labDescription.text = "Weapons Slot " + str(slotNo)
+	$labDescription.text = "Weapons Slot " + str(slot)
 
 func _on_weaponSlot_pressed():
 	wpnPopup = load_wpnPopup.instance()
@@ -18,22 +16,15 @@ func _on_weaponSlot_pressed():
 	wpnPopup.popup_centered()
 
 func setWeaponSlot(wpnName):
-	Globals.setWeaponSlotGlobal(slotNo, wpnName)
-	setWeaponSlotLocal(wpnName)
-	if wpnPopup != null:
-		wpnPopup.queue_free()
-
-func setWeaponSlotLocal(wpnName):
-	equipedWpn = wpnName
-	$sprWeapon.texture = load("res://Assets/Guns/img_" + wpnName + ".png")
-	$labDescription.text = wpnName
+	Globals.setWeaponSlot(slot, wpnName)
+	updateUI()
+	wpnPopup.queue_free()
 
 func updateUI():
-	if slotNo < Globals.getMaxSlots():
-		if Globals.upgs[Globals.getCarName()]["slots"].has(slotNo):
-			setWeaponSlotLocal(Globals.upgs[Globals.getCarName()]["slots"][slotNo])
-		else:
-			setWeaponSlot("empty")
+	if slot < Globals.getMaxSlots():
+		var gunName = Globals.getGunName(slot)
+		$sprWeapon.texture = load("res://Assets/Guns/img_" + gunName + ".png")
+		$labDescription.text = gunName
 		visible = true
 	else:
 		visible = false
