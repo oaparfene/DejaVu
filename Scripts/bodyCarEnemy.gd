@@ -32,7 +32,7 @@ func _physics_process(delta):
 	var kinCollisionInfo = move_and_collide(velocity)
 	if kinCollisionInfo: # If we collided
 		if "Car" in kinCollisionInfo.collider.name:
-			carCollision(kinCollisionInfo)
+			carCollision(kinCollisionInfo,delta)
 	
 	$sprBro.rotation = fireVector.angle() # Update bro's aiming position
 	

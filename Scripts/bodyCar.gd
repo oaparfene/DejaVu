@@ -32,7 +32,7 @@ func _physics_process(delta):
 		if "Lose" in kinCollisionInfo.collider.name:
 			var _currentScene = get_tree().change_scene("res://Scenes/GameOver.tscn")
 		elif "Car" in kinCollisionInfo.collider.name:
-			carCollision(kinCollisionInfo)
+			carCollision(kinCollisionInfo,delta)
 	
 	sprBro.rotation = getTargetVector().angle() # Update bro's aiming position
 	

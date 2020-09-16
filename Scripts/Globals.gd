@@ -260,6 +260,7 @@ func setTarget(car):
 	target.targetted = true
 
 func _physics_process(_delta):
+	print()
 	if autoTarget == true and target == null:
 		var targets = get_tree().get_nodes_in_group("enemy")
 		if not targets.empty():

@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12.8466, 40.028 )
 
-[node name="bodyGoliath" type="KinematicBody2D" groups=[
+[node name="bodyCarGoliath" type="KinematicBody2D" groups=[
 "player",
 ]]
 show_behind_parent = true
