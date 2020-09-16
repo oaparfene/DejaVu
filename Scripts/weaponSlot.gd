@@ -1,6 +1,7 @@
 extends Button
 
 var popup
+var slotNo
 
 var load_wpnPopup = preload("res://Scenes/wpnPopup.tscn")
 
@@ -14,5 +15,5 @@ func _on_weaponSlot_pressed():
 	add_child(wpnPopup)
 	wpnPopup.popup_centered()
 
-func setWeaponSlot(name):
-	pass
+func setWeaponSlot(wpnName):
+	Globals.setWeaponSlotGlobal(slotNo, wpnName)

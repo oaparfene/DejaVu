@@ -250,6 +250,9 @@ func _physics_process(_delta):
 	if autoFire:
 		fire = true
 
+func setWeaponSlotGlobal(slotNo, wpnName):
+	upgs[activeCarIndex]["slots"][slotNo] = wpnName
+
 # SAVE / LOAD
 
 var saveVariables = ["upgs","activeCarIndex","money"]
