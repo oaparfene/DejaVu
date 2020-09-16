@@ -263,6 +263,8 @@ var saveVariables = ["upgs","activeCarIndex","money"]
 func resetSaveData():
 	for carName in cars:
 		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0}
+	for gunName in guns:
+		upgs[gunName] = {"unlocked":false,"fireRate":0,"spread":0,"damage":0,"misc":0}
 	saveGame()
 
 func createSaveData(): # Copy the state of the game to a save dict
