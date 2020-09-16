@@ -35,8 +35,7 @@ func _on_Timer_timeout():
 
 
 func _on_btnFire_pressed():
-	get_tree().call_group("")
-
+	get_tree().call_group("player","btnFire_pressed")
 
 func _on_btnFire_released():
-	pass # Replace with function body.
+	get_tree().call_group("player","btnFire_released")
