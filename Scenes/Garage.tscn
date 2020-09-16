@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Garage.gd" type="Script" id=1]
 [ext_resource path="res://ThemeMain.tres" type="Theme" id=2]
 [ext_resource path="res://Assets/VanHunter/cars/car.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/contButtons.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/upgradeNode.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/weaponSlot.tscn" type="PackedScene" id=6]
 
 [node name="Garage" type="Control" groups=[
 "unlockUI",
@@ -125,6 +126,18 @@ margin_left = 639.916
 margin_top = 1133.63
 margin_right = 999.916
 margin_bottom = 1325.63
+
+[node name="weaponSlot1" parent="." instance=ExtResource( 6 )]
+margin_left = 73.6381
+margin_top = 1422.04
+margin_right = -606.362
+margin_bottom = -297.963
+
+[node name="weaponSlot2" parent="." instance=ExtResource( 6 )]
+margin_left = 607.082
+margin_top = 1423.36
+margin_right = -72.9181
+margin_bottom = -296.637
 [connection signal="pressed" from="btnBack" to="." method="_on_btnBack_pressed"]
 [connection signal="pressed" from="btnReset" to="." method="_on_btnReset_pressed"]
 [connection signal="pressed" from="btnPlay" to="." method="_on_btnPlay_pressed"]

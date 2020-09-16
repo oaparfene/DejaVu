@@ -1,38 +1,54 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://FjallaOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ThemeMain.tres" type="Theme" id=2]
 [ext_resource path="res://Scripts/weaponSlot.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Guns/img_sniper.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.337255, 0.337255, 0.337255, 1 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 1 )
 
-[node name="weaponSlot" type="Panel"]
+[node name="weaponSlot" type="Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -780.0
-margin_bottom = -1620.0
+margin_right = -680.0
+margin_bottom = -1720.0
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
-
-[node name="labDescription" type="Label" parent="."]
-margin_left = -0.594604
-margin_right = 160.405
-margin_bottom = 49.0
-custom_fonts/font = SubResource( 1 )
-text = "Weapon Slot"
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="sprWeapon" type="Sprite" parent="."]
+position = Vector2( 200, 100 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="labDescription" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 160.405
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 2 )
+text = "Weapon Slot:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="." to="." method="_on_weaponSlot_pressed"]
