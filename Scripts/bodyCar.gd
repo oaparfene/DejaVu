@@ -37,6 +37,9 @@ func _physics_process(delta):
 	sprBro.rotation = getTargetVector().angle() # Update bro's aiming position
 	
 	$sprCar.rotation = actVector.x/3 # Handle rotation
+	
+	get_node("../areaMove/sprActual").position = 150 * actVector
+	
 	#partTyre.emitting = actVector.y > 0.6 # Handle tyre marks
 
 func getTargetVector():
