@@ -15,6 +15,7 @@ func updateUI():
 	$btnUnlock.text = str(Globals.getUnlockCost()) + "$"
 	get_tree().call_group("upgrade","updateUI")
 	get_tree().call_group("moneyUI","updateUI")
+	get_tree().call_group("wpnSlotsUI","updateUI")
 
 func _on_btnLeft_pressed():
 	Globals.prevCar()

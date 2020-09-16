@@ -265,7 +265,7 @@ func resetSaveData():
 	carNameArray = []
 	for carName in cars:
 		carNameArray.append(carName)
-		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":[]}
+		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":{}}
 	gunNameArray = []
 	for gunName in guns:
 		gunNameArray.append(gunName)
