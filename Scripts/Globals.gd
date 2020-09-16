@@ -145,7 +145,7 @@ func _ready():
 		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":[]}
 	for gunName in guns:
 		gunNameArray.append(gunName)
-		upgs[gunName] = {"unlocked":false,"fireRate":0,"spread":0,"damage":0,"misc":0}
+		upgs[gunName] = {"unlocked":true,"fireRate":0,"spread":0,"damage":0,"misc":0} # TO DO: SET TO FALSE
 	loadGame()
 	saveGame()
 
@@ -168,8 +168,8 @@ func getCarName():
 func getNoOfCars():
 	return carNameArray.size()
 
-func getUnlocked():
-	return upgs[getCarName()]["unlocked"]
+func getUnlocked(query = getCarName()):
+	return upgs[query]["unlocked"]
 
 func getUnlockCost():
 	var cost = cars[getCarName()]["unlockCost"]

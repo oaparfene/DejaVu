@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ThemeMain.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/wpnPopup.gd" type="Script" id=3]
+
+[node name="wpnPopup" type="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -180.0
+margin_bottom = -1020.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 8.0
+margin_right = -20.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="vBox"]
+margin_right = 860.0
+margin_bottom = 89.0
+text = "Weapons:"
+align = 1
+valign = 1
+
+[node name="gridCtn" type="GridContainer" parent="vBox"]
+margin_top = 93.0
+margin_right = 860.0
+margin_bottom = 513.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="about_to_show" from="." to="." method="_on_wpnPopup_about_to_show"]

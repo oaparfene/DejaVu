@@ -5,9 +5,9 @@
 [ext_resource path="res://Scripts/objGridItem.gd" type="Script" id=3]
 
 [node name="objGridItem" type="Button"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -15,8 +15,8 @@ __meta__ = {
 }
 
 [node name="sprWeapon" type="Sprite" parent="."]
-position = Vector2( 50, 50 )
+position = Vector2( 100, 100 )
 rotation = -0.785398
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 [connection signal="pressed" from="." to="." method="_on_objGridItem_pressed"]
