@@ -12,6 +12,10 @@ var simul = 2
 
 var rng = RandomNumberGenerator.new()
 func _ready():
+	var car_load = load("res://Scenes/Cars/"+Globals.getCarName()+".tscn")
+	var car = car_load.instance()
+	car.position = rect_size/2
+	add_child(car)
 	rng.randomize()
 
 func _on_Timer_timeout():
@@ -28,3 +32,11 @@ func _on_Timer_timeout():
 		if enemies == 0:
 			var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
 
+
+
+func _on_btnFire_pressed():
+	get_tree().call_group("")
+
+
+func _on_btnFire_released():
+	pass # Replace with function body.

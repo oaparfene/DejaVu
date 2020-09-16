@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/VanHunter/background/bg desert_custom.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Runway.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/bodyCarPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/areaMove.gd" type="Script" id=4]
 [ext_resource path="res://Assets/img_joystick.png" type="Texture" id=5]
 [ext_resource path="res://Assets/img_center.png" type="Texture" id=6]
@@ -40,9 +39,6 @@ z_index = -5
 texture = ExtResource( 1 )
 centered = false
 script = ExtResource( 12 )
-
-[node name="bodyCarPlayer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 533.344, 713.264 )
 
 [node name="progFuel" type="TextureProgress" parent="." groups=[
 "fuelUI",
@@ -169,7 +165,7 @@ script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="areaAttack/btnFire" to="bodyCarPlayer" method="_on_btnFire_pressed"]
-[connection signal="released" from="areaAttack/btnFire" to="bodyCarPlayer" method="_on_btnFire_released"]
+[connection signal="pressed" from="areaAttack/btnFire" to="." method="_on_btnFire_pressed"]
+[connection signal="released" from="areaAttack/btnFire" to="." method="_on_btnFire_released"]
 [connection signal="input_event" from="areaMove" to="areaMove" method="_on_areaMove_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
