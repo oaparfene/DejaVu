@@ -7,6 +7,7 @@ var target = null
 
 var activeCarIndex:int = 0
 var carNameArray = []
+var gunNameArray = []
 var money = 0
 var levelMoney = 0
 
@@ -20,34 +21,34 @@ var cars = {
 	"squid":{
 		"health":500,
 		"unlockCost":0,
-		"engine":	{"levels":[300, 350, 400, 450, 500, 550], 	"baseCost":100, 	"mod":1.15},
-		"steering":	{"levels":[100, 125, 150, 175, 200, 225], 	"baseCost":80, 		"mod":1.20},
-		"handling":	{"levels":[2, 2.2, 2.4, 2.6, 2.8, 3], 		"baseCost":140, 	"mod":1.10},
-		"armor":	{"levels":[0, 5, 10, 15, 20, 25], 			"baseCost":160, 	"mod":1.05},
+		"engine":	{"levels":[300, 350, 400, 450, 500, 550], 		"baseCost":100, 	"mod":1.15},
+		"steering":	{"levels":[100, 125, 150, 175, 200, 225], 		"baseCost":80, 		"mod":1.20},
+		"handling":	{"levels":[2, 2.2, 2.4, 2.6, 2.8, 3], 			"baseCost":140, 	"mod":1.10},
+		"armor":	{"levels":[0, 5, 10, 15, 20, 25], 				"baseCost":160, 	"mod":1.05},
 		"mass":30},
 	"vice":{
 		"health":800,
 		"unlockCost":1500,
-		"engine":	{"levels":[500,550,600,650,700,750], 		"baseCost":200, 	"mod":1.15},
-		"steering":	{"levels":[200,225,250,275,300,325], 		"baseCost":180, 	"mod":1.20},
-		"handling":	{"levels":[3, 3.2, 3.4, 3.6, 3.8, 4], 		"baseCost":225, 	"mod":1.10},
-		"armor":	{"levels":[5,10,15,20,25,30], 				"baseCost":250, 	"mod":1.10},
+		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":200, 	"mod":1.15},
+		"steering":	{"levels":[200, 225, 250, 275, 300, 325], 		"baseCost":180, 	"mod":1.20},
+		"handling":	{"levels":[3, 3.2, 3.4, 3.6, 3.8, 4], 			"baseCost":225, 	"mod":1.10},
+		"armor":	{"levels":[5, 10, 15, 20, 25, 30], 				"baseCost":250, 	"mod":1.10},
 		"mass":50},
 	"manta":{
 		"health":1000,
 		"unlockCost":4000,
-		"engine":	{"levels":[800,850,900,950,1000,1050], 		"baseCost":400, 	"mod":1.15},
-		"steering":	{"levels":[400,425,550,575,600,625], 		"baseCost":350, 	"mod":1.20},
-		"handling":	{"levels":[4, 4.2, 4.4, 4.6, 4.8, 5], 		"baseCost":425, 	"mod":1.10},
-		"armor":	{"levels":[0,4,8,12,16,20], 				"baseCost":450, 	"mod":1.10},
+		"engine":	{"levels":[800, 850, 900, 950, 1000, 1050], 	"baseCost":400, 	"mod":1.15},
+		"steering":	{"levels":[400, 425, 550, 575, 600, 625], 		"baseCost":350, 	"mod":1.20},
+		"handling":	{"levels":[4, 4.2, 4.4, 4.6, 4.8, 5], 			"baseCost":425, 	"mod":1.10},
+		"armor":	{"levels":[0, 4, 8, 12, 16, 20], 				"baseCost":450, 	"mod":1.10},
 		"mass":80},
 	"goliath":{
 		"health":2000,
 		"unlockCost":10000,
-		"engine":	{"levels":[500,550,600,650,700,750], 		"baseCost":600, 	"mod":1.15},
-		"steering":	{"levels":[200,225,250,275,300,325], 		"baseCost":550, 	"mod":1.20},
-		"handling":	{"levels":[1, 1.2, 1.4, 1.6, 1.8, 2], 		"baseCost":625, 	"mod":1.10},
-		"armor":	{"levels":[25,30,35,40,45,50], 				"baseCost":650, 	"mod":1.10},
+		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":600, 	"mod":1.15},
+		"steering":	{"levels":[200, 225, 250, 275, 300, 325], 		"baseCost":550, 	"mod":1.20},
+		"handling":	{"levels":[1, 1.2, 1.4, 1.6, 1.8, 2], 			"baseCost":625, 	"mod":1.10},
+		"armor":	{"levels":[25, 30, 35, 40, 45, 50], 			"baseCost":650, 	"mod":1.10},
 		"mass":300}
 }
 
@@ -101,24 +102,38 @@ var enemies = {
 var guns = {
 	"pistol":{
 		"speed":1600,
-		"fireRate":	{"levels":[1,0.9,0.8,0.7,0.6,0.5], 			"baseCost":50, 	"mod":1.15},
-		"spread":	{"levels":[0.3,0.25,0.20,0.15,0.1,0.05],	"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[15,20,25,30,35,40], 				"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 	"baseCost":100, "mod":1.15} # kill bonus
+		"fireRate":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5], 		"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[1.05, 1.10, 1.15, 1.20, 1.25, 1.30], "baseCost":100, "mod":1.15} # kill bonus
 	},
 	"shotgun":{
 		"speed":1600,
-		"fireRate":	{"levels":[2,1.8,1.6,1.4,1.2,1], 			"baseCost":50, 	"mod":1.15},
-		"spread":	{"levels":[1,0.9,0.8,0.7,0.6,0.5],			"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[100,120,140,160,180,200], 		"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[5,6,7,8,9,10], 					"baseCost":100, "mod":1.15} # projectiles
+		"fireRate":	{"levels":[2, 1.8, 1.6, 1.4, 1.2, 1], 			"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5],			"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[100, 120, 140, 160, 180, 200], 		"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[5, 6, 7, 8, 9, 10], 					"baseCost":100, "mod":1.15} # projectiles
 	},
 	"smg":{
 		"speed":1600,
-		"fireRate":	{"levels":[2,1.7,1.4,1.1,0.8,0.5], 			"baseCost":50, 	"mod":1.15},
-		"spread":	{"levels":[0.3,0.25,0.20,0.15,0.1,0.05],	"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[15,20,25,30,35,40], 				"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 	"baseCost":100, "mod":1.15}
+		"fireRate":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.15, 0.1], 		"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15}
+	},
+	"sniper":{
+		"speed":1600,
+		"fireRate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15}
+	},
+	"rpg":{
+		"speed":800,
+		"fireRate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15}
 	}
 }
 
@@ -127,7 +142,10 @@ var upgs = {}
 func _ready():
 	for carName in cars:
 		carNameArray.append(carName)
-		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0}
+		upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":[]}
+	for gunName in guns:
+		gunNameArray.append(gunName)
+		upgs[gunName] = {"unlocked":false,"fireRate":0,"spread":0,"damage":0,"misc":0}
 	loadGame()
 	saveGame()
 
