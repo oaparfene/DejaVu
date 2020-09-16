@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/grenade_vintage.obj-fb65a829e2721382fd434f53dc12517a.mesh"
+path="res://.import/grenade_vintage.obj-54b34cc12b5653759a3d7fccd5fddda1.mesh"
 
 [deps]
 
-files=[ "res://.import/grenade_vintage.obj-fb65a829e2721382fd434f53dc12517a.mesh" ]
+files=[ "res://.import/grenade_vintage.obj-54b34cc12b5653759a3d7fccd5fddda1.mesh" ]
 
-source_file="res://Assets/Guns/Models/grenade_vintage.obj"
-dest_files=[ "res://.import/grenade_vintage.obj-fb65a829e2721382fd434f53dc12517a.mesh", "res://.import/grenade_vintage.obj-fb65a829e2721382fd434f53dc12517a.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/grenade_vintage.obj"
+dest_files=[ "res://.import/grenade_vintage.obj-54b34cc12b5653759a3d7fccd5fddda1.mesh", "res://.import/grenade_vintage.obj-54b34cc12b5653759a3d7fccd5fddda1.mesh" ]
 
 [params]
 

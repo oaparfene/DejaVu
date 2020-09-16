@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/ammo_rocket.obj-5e6dae679debd9c089a9063e5ab5d924.mesh"
+path="res://.import/ammo_rocket.obj-2acc39a69fc49db1eda73cbbba08ed98.mesh"
 
 [deps]
 
-files=[ "res://.import/ammo_rocket.obj-5e6dae679debd9c089a9063e5ab5d924.mesh" ]
+files=[ "res://.import/ammo_rocket.obj-2acc39a69fc49db1eda73cbbba08ed98.mesh" ]
 
-source_file="res://Assets/Guns/Models/ammo_rocket.obj"
-dest_files=[ "res://.import/ammo_rocket.obj-5e6dae679debd9c089a9063e5ab5d924.mesh", "res://.import/ammo_rocket.obj-5e6dae679debd9c089a9063e5ab5d924.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/ammo_rocket.obj"
+dest_files=[ "res://.import/ammo_rocket.obj-2acc39a69fc49db1eda73cbbba08ed98.mesh", "res://.import/ammo_rocket.obj-2acc39a69fc49db1eda73cbbba08ed98.mesh" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flamethrower_short.png-b5c2ef85c3cf29d18fab07c557b20972.stex"
+path="res://.import/flamethrower_short.png-98cbc59558fd0d5249659881d88740cb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Render/flamethrower_short.png"
-dest_files=[ "res://.import/flamethrower_short.png-b5c2ef85c3cf29d18fab07c557b20972.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Render/flamethrower_short.png"
+dest_files=[ "res://.import/flamethrower_short.png-98cbc59558fd0d5249659881d88740cb.stex" ]
 
 [params]
 

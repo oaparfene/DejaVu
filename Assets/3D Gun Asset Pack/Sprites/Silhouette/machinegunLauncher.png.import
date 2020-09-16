@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/machinegunLauncher.png-e0878e97895651c9410c3bde333fca57.stex"
+path="res://.import/machinegunLauncher.png-67d96dc0ce89f66fe77962c9f95a0c1b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Silhouette/machinegunLauncher.png"
-dest_files=[ "res://.import/machinegunLauncher.png-e0878e97895651c9410c3bde333fca57.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Silhouette/machinegunLauncher.png"
+dest_files=[ "res://.import/machinegunLauncher.png-67d96dc0ce89f66fe77962c9f95a0c1b.stex" ]
 
 [params]
 

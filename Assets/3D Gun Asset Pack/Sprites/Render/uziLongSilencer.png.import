@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/uziLongSilencer.png-5d829ca10bd16116b20aa4c78c46d56d.stex"
+path="res://.import/uziLongSilencer.png-8e51d1411e000d13897bd46887752528.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Render/uziLongSilencer.png"
-dest_files=[ "res://.import/uziLongSilencer.png-5d829ca10bd16116b20aa4c78c46d56d.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Render/uziLongSilencer.png"
+dest_files=[ "res://.import/uziLongSilencer.png-8e51d1411e000d13897bd46887752528.stex" ]
 
 [params]
 

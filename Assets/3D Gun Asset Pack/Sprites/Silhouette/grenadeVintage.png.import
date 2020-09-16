@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grenadeVintage.png-af1b17dac0486eb2bd6ca94115771c73.stex"
+path="res://.import/grenadeVintage.png-03c2bdaa081d97e6cc0fb487f6ffe6ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Silhouette/grenadeVintage.png"
-dest_files=[ "res://.import/grenadeVintage.png-af1b17dac0486eb2bd6ca94115771c73.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Silhouette/grenadeVintage.png"
+dest_files=[ "res://.import/grenadeVintage.png-03c2bdaa081d97e6cc0fb487f6ffe6ec.stex" ]
 
 [params]
 

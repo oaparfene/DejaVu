@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knifeRound_smooth.png-9310bcd27f8afbd12b7a363902e82387.stex"
+path="res://.import/knifeRound_smooth.png-435b02ac029c16fd7cda36c1a1eca7ac.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Render/knifeRound_smooth.png"
-dest_files=[ "res://.import/knifeRound_smooth.png-9310bcd27f8afbd12b7a363902e82387.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Render/knifeRound_smooth.png"
+dest_files=[ "res://.import/knifeRound_smooth.png-435b02ac029c16fd7cda36c1a1eca7ac.stex" ]
 
 [params]
 

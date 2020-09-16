@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rocketlauncher.png-fc313c8917a6828fd87a8df1314f3af6.stex"
+path="res://.import/rocketlauncher.png-dbabde101f261916fd9427d1f200c0f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Silhouette/rocketlauncher.png"
-dest_files=[ "res://.import/rocketlauncher.png-fc313c8917a6828fd87a8df1314f3af6.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Silhouette/rocketlauncher.png"
+dest_files=[ "res://.import/rocketlauncher.png-dbabde101f261916fd9427d1f200c0f0.stex" ]
 
 [params]
 

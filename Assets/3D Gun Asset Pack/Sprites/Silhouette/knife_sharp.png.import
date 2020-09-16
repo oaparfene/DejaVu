@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knife_sharp.png-63c50417ae2e61bea4a37afb2afcaf67.stex"
+path="res://.import/knife_sharp.png-50a40ee8285a7c9ad93fffc32d34825e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Silhouette/knife_sharp.png"
-dest_files=[ "res://.import/knife_sharp.png-63c50417ae2e61bea4a37afb2afcaf67.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Silhouette/knife_sharp.png"
+dest_files=[ "res://.import/knife_sharp.png-50a40ee8285a7c9ad93fffc32d34825e.stex" ]
 
 [params]
 

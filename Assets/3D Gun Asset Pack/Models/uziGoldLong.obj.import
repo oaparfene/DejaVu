@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/uziGoldLong.obj-33962e573b20d5043f400ccc2cfefefe.mesh"
+path="res://.import/uziGoldLong.obj-6b9d754b89f8b1a25628c69cce3ce951.mesh"
 
 [deps]
 
-files=[ "res://.import/uziGoldLong.obj-33962e573b20d5043f400ccc2cfefefe.mesh" ]
+files=[ "res://.import/uziGoldLong.obj-6b9d754b89f8b1a25628c69cce3ce951.mesh" ]
 
-source_file="res://Assets/Guns/Models/uziGoldLong.obj"
-dest_files=[ "res://.import/uziGoldLong.obj-33962e573b20d5043f400ccc2cfefefe.mesh", "res://.import/uziGoldLong.obj-33962e573b20d5043f400ccc2cfefefe.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/uziGoldLong.obj"
+dest_files=[ "res://.import/uziGoldLong.obj-6b9d754b89f8b1a25628c69cce3ce951.mesh", "res://.import/uziGoldLong.obj-6b9d754b89f8b1a25628c69cce3ce951.mesh" ]
 
 [params]
 

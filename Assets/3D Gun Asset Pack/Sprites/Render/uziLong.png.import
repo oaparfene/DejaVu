@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/uziLong.png-de8616d9e04991aae23d74a7ac21ac74.stex"
+path="res://.import/uziLong.png-96d5e16117e361f351515972d870284a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Render/uziLong.png"
-dest_files=[ "res://.import/uziLong.png-de8616d9e04991aae23d74a7ac21ac74.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Render/uziLong.png"
+dest_files=[ "res://.import/uziLong.png-96d5e16117e361f351515972d870284a.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grenadeFlash.png-483f358f59906f4cceb22838b8e31b27.stex"
+path="res://.import/grenadeFlash.png-a18d4f9805bf4105474907888ba20c27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Render/grenadeFlash.png"
-dest_files=[ "res://.import/grenadeFlash.png-483f358f59906f4cceb22838b8e31b27.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Render/grenadeFlash.png"
+dest_files=[ "res://.import/grenadeFlash.png-a18d4f9805bf4105474907888ba20c27.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ammo_rocketModern.png-c08a56fde8e9986a502bcc7e98854318.stex"
+path="res://.import/ammo_rocketModern.png-8c4ae3de06e3b73ba1857acda85dc42e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Silhouette/ammo_rocketModern.png"
-dest_files=[ "res://.import/ammo_rocketModern.png-c08a56fde8e9986a502bcc7e98854318.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Silhouette/ammo_rocketModern.png"
+dest_files=[ "res://.import/ammo_rocketModern.png-8c4ae3de06e3b73ba1857acda85dc42e.stex" ]
 
 [params]
 

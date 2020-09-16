@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sniper.png-44ac597be8b214272453e1476c9a5b01.stex"
+path="res://.import/sniper.png-48eac47ab0729d3be91b247f4fbcbb9f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Silhouette/sniper.png"
-dest_files=[ "res://.import/sniper.png-44ac597be8b214272453e1476c9a5b01.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Silhouette/sniper.png"
+dest_files=[ "res://.import/sniper.png-48eac47ab0729d3be91b247f4fbcbb9f.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ammo_uzi.png-13faaf6d05dda528d57b727ea96e380f.stex"
+path="res://.import/ammo_uzi.png-926b48d87b212c471f0ae0f796de7c7a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Render/ammo_uzi.png"
-dest_files=[ "res://.import/ammo_uzi.png-13faaf6d05dda528d57b727ea96e380f.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Render/ammo_uzi.png"
+dest_files=[ "res://.import/ammo_uzi.png-926b48d87b212c471f0ae0f796de7c7a.stex" ]
 
 [params]
 

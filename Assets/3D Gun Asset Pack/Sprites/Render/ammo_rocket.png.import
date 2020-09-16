@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ammo_rocket.png-2d7c414d6b4062a711641fad27bc7699.stex"
+path="res://.import/ammo_rocket.png-9a83bfdab362148add7c5730331c182e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Render/ammo_rocket.png"
-dest_files=[ "res://.import/ammo_rocket.png-2d7c414d6b4062a711641fad27bc7699.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Render/ammo_rocket.png"
+dest_files=[ "res://.import/ammo_rocket.png-9a83bfdab362148add7c5730331c182e.stex" ]
 
 [params]
 

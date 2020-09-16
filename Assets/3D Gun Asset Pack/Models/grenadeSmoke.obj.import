@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/grenadeSmoke.obj-a4077466dd84f3bb4df27cbb771ac075.mesh"
+path="res://.import/grenadeSmoke.obj-34559f149ca8e51039003d7a4b620fb7.mesh"
 
 [deps]
 
-files=[ "res://.import/grenadeSmoke.obj-a4077466dd84f3bb4df27cbb771ac075.mesh" ]
+files=[ "res://.import/grenadeSmoke.obj-34559f149ca8e51039003d7a4b620fb7.mesh" ]
 
-source_file="res://Assets/Guns/Models/grenadeSmoke.obj"
-dest_files=[ "res://.import/grenadeSmoke.obj-a4077466dd84f3bb4df27cbb771ac075.mesh", "res://.import/grenadeSmoke.obj-a4077466dd84f3bb4df27cbb771ac075.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/grenadeSmoke.obj"
+dest_files=[ "res://.import/grenadeSmoke.obj-34559f149ca8e51039003d7a4b620fb7.mesh", "res://.import/grenadeSmoke.obj-34559f149ca8e51039003d7a4b620fb7.mesh" ]
 
 [params]
 
