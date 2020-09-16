@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/shotgun.obj-f22c6e13a56036368744abf7502e39cb.mesh"
+path="res://.import/shotgun.obj-fb7a7026f4b8cdd8f5be7cdd3894f2a7.mesh"
 
 [deps]
 
-files=[ "res://.import/shotgun.obj-f22c6e13a56036368744abf7502e39cb.mesh" ]
+files=[ "res://.import/shotgun.obj-fb7a7026f4b8cdd8f5be7cdd3894f2a7.mesh" ]
 
-source_file="res://Assets/Guns/Models/shotgun.obj"
-dest_files=[ "res://.import/shotgun.obj-f22c6e13a56036368744abf7502e39cb.mesh", "res://.import/shotgun.obj-f22c6e13a56036368744abf7502e39cb.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/shotgun.obj"
+dest_files=[ "res://.import/shotgun.obj-fb7a7026f4b8cdd8f5be7cdd3894f2a7.mesh", "res://.import/shotgun.obj-fb7a7026f4b8cdd8f5be7cdd3894f2a7.mesh" ]
 
 [params]
 

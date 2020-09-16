@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/rocketlauncherSide.obj-7f0633d39aa909f55b13abc2c982be46.mesh"
+path="res://.import/rocketlauncherSide.obj-7efa854557d3cfd78bac7402d586da84.mesh"
 
 [deps]
 
-files=[ "res://.import/rocketlauncherSide.obj-7f0633d39aa909f55b13abc2c982be46.mesh" ]
+files=[ "res://.import/rocketlauncherSide.obj-7efa854557d3cfd78bac7402d586da84.mesh" ]
 
-source_file="res://Assets/Guns/Models/rocketlauncherSide.obj"
-dest_files=[ "res://.import/rocketlauncherSide.obj-7f0633d39aa909f55b13abc2c982be46.mesh", "res://.import/rocketlauncherSide.obj-7f0633d39aa909f55b13abc2c982be46.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/rocketlauncherSide.obj"
+dest_files=[ "res://.import/rocketlauncherSide.obj-7efa854557d3cfd78bac7402d586da84.mesh", "res://.import/rocketlauncherSide.obj-7efa854557d3cfd78bac7402d586da84.mesh" ]
 
 [params]
 

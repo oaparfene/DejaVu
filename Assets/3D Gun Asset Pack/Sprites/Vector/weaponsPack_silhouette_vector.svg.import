@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/weaponsPack_silhouette_vector.svg-d11d4a756dfd692766f129b915a1525b.stex"
+path="res://.import/weaponsPack_silhouette_vector.svg-02591f7d05b3aba8ee59c86fba73e14a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Vector/weaponsPack_silhouette_vector.svg"
-dest_files=[ "res://.import/weaponsPack_silhouette_vector.svg-d11d4a756dfd692766f129b915a1525b.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Vector/weaponsPack_silhouette_vector.svg"
+dest_files=[ "res://.import/weaponsPack_silhouette_vector.svg-02591f7d05b3aba8ee59c86fba73e14a.stex" ]
 
 [params]
 

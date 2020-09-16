@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ammo_machinegun.png-223bef5532962be5c747379d300e5ce4.stex"
+path="res://.import/ammo_machinegun.png-aca7a8d3a016233acff901aebd7d2f5b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Silhouette/ammo_machinegun.png"
-dest_files=[ "res://.import/ammo_machinegun.png-223bef5532962be5c747379d300e5ce4.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Silhouette/ammo_machinegun.png"
+dest_files=[ "res://.import/ammo_machinegun.png-aca7a8d3a016233acff901aebd7d2f5b.stex" ]
 
 [params]
 

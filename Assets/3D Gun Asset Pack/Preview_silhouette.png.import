@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Preview_silhouette.png-ebc8d542dacebb47062ec684a98f0792.stex"
+path="res://.import/Preview_silhouette.png-28a14cd647b03691e9bcde775dd36b27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Preview_silhouette.png"
-dest_files=[ "res://.import/Preview_silhouette.png-ebc8d542dacebb47062ec684a98f0792.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Preview_silhouette.png"
+dest_files=[ "res://.import/Preview_silhouette.png-28a14cd647b03691e9bcde775dd36b27.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grenade.png-2d01844810fef95d79893aa4b82cc3dd.stex"
+path="res://.import/grenade.png-5f709979f2b2c24a296c6c95f07e4822.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Silhouette/grenade.png"
-dest_files=[ "res://.import/grenade.png-2d01844810fef95d79893aa4b82cc3dd.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Silhouette/grenade.png"
+dest_files=[ "res://.import/grenade.png-5f709979f2b2c24a296c6c95f07e4822.stex" ]
 
 [params]
 

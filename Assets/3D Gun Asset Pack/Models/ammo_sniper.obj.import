@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/ammo_sniper.obj-3cc1758345d26eb277463db7a1640c4e.mesh"
+path="res://.import/ammo_sniper.obj-1ee60634ec1012f1a7412aadec6e5223.mesh"
 
 [deps]
 
-files=[ "res://.import/ammo_sniper.obj-3cc1758345d26eb277463db7a1640c4e.mesh" ]
+files=[ "res://.import/ammo_sniper.obj-1ee60634ec1012f1a7412aadec6e5223.mesh" ]
 
-source_file="res://Assets/Guns/Models/ammo_sniper.obj"
-dest_files=[ "res://.import/ammo_sniper.obj-3cc1758345d26eb277463db7a1640c4e.mesh", "res://.import/ammo_sniper.obj-3cc1758345d26eb277463db7a1640c4e.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/ammo_sniper.obj"
+dest_files=[ "res://.import/ammo_sniper.obj-1ee60634ec1012f1a7412aadec6e5223.mesh", "res://.import/ammo_sniper.obj-1ee60634ec1012f1a7412aadec6e5223.mesh" ]
 
 [params]
 

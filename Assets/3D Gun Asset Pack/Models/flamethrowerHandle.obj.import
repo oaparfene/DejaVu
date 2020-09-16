@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/flamethrowerHandle.obj-78efc4a508ac6d8bfcfe01645a58be43.mesh"
+path="res://.import/flamethrowerHandle.obj-9ffb82eb865135cdb159e5d46a9fe28c.mesh"
 
 [deps]
 
-files=[ "res://.import/flamethrowerHandle.obj-78efc4a508ac6d8bfcfe01645a58be43.mesh" ]
+files=[ "res://.import/flamethrowerHandle.obj-9ffb82eb865135cdb159e5d46a9fe28c.mesh" ]
 
-source_file="res://Assets/Guns/Models/flamethrowerHandle.obj"
-dest_files=[ "res://.import/flamethrowerHandle.obj-78efc4a508ac6d8bfcfe01645a58be43.mesh", "res://.import/flamethrowerHandle.obj-78efc4a508ac6d8bfcfe01645a58be43.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/flamethrowerHandle.obj"
+dest_files=[ "res://.import/flamethrowerHandle.obj-9ffb82eb865135cdb159e5d46a9fe28c.mesh", "res://.import/flamethrowerHandle.obj-9ffb82eb865135cdb159e5d46a9fe28c.mesh" ]
 
 [params]
 

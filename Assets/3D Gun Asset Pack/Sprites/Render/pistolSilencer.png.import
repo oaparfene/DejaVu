@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pistolSilencer.png-1622d185850640164f819031c8947831.stex"
+path="res://.import/pistolSilencer.png-1df7974e790e73f087ab85399b5c9aec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Sprites/Render/pistolSilencer.png"
-dest_files=[ "res://.import/pistolSilencer.png-1622d185850640164f819031c8947831.stex" ]
+source_file="res://Assets/3D Gun Asset Pack/Sprites/Render/pistolSilencer.png"
+dest_files=[ "res://.import/pistolSilencer.png-1df7974e790e73f087ab85399b5c9aec.stex" ]
 
 [params]
 

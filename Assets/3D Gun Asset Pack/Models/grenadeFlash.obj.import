@@ -2,14 +2,14 @@
 
 importer="wavefront_obj"
 type="Mesh"
-path="res://.import/grenadeFlash.obj-f3b343046faa792ebbe8b6006965db12.mesh"
+path="res://.import/grenadeFlash.obj-a9c0e24197613c62167ec10cef8fc6a7.mesh"
 
 [deps]
 
-files=[ "res://.import/grenadeFlash.obj-f3b343046faa792ebbe8b6006965db12.mesh" ]
+files=[ "res://.import/grenadeFlash.obj-a9c0e24197613c62167ec10cef8fc6a7.mesh" ]
 
-source_file="res://Assets/Guns/Models/grenadeFlash.obj"
-dest_files=[ "res://.import/grenadeFlash.obj-f3b343046faa792ebbe8b6006965db12.mesh", "res://.import/grenadeFlash.obj-f3b343046faa792ebbe8b6006965db12.mesh" ]
+source_file="res://Assets/3D Gun Asset Pack/Models/grenadeFlash.obj"
+dest_files=[ "res://.import/grenadeFlash.obj-a9c0e24197613c62167ec10cef8fc6a7.mesh", "res://.import/grenadeFlash.obj-a9c0e24197613c62167ec10cef8fc6a7.mesh" ]
 
 [params]
 
