@@ -14,9 +14,9 @@ var levelMoney = 0
 
 # DEV MODE
 
-var autoTarget = true
+var autoTarget = false
 var autoFire = false
-var freeUpgrades = true
+var freeUpgrades = false
 
 var cars = {
 	"squid":{
@@ -155,6 +155,7 @@ func initialiseData():
 	gunNameArray = []
 	for gunName in guns:
 		initialiseGunUpgrades(gunName)
+	money = 0
 
 func initialiseCarUpgrades(carName):
 	carNameArray.append(carName)
@@ -176,6 +177,10 @@ func setWeaponSlot(slotNo, wpnName):
 func transferFunds():
 	money += levelMoney
 	levelMoney = 0
+
+func addMoney(mny):
+	money += mny
+	saveGame()
 
 func nextCar():
 	activeCarIndex += 1
@@ -344,9 +349,13 @@ func _physics_process(_delta):
 	if autoFire:
 		fire = true
 
+func toggle(strVar):
+	set(strVar,not get(strVar))
+	saveGame()
+
 # SAVE / LOAD
 
-var saveVariables = ["upgs","activeCarIndex","money"]
+var saveVariables = ["upgs","activeCarIndex","money","autoTarget","autoFire","freeUpgrades"]
 
 func resetSaveData():
 	initialiseData()

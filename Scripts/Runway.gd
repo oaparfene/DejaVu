@@ -8,7 +8,7 @@ var enemyCarArray = [
 	]
 #var enemyCarArray = ["bad","bad2","bad3"]
 
-var simul = 3
+var simul = 2
 
 var rng = RandomNumberGenerator.new()
 func _ready():
