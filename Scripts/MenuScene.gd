@@ -15,3 +15,7 @@ func _on_labGarage_pressed():
 
 func _on_labReset_pressed():
 	Globals.resetSaveData()
+
+
+func _on_labSettings_pressed():
+	currentScene = get_tree().change_scene("res://Scenes/Settings.tscn")

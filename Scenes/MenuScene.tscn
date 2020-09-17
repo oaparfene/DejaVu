@@ -64,4 +64,5 @@ margin_bottom = 580.0
 text = "Reset"
 [connection signal="pressed" from="VBoxContainer/labPlay" to="." method="_on_labPlay_pressed"]
 [connection signal="pressed" from="VBoxContainer/labGarage" to="." method="_on_labGarage_pressed"]
+[connection signal="pressed" from="VBoxContainer/labSettings" to="." method="_on_labSettings_pressed"]
 [connection signal="pressed" from="VBoxContainer/labReset" to="." method="_on_labReset_pressed"]
