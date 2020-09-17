@@ -106,6 +106,7 @@ var enemies = {
 
 var guns = {
 	"pistol":{
+		"unlockCost":1500,
 		"speed":1600,
 		"fireRate":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5], 		"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
@@ -113,6 +114,7 @@ var guns = {
 		"misc":		{"levels":[1.05, 1.10, 1.15, 1.20, 1.25, 1.30], "baseCost":100, "mod":1.15} # kill bonus
 	},
 	"shotgun":{
+		"unlockCost":1500,
 		"speed":1600,
 		"fireRate":	{"levels":[2, 1.8, 1.6, 1.4, 1.2, 1], 			"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5],			"baseCost":50, 	"mod":1.15},
@@ -120,6 +122,7 @@ var guns = {
 		"misc":		{"levels":[5, 6, 7, 8, 9, 10], 					"baseCost":100, "mod":1.15} # projectiles
 	},
 	"smg":{
+		"unlockCost":1500,
 		"speed":1600,
 		"fireRate":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.15, 0.1], 		"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
@@ -127,6 +130,7 @@ var guns = {
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # ricochet
 	},
 	"sniper":{
+		"unlockCost":1500,
 		"speed":1600,
 		"fireRate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
@@ -134,6 +138,7 @@ var guns = {
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # armor negation
 	},
 	"rpg":{
+		"unlockCost":1500,
 		"speed":800,
 		"fireRate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
@@ -165,7 +170,7 @@ func initialiseCarUpgrades(carName):
 
 func initialiseGunUpgrades(gunName):
 	gunNameArray.append(gunName)
-	upgs[gunName] = {"unlocked":true,"fireRate":0,"spread":0,"damage":0,"misc":0}
+	upgs[gunName] = {"unlocked":false,"fireRate":0,"spread":0,"damage":0,"misc":0}
 
 func getGunInSlotName(slot):
 	return upgs[getCarName()]["slots"][str(slot)]

@@ -25,16 +25,5 @@ func _on_btnRight_pressed():
 	Globals.nextCar()
 	updateUI()
 
-func _on_btnBack_pressed():
-	var _currentScene = get_tree().change_scene("res://Scenes/MenuScene.tscn")
-
-func _on_btnReset_pressed():
-	Globals.resetCarUpgrades()
-	updateUI()
-
-func _on_btnPlay_pressed():
-	if Globals.getUnlocked():
-		var _currentScene = get_tree().change_scene("res://Scenes/Runway.tscn")
-
 func _on_btnUnlock_pressed():
 	Globals.unlockCar()
