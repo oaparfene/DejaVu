@@ -24,3 +24,6 @@ func _on_btnRight_pressed():
 func _on_btnLeft_pressed():
 	Globals.prevGun()
 	updateUI()
+
+func _on_btnUnlock_pressed():
+	Globals.unlockGun()

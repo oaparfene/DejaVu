@@ -8,6 +8,7 @@ var camPos = Vector2.ZERO
 
 var activeCarIndex:int = 0
 var activeGunIndex:int = 0
+var currentCribLocation= "Garage"
 var carNameArray = []
 var gunNameArray = []
 var money = 0
@@ -62,7 +63,7 @@ var enemies = {
 	"toad":{
 		"health":150,
 		"money":50,
-		"fireRate":1,
+		"firerate":1,
 		"engine":300,
 		"steering":100,
 		"armor":5,
@@ -73,7 +74,7 @@ var enemies = {
 	"virtue":{
 		"health":350,
 		"money":125,
-		"fireRate":0.3,
+		"firerate":0.3,
 		"engine":400,
 		"steering":300,
 		"armor":10,
@@ -84,7 +85,7 @@ var enemies = {
 	"viper":{
 		"health":800,
 		"money":300,
-		"fireRate":0.1,
+		"firerate":0.1,
 		"engine":600,
 		"steering":600,
 		"armor":15,
@@ -95,7 +96,7 @@ var enemies = {
 	"baron":{
 		"health":2000,
 		"money":500,
-		"fireRate":0.2,
+		"firerate":0.2,
 		"engine":300,
 		"steering":100,
 		"armor":25,
@@ -107,17 +108,17 @@ var enemies = {
 
 var guns = {
 	"pistol":{
-		"unlockCost":1500,
+		"unlockCost":0,
 		"speed":1600,
-		"fireRate":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5], 		"baseCost":50, 	"mod":1.15},
+		"firerate":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5], 		"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
 		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
 		"misc":		{"levels":[1.05, 1.10, 1.15, 1.20, 1.25, 1.30], "baseCost":100, "mod":1.15} # kill bonus
 	},
 	"shotgun":{
-		"unlockCost":1500,
+		"unlockCost":500,
 		"speed":1600,
-		"fireRate":	{"levels":[2, 1.8, 1.6, 1.4, 1.2, 1], 			"baseCost":50, 	"mod":1.15},
+		"firerate":	{"levels":[2, 1.8, 1.6, 1.4, 1.2, 1], 			"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5],			"baseCost":50, 	"mod":1.15},
 		"damage":	{"levels":[100, 120, 140, 160, 180, 200], 		"baseCost":100, "mod":1.15},
 		"misc":		{"levels":[5, 6, 7, 8, 9, 10], 					"baseCost":100, "mod":1.15} # projectiles
@@ -125,23 +126,23 @@ var guns = {
 	"smg":{
 		"unlockCost":1500,
 		"speed":1600,
-		"fireRate":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.15, 0.1], 		"baseCost":50, 	"mod":1.15},
+		"firerate":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.15, 0.1], 		"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
 		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # ricochet
 	},
 	"sniper":{
-		"unlockCost":1500,
+		"unlockCost":2500,
 		"speed":1600,
-		"fireRate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
+		"firerate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
 		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # armor negation
 	},
 	"rpg":{
-		"unlockCost":1500,
+		"unlockCost":5000,
 		"speed":800,
-		"fireRate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
+		"firerate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
 		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # radius
@@ -171,7 +172,7 @@ func initialiseCarUpgrades(carName):
 
 func initialiseGunUpgrades(gunName):
 	gunNameArray.append(gunName)
-	upgs[gunName] = {"unlocked":false,"fireRate":0,"spread":0,"damage":0,"misc":0}
+	upgs[gunName] = {"unlocked":false,"firerate":0,"spread":0,"damage":0,"misc":0}
 
 func getGunInSlotName(slot):
 	return upgs[getCarName()]["slots"][str(slot)]
@@ -274,7 +275,7 @@ func getEnemyCarVariables(carName):
 	carData["carName"] = carName
 	carData["maxHealth"] = enemies[carName]["health"]
 	carData["money"] = enemies[carName]["money"]
-	carData["fireRate"] = enemies[carName]["fireRate"]
+	carData["firerate"] = enemies[carName]["firerate"]
 	carData["speed"] = enemies[carName]["engine"]
 	carData["steer"] = enemies[carName]["steering"]
 	carData["armor"] = enemies[carName]["armor"]
@@ -345,6 +346,9 @@ func setTarget(car):
 		target.targetted = false
 	target = car
 	target.targetted = true
+
+func setCurrentCribLocation(location):
+	currentCribLocation = location
 
 func _physics_process(_delta):
 	#print()

@@ -82,10 +82,10 @@ __meta__ = {
 }
 
 [node name="upgradeEngine" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 95.3517
-margin_top = 190.703
-margin_right = 455.352
-margin_bottom = 382.703
+margin_left = 65.1137
+margin_top = 205.822
+margin_right = 425.114
+margin_bottom = 397.822
 
 [node name="upgradeSteering" parent="Garage" instance=ExtResource( 1 )]
 margin_left = 612.37
@@ -212,6 +212,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="upgradeFireRate" parent="GunShop" instance=ExtResource( 1 )]
+margin_left = 141.085
+margin_top = 173.786
+margin_right = 501.085
+margin_bottom = 365.786
+cribLocation = 1
+
+[node name="upgradeSpread" parent="GunShop" instance=ExtResource( 1 )]
+margin_left = 613.619
+margin_top = 1025.41
+margin_right = 973.619
+margin_bottom = 1217.41
+cribLocation = 1
+
+[node name="upgradeMisc" parent="GunShop" instance=ExtResource( 1 )]
+margin_left = 85.0219
+margin_top = 1036.09
+margin_right = 445.022
+margin_bottom = 1228.09
+cribLocation = 1
+
+[node name="upgradeDamage" parent="GunShop" instance=ExtResource( 1 )]
+margin_left = 632.306
+margin_top = 167.112
+margin_right = 992.307
+margin_bottom = 359.112
+cribLocation = 1
+
 [node name="CoinShop" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -243,4 +271,4 @@ script = ExtResource( 10 )
 [connection signal="pressed" from="Garage/btnUnlock" to="Garage" method="_on_btnUnlock_pressed"]
 [connection signal="pressed" from="GunShop/btnRight" to="GunShop" method="_on_btnRight_pressed"]
 [connection signal="pressed" from="GunShop/btnLeft" to="GunShop" method="_on_btnLeft_pressed"]
-[connection signal="pressed" from="GunShop/btnUnlock" to="Garage" method="_on_btnUnlock_pressed"]
+[connection signal="pressed" from="GunShop/btnUnlock" to="GunShop" method="_on_btnUnlock_pressed"]
