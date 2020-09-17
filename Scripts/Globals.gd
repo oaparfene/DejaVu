@@ -178,7 +178,7 @@ func getGunInSlotName(slot):
 	if slot < getMaxSlots():
 		return upgs[getCarName()]["slots"][str(slot)]
 	else:
-		return ""
+		return "empty"
 
 func setWeaponSlot(slotNo, wpnName):
 	upgs[carNameArray[activeCarIndex]]["slots"][str(slotNo)] = wpnName
@@ -270,7 +270,6 @@ func getCarVariables():
 	carData["handling"] = 	cars[carName]["handling"]["levels"][upgs[carName]["handling"]]
 	carData["armor"] = 		cars[carName]["armor"]["levels"][upgs[carName]["armor"]]
 	carData["mass"] = 		cars[carName]["mass"]
-	carData["slots"] = 		upgs[carName]["slots"]
 	roadSpeed = carData["speed"]*2
 	return carData.duplicate(true)
 
@@ -287,6 +286,22 @@ func getEnemyCarVariables(carName):
 	carData["mass"] = enemies[carName]["mass"]
 	carData["stupid"] = enemies[carName]["stupid"]
 	return carData.duplicate(true)
+
+func getGunVariables():
+	var carName = getCarName()
+	var slots = upgs[carName]["slots"]
+	var gunData = {}
+	for gunName in slots.values():
+		if gunName == "empty":
+			continue
+		gunData[gunName] = {}
+		gunData[gunName]["gunName"] = gunName
+		gunData[gunName]["speed"] = guns[gunName]["speed"]
+		gunData[gunName]["firerate"] = guns[gunName]["firerate"]["levels"][upgs[gunName]["firerate"]]
+		gunData[gunName]["spread"] = guns[gunName]["spread"]["levels"][upgs[gunName]["spread"]]
+		gunData[gunName]["damage"] = guns[gunName]["damage"]["levels"][upgs[gunName]["damage"]]
+		gunData[gunName]["misc"] = guns[gunName]["misc"]["levels"][upgs[gunName]["misc"]]
+	return gunData.duplicate(true)
 
 func upgradeCar(upgName):
 	var cost = getUpgradeCost(upgName)

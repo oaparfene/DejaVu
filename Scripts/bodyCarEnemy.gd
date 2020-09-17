@@ -9,7 +9,7 @@ var targetted = false
 var ammo = 0
 
 func configure(carData):
-	$timerAttack.wait_time = carData["fireRate"]
+	$timerAttack.wait_time = carData["firerate"]
 	$timerState.wait_time = carData["stupid"]
 	for variable in carData:
 		set(variable,carData[variable])
@@ -43,7 +43,8 @@ func _on_timerAttack_timeout():
 		bodyBullet.position = position
 		bodyBullet.rotation = fireVector.angle()
 		bodyBullet.fireVector = fireVector
-		bodyBullet.speed = 1600
+		bodyBullet.speed = 1600.0
+		bodyBullet.mass = 30.0/1600.0
 		bodyBullet.set_collision_mask_bit(1,true)
 		get_parent().add_child(bodyBullet)
 		ammo -= 1

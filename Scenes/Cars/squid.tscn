@@ -43,10 +43,6 @@ texture = ExtResource( 2 )
 [node name="sprBro" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 
-[node name="timerAttack" type="Timer" parent="."]
-process_mode = 0
-autostart = true
-
 [node name="prgHealth" parent="." instance=ExtResource( 1 )]
 visible = false
 margin_left = -12.875
@@ -54,4 +50,3 @@ margin_top = -22.875
 margin_right = 13.125
 margin_bottom = -18.875
 mouse_filter = 2
-[connection signal="timeout" from="timerAttack" to="." method="_on_timerAttack_timeout"]

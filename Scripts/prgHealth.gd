@@ -9,7 +9,6 @@ func updateUI(health,maxHealth):
 	createFade(health,healthLost)
 
 func createFade(health,healthLost):
-	print("fade")
 	var healthLostWidth = rect_size.x * float(healthLost)/max_value
 	var healthPos = rect_size.x * float(health)/max_value
 	var colorRect = healthFade_load.instance()

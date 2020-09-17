@@ -58,12 +58,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btnFire" type="TouchScreenButton" parent="areaAttack"]
-visible = false
-position = Vector2( -90, -90 )
-scale = Vector2( 1.2, 1.2 )
-normal = ExtResource( 15 )
-
 [node name="contFire" type="GridContainer" parent="areaAttack"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -76,7 +70,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="objFire0" type="Button" parent="areaAttack/contFire"]
+[node name="objFire0" type="Button" parent="areaAttack/contFire" groups=[
+"gunsUI",
+]]
 margin_right = 243.0
 margin_bottom = 213.0
 rect_min_size = Vector2( 200, 200 )
@@ -94,7 +90,9 @@ rotation = -0.785398
 scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 
-[node name="objFire1" type="Button" parent="areaAttack/contFire"]
+[node name="objFire1" type="Button" parent="areaAttack/contFire" groups=[
+"gunsUI",
+]]
 margin_left = 247.0
 margin_right = 490.0
 margin_bottom = 213.0
@@ -114,7 +112,9 @@ rotation = -0.785398
 scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 
-[node name="objFire2" type="Button" parent="areaAttack/contFire"]
+[node name="objFire2" type="Button" parent="areaAttack/contFire" groups=[
+"gunsUI",
+]]
 margin_top = 217.0
 margin_right = 243.0
 margin_bottom = 430.0
@@ -134,7 +134,9 @@ rotation = -0.785398
 scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 
-[node name="objFire3" type="Button" parent="areaAttack/contFire"]
+[node name="objFire3" type="Button" parent="areaAttack/contFire" groups=[
+"gunsUI",
+]]
 margin_left = 247.0
 margin_top = 217.0
 margin_right = 490.0
@@ -203,8 +205,6 @@ script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="areaAttack/btnFire" to="." method="_on_btnFire_pressed"]
-[connection signal="released" from="areaAttack/btnFire" to="." method="_on_btnFire_released"]
 [connection signal="button_down" from="areaAttack/contFire/objFire0" to="." method="_on_objFire_button_down" binds= [ 0 ]]
 [connection signal="button_up" from="areaAttack/contFire/objFire0" to="." method="_on_objFire_button_up" binds= [ 0 ]]
 [connection signal="button_down" from="areaAttack/contFire/objFire1" to="." method="_on_objFire_button_down" binds= [ 1 ]]

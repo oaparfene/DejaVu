@@ -24,7 +24,7 @@ var steer:float
 var handling:float
 var armor:float
 var slots:Dictionary
-var slotsFire:Array
+var gunNames:Array
 
 var money
 
@@ -60,7 +60,7 @@ func handleMovement(delta):
 func damage(dmg):
 	if dmg < 0:
 		return
-	var damage = ( (1-armor/100.0)*dmg ) / 600
+	var damage = ( (1-armor/100.0)*dmg )
 	health -= damage
 	if team == "enemy":
 		if health <= 0:
@@ -90,5 +90,18 @@ func calculateCollision(normal,other_actVelocity,other_mass):
 	var colliderImpulse = colliderSpeed * other_mass
 	if -colliderImpulse > mass*30: # Ignore small collisions
 		appliedForce += newSpeed*(-normal)
-		print(name," took ",-colliderImpulse," impact")
-		damage(-colliderImpulse)
+		#print(name," took ",-colliderImpulse," impact")
+		damage(-colliderImpulse/600)
+
+func tryToShoot(gunName):
+	var target
+	if team == "player":
+		target = Globals.target
+	else:
+		target = get_tree().get_nodes_in_group("player")[0]
+	if slots[gunName]["fire"] == true and slots[gunName]["timer"].time_left == 0 and target != null:
+		var projectiles = Guns.getGunBehaviour(slots[gunName],self,target)
+		slots[gunName]["timer"].start()
+		for bullet in projectiles:
+			get_parent().add_child(bullet)
+		

@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-var fireVector = Vector2.ZERO
-var speed = 0
-var mass = 5
+var fireVector:Vector2
+var speed:float
+var mass:float
 
 func _physics_process(delta):
 	var kinCollisionInfo = move_and_collide(fireVector*speed*delta)

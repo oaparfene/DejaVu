@@ -84,14 +84,13 @@ func getClosestEntity(bodyEntity):
 func getNewState(bodyEntity,state=""):
 	rng.randomize()
 	var newState = ""
-	print(inView(bodyEntity))
 	if not inView(bodyEntity):
 		newState = "maintain"
 	else:
 		var newStates = states.duplicate()
 		newStates.erase(state)
 		newState = newStates[rng.randi_range(0,newStates.size()-1)]
-	print(bodyEntity.name," is now in ",newState," mode")
+	#print(bodyEntity.name," is now in ",newState," mode")
 	return newState
 
 func inView(bodyEntity):
