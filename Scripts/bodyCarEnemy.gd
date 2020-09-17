@@ -19,7 +19,7 @@ func configure(carData):
 
 func _physics_process(delta):
 	
-	AI.getBehaviour(state,self)
+	AI.getBehaviour(self,state)
 	
 	handleMovement(delta)
 	
@@ -27,10 +27,11 @@ func _physics_process(delta):
 		_on_timerState_timeout()
 	
 	$sprCar/sprTarget.visible = targetted
+	$sprState.texture = load("res://Assets/Icons/img_"+state+".png")
 	
 
 func _on_timerState_timeout():
-	state = AI.getNewState(state)
+	state = AI.getNewState(self,state)
 	if state == "shoot":
 		ammo = 5
 	#print(name," is now is state: ",state)

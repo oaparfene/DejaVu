@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/VanHunter/cars/bluebro.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Cars/img_bad2.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/bodyCarEnemy.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/prgHealth.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/img_target.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Icons/img_shoot.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.9717, 23.0475 )
@@ -62,6 +63,10 @@ autostart = true
 
 [node name="prgHealth" parent="." instance=ExtResource( 4 )]
 mouse_filter = 2
+
+[node name="sprState" type="Sprite" parent="."]
+position = Vector2( -20.69, -26.1128 )
+texture = ExtResource( 6 )
 [connection signal="input_event" from="." to="." method="_on_bodyCarEnemy_input_event"]
 [connection signal="timeout" from="timerAttack" to="." method="_on_timerAttack_timeout"]
 [connection signal="timeout" from="timerState" to="." method="_on_timerState_timeout"]

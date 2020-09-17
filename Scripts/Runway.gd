@@ -8,7 +8,7 @@ var enemyCarArray = [
 	]
 #var enemyCarArray = ["bad","bad2","bad3"]
 
-var simul = 2
+var simul = 3
 
 var rng = RandomNumberGenerator.new()
 func _ready():
@@ -16,6 +16,8 @@ func _ready():
 	var car = car_load.instance()
 	car.position = rect_size/2
 	add_child(car)
+	$prgHealth.updateUI(car.health,car.health)
+	
 	rng.randomize()
 
 func _on_Timer_timeout():
