@@ -23,6 +23,8 @@ var speed:float
 var steer:float
 var handling:float
 var armor:float
+var slots:Dictionary
+var slotsFire:Array
 
 var money
 

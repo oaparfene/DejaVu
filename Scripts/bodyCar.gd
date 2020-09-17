@@ -14,6 +14,8 @@ func _ready():
 	var carData = Globals.getCarVariables()
 	for variable in carData:
 		set(variable,carData[variable])
+	for slot in slots:
+		slotsFire.append(false)
 	health = maxHealth
 	mass *= 1 + float(armor)/100
 	Globals.resetInputs()
@@ -46,12 +48,10 @@ func _on_timerAttack_timeout():
 func areaMove_changed(vector):
 	carVector = vector
 
+func fireGun(slot):
+	slotsFire[slot] = true
+	Runway.get_node("areaAttack/contFire/objFire"+str(slot)).modulate = Color(1,0,0)
 
-func btnFire_pressed():
-	Globals.fire = true
-	Runway.get_node("areaAttack/btnFire").modulate = Color(1,0,0)
-
-
-func btnFire_released():
-	Globals.fire = false
-	Runway.get_node("areaAttack/btnFire").modulate = Color(1,1,1)
+func ceaseGun(slot):
+	slotsFire[slot] = false
+	Runway.get_node("areaAttack/contFire/objFire"+str(slot)).modulate = Color(1,1,1)

@@ -174,7 +174,10 @@ func initialiseGunUpgrades(gunName):
 	upgs[gunName] = {"unlocked":false,"fireRate":0,"spread":0,"damage":0,"misc":0}
 
 func getGunInSlotName(slot):
-	return upgs[getCarName()]["slots"][str(slot)]
+	if slot < getMaxSlots():
+		return upgs[getCarName()]["slots"][str(slot)]
+	else:
+		return ""
 
 func setWeaponSlot(slotNo, wpnName):
 	upgs[carNameArray[activeCarIndex]]["slots"][str(slotNo)] = wpnName
@@ -266,6 +269,7 @@ func getCarVariables():
 	carData["handling"] = 	cars[carName]["handling"]["levels"][upgs[carName]["handling"]]
 	carData["armor"] = 		cars[carName]["armor"]["levels"][upgs[carName]["armor"]]
 	carData["mass"] = 		cars[carName]["mass"]
+	carData["slots"] = 		upgs[carName]["slots"]
 	roadSpeed = carData["speed"]*2
 	return carData.duplicate(true)
 
