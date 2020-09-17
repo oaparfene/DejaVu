@@ -4,6 +4,7 @@ var roadSpeed = 500
 var carVector = Vector2.ZERO
 var fire = false
 var target = null
+var camPos = Vector2.ZERO
 
 var activeCarIndex:int = 0
 var activeGunIndex:int = 0

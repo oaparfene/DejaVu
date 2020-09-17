@@ -1,6 +1,11 @@
-extends Node2D
+extends TextureRect
+
+var resetY
+
+func _ready():
+	resetY = rect_position.y
 
 func _physics_process(delta):
-	position.y += delta*Globals.roadSpeed
-	if position.y > 0:
-		position.y -= 810
+	rect_position.y += delta*Globals.roadSpeed
+	if rect_position.y > resetY + 810:
+		rect_position.y -= 810

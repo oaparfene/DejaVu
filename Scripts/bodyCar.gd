@@ -1,5 +1,7 @@
 extends "res://Scripts/classCar.gd"
 
+onready var Runway = get_tree().get_root().get_node("Runway")
+
 onready var partDirt = $partDirt
 #onready var partTyre = $partTyre
 onready var timerAttack = $timerAttack
@@ -22,7 +24,7 @@ func _physics_process(delta):
 	
 	handleMovement(delta)
 	
-	get_node("../areaMove/sprActual").position = 150 * actVector
+	Runway.get_node("areaMove/sprActual").position = 150 * actVector
 
 func getTargetVector():
 	if Globals.target == null:
@@ -47,9 +49,9 @@ func areaMove_changed(vector):
 
 func btnFire_pressed():
 	Globals.fire = true
-	get_node("../areaAttack/btnFire").modulate = Color(1,0,0)
+	Runway.get_node("areaAttack/btnFire").modulate = Color(1,0,0)
 
 
 func btnFire_released():
 	Globals.fire = false
-	get_node("../areaAttack/btnFire").modulate = Color(1,1,1)
+	Runway.get_node("areaAttack/btnFire").modulate = Color(1,1,1)
