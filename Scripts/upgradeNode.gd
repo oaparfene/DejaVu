@@ -8,7 +8,7 @@ func _ready():
 	updateUI()
 
 func _on_btnUpg_pressed():
-	Globals.upgrade(upgName)
+	Globals.upgradeCar(upgName)
 	updateUI()
 
 func updateUI():

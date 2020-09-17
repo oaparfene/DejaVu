@@ -22,7 +22,7 @@ func setWeaponSlot(wpnName):
 
 func updateUI():
 	if slot < Globals.getMaxSlots():
-		var gunName = Globals.getGunName(slot)
+		var gunName = Globals.getGunInSlotName(slot)
 		$sprWeapon.texture = load("res://Assets/Guns/img_" + gunName + ".png")
 		$labDescription.text = gunName
 		visible = true

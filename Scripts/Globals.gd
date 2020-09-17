@@ -6,6 +6,7 @@ var fire = false
 var target = null
 
 var activeCarIndex:int = 0
+var activeGunIndex:int = 0
 var carNameArray = []
 var gunNameArray = []
 var money = 0
@@ -165,7 +166,7 @@ func initialiseGunUpgrades(gunName):
 	gunNameArray.append(gunName)
 	upgs[gunName] = {"unlocked":true,"fireRate":0,"spread":0,"damage":0,"misc":0}
 
-func getGunName(slot):
+func getGunInSlotName(slot):
 	return upgs[getCarName()]["slots"][str(slot)]
 
 func setWeaponSlot(slotNo, wpnName):
@@ -180,15 +181,29 @@ func nextCar():
 	activeCarIndex += 1
 	saveGame()
 
+func nextGun():
+	activeGunIndex += 1
+	saveGame()
+
 func prevCar():
 	activeCarIndex -= 1
+	saveGame()
+
+func prevGun():
+	activeGunIndex -= 1
 	saveGame()
 
 func getCarIndex():
 	return activeCarIndex
 
+func getGunIndex():
+	return activeGunIndex
+
 func getCarName():
 	return carNameArray[activeCarIndex]
+
+func getGunName():
+	return gunNameArray[activeGunIndex]
 
 func getMaxSlots():
 	return cars[carNameArray[activeCarIndex]]["slots"]
@@ -196,18 +211,35 @@ func getMaxSlots():
 func getNoOfCars():
 	return carNameArray.size()
 
+func getNoOfGuns():
+	return gunNameArray.size()
+
 func getUnlocked(query = getCarName()):
 	return upgs[query]["unlocked"]
 
-func getUnlockCost():
-	var cost = cars[getCarName()]["unlockCost"]
+func getUnlockCostCar(query = getCarName()):
+	var cost = cars[query]["unlockCost"]
+	return cost
+
+func getUnlockCostGun(query = getGunName()):
+	var cost = guns[query]["unlockCost"]
 	return cost
 
 func unlockCar():
-	var cost = getUnlockCost()
+	var cost = getUnlockCostCar()
 	if money < cost and not freeUpgrades:
 		return
 	upgs[getCarName()]["unlocked"] = true
+	if not freeUpgrades:
+		money -= cost
+	get_tree().call_group("unlockUI","updateUI")
+	saveGame()
+
+func unlockGun():
+	var cost = getUnlockCostGun()
+	if money < cost and not freeUpgrades:
+		return
+	upgs[getGunName()]["unlocked"] = true
 	if not freeUpgrades:
 		money -= cost
 	get_tree().call_group("unlockUI","updateUI")
@@ -240,7 +272,7 @@ func getEnemyCarVariables(carName):
 	carData["stupid"] = enemies[carName]["stupid"]
 	return carData.duplicate(true)
 
-func upgrade(upgName):
+func upgradeCar(upgName):
 	var cost = getUpgradeCost(upgName)
 	if money < cost and not freeUpgrades:
 		return
@@ -251,8 +283,19 @@ func upgrade(upgName):
 		get_tree().call_group("moneyUI","updateUI")
 		saveGame()
 
-func getUpgradeLevel(upgName):
-	return upgs[getCarName()][upgName]
+func upgradeGun(upgName):
+	var cost = getGunUpgradeCost(upgName)
+	if money < cost and not freeUpgrades:
+		return
+	if upgs[getGunName()][upgName] < 5:
+		upgs[getGunName()][upgName] += 1
+		if not freeUpgrades:
+			money -= cost
+		get_tree().call_group("moneyUI","updateUI")
+		saveGame()
+
+func getUpgradeLevel(upgName, query = getCarName()):
+	return upgs[query][upgName]
 
 func getUpgradeCost(upgName):
 	var carName = getCarName()
@@ -264,12 +307,26 @@ func getUpgradeCost(upgName):
 	else:
 		return ceil(baseCost * pow(mod,4))
 
+func getGunUpgradeCost(upgName):
+	var gunName = getGunName()
+	var baseCost = guns[gunName][upgName]["baseCost"]
+	var mod = guns[gunName][upgName]["mod"]
+	var level = getUpgradeLevel(upgName, gunName)
+	if level < 5:
+		return ceil(baseCost * pow(mod,level))
+	else:
+		return ceil(baseCost * pow(mod,4))
+
 func resetInputs():
 	carVector = Vector2.ZERO
 	fire = false
 
 func resetCarUpgrades():
 	initialiseCarUpgrades(getCarName())
+	saveGame()
+
+func resetGunUpgrades():
+	initialiseGunUpgrades(getGunName())
 	saveGame()
 
 func setTarget(car):

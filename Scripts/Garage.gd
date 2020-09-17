@@ -12,7 +12,7 @@ func updateUI():
 	$texCar.texture = load("res://Assets/Cars/img_"+str(Globals.getCarName())+".png")
 	$texCar.modulate = Color(0.1,0.1,0.1)+Color(0.9,0.9,0.9)*int(Globals.getUnlocked())
 	$btnUnlock.visible = not Globals.getUnlocked()
-	$btnUnlock.text = str(Globals.getUnlockCost()) + "$"
+	$btnUnlock.text = str(Globals.getUnlockCostCar()) + "$"
 	get_tree().call_group("upgrade","updateUI")
 	get_tree().call_group("moneyUI","updateUI")
 	get_tree().call_group("wpnSlotsUI","updateUI")
