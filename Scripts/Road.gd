@@ -33,3 +33,7 @@ func _on_timerSpawn_timeout():
 	else:
 		if enemies == 0:
 			var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
+
+
+func _on_sndTheme_finished():
+	$sndTheme.play()

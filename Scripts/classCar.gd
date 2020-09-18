@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var bodyBullet_load = preload("res://Scenes/bodyBullet.tscn")
+var bodyBullet_load = preload("res://Scenes/Projectiles/bodyBullet.tscn")
 
 var carVector = Vector2.ZERO		# Input movement vector
 var fireVector = Vector2.ZERO		# Shooting vector
@@ -60,6 +60,8 @@ func handleMovement(delta):
 func damage(dmg):
 	if dmg < 0:
 		return
+	if Globals.invincible and team == "player":
+		dmg = 0
 	var damage = ( (1-armor/100.0)*dmg )
 	health -= damage
 	if team == "enemy":
@@ -101,7 +103,8 @@ func tryToShoot(gunName):
 		target = get_tree().get_nodes_in_group("player")[0]
 	if slots[gunName]["fire"] == true and slots[gunName]["timer"].time_left == 0 and target != null:
 		var projectiles = Guns.getGunBehaviour(slots[gunName],self,target)
+		for bulletData in projectiles:
+			get_parent().add_child(bulletData["projectile"])
+		slots[gunName]["sound"].play()
 		slots[gunName]["timer"].start()
-		for bullet in projectiles:
-			get_parent().add_child(bullet)
 		

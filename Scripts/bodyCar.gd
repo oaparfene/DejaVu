@@ -16,12 +16,25 @@ func _ready():
 	for gunName in slots:
 		gunNames.append(gunName)
 		slots[gunName]["fire"] = false # Set fire to false
-		var timer = Timer.new() # Create firerate timer
+		
+		 # Create firerate timer
+		var timer = Timer.new()
 		timer.one_shot = true
-		timer.wait_time = slots[gunName]["firerate"]
+		if Globals.rapidFire:
+			timer.wait_time = 0.1
+		else:
+			timer.wait_time = slots[gunName]["firerate"]
 		timer.connect("timeout",self,"tryToShoot",[gunName])
 		add_child(timer)
 		slots[gunName]["timer"] = timer # Store the timer reference
+		
+		# Create sound
+		var audio = AudioStreamPlayer2D.new()
+		audio.stream = load("res://Assets/Sounds/snd_"+str(gunName)+".wav")
+		audio.volume_db = -10
+		add_child(audio)
+		slots[gunName]["sound"] = audio # Store the audio reference
+		
 	health = maxHealth
 	mass *= 1 + float(armor)/100
 	Globals.resetInputs()
@@ -34,17 +47,6 @@ func _physics_process(delta):
 	Runway.get_node("areaMove/sprActual").position = 150 * actVector
 	
 	get_tree().call_group("gunsUI","updateUI",slots)
-
-#func _on_timerAttack_timeout():
-#	if Globals.fire == true and Globals.target != null:
-#		var relVector = getTargetVector()
-#		var bodyBullet = bodyBullet_load.instance()
-#		bodyBullet.position = position
-#		bodyBullet.rotation = relVector.angle()
-#		bodyBullet.fireVector = relVector
-#		bodyBullet.speed = 1600
-#		bodyBullet.set_collision_mask_bit(3,true)
-#		get_parent().add_child(bodyBullet)
 
 func areaMove_changed(vector):
 	carVector = vector
@@ -70,6 +72,15 @@ func _input(event):
 					fireGun(gunNames[keyIndex])
 				else:
 					ceaseGun(gunNames[keyIndex])
+			
+			elif event.scancode == KEY_SPACE:
+				
+				if event.pressed:
+					if Globals.input == false:
+						Globals.input = true
+						Globals.nextTarget()
+				else:
+					Globals.input = false
 
 
 

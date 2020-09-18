@@ -9,8 +9,14 @@ var camPos = Vector2.ZERO
 var activeCarIndex:int = 0
 var activeGunIndex:int = 0
 var currentCribLocation= "Garage"
+var targetPos = 0
+var input = false
+
 var carNameArray = []
+var carUpgrNameArray = []
 var gunNameArray = []
+var gunUpgrNameArray = []
+
 var money = 0
 var levelMoney = 0
 
@@ -19,6 +25,8 @@ var levelMoney = 0
 var autoTarget = false
 var autoFire = false
 var freeUpgrades = false
+var invincible = false
+var rapidFire = false
 
 var cars = {
 	"squid":{
@@ -28,7 +36,7 @@ var cars = {
 		"steering":	{"levels":[100, 125, 150, 175, 200, 225], 		"baseCost":80, 		"mod":1.20},
 		"handling":	{"levels":[2, 2.2, 2.4, 2.6, 2.8, 3], 			"baseCost":140, 	"mod":1.10},
 		"armor":	{"levels":[0, 5, 10, 15, 20, 25], 				"baseCost":160, 	"mod":1.05},
-		"slots":2,
+		"slots":4,
 		"mass":30},
 	"vice":{
 		"health":800,
@@ -37,7 +45,7 @@ var cars = {
 		"steering":	{"levels":[200, 225, 250, 275, 300, 325], 		"baseCost":180, 	"mod":1.20},
 		"handling":	{"levels":[3, 3.2, 3.4, 3.6, 3.8, 4], 			"baseCost":225, 	"mod":1.10},
 		"armor":	{"levels":[5, 10, 15, 20, 25, 30], 				"baseCost":250, 	"mod":1.10},
-		"slots":2,
+		"slots":4,
 		"mass":40},
 	"manta":{
 		"health":1000,
@@ -46,7 +54,7 @@ var cars = {
 		"steering":	{"levels":[400, 425, 550, 575, 600, 625], 		"baseCost":350, 	"mod":1.20},
 		"handling":	{"levels":[4, 4.2, 4.4, 4.6, 4.8, 5], 			"baseCost":425, 	"mod":1.10},
 		"armor":	{"levels":[0, 4, 8, 12, 16, 20], 				"baseCost":450, 	"mod":1.10},
-		"slots":2,
+		"slots":4,
 		"mass":60},
 	"goliath":{
 		"health":2000,
@@ -55,7 +63,7 @@ var cars = {
 		"steering":	{"levels":[200, 225, 250, 275, 300, 325], 		"baseCost":550, 	"mod":1.20},
 		"handling":	{"levels":[1, 1.2, 1.4, 1.6, 1.8, 2], 			"baseCost":625, 	"mod":1.10},
 		"armor":	{"levels":[25, 30, 35, 40, 45, 50], 			"baseCost":650, 	"mod":1.10},
-		"slots":3,
+		"slots":4,
 		"mass":100}
 }
 
@@ -126,9 +134,9 @@ var guns = {
 	"smg":{
 		"unlockCost":1500,
 		"speed":1600,
-		"firerate":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.15, 0.1], 		"baseCost":50, 	"mod":1.15},
-		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
+		"firerate":	{"levels":[0.3, 0.25, 0.2, 0.15, 0.10, 0.05], 	"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.6, 0.5, 0.4, 0.3, 0.2, 0.1],	"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[5, 8, 11, 14, 17, 20], 			"baseCost":100, "mod":1.15},
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # ricochet
 	},
 	"sniper":{
@@ -141,11 +149,11 @@ var guns = {
 	},
 	"rpg":{
 		"unlockCost":5000,
-		"speed":800,
-		"firerate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
-		"spread":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # radius
+		"speed":1200,
+		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # radius
 	}
 }
 
@@ -155,6 +163,14 @@ func _ready():
 	initialiseData()
 	loadGame()
 
+
+
+# INITIALISE
+
+func resetInputs():
+	carVector = Vector2.ZERO
+	fire = false
+
 func initialiseData():
 	carNameArray = []
 	for carName in cars:
@@ -163,102 +179,6 @@ func initialiseData():
 	for gunName in guns:
 		initialiseGunUpgrades(gunName)
 	money = 0
-
-func initialiseCarUpgrades(carName):
-	carNameArray.append(carName)
-	upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":{"0":"pistol"}}
-	for slot in range(1,cars[carName]["slots"]):
-		upgs[carName]["slots"][str(slot)] = "empty"
-
-func initialiseGunUpgrades(gunName):
-	gunNameArray.append(gunName)
-	upgs[gunName] = {"unlocked":false,"firerate":0,"spread":0,"damage":0,"misc":0}
-
-func getGunInSlotName(slot):
-	if slot < getMaxSlots():
-		return upgs[getCarName()]["slots"][str(slot)]
-	else:
-		return "empty"
-
-func setWeaponSlot(slotNo, wpnName):
-	upgs[carNameArray[activeCarIndex]]["slots"][str(slotNo)] = wpnName
-	saveGame()
-
-func transferFunds():
-	money += levelMoney
-	levelMoney = 0
-
-func addMoney(mny):
-	money += mny
-	saveGame()
-
-func nextCar():
-	activeCarIndex += 1
-	saveGame()
-
-func nextGun():
-	activeGunIndex += 1
-	saveGame()
-
-func prevCar():
-	activeCarIndex -= 1
-	saveGame()
-
-func prevGun():
-	activeGunIndex -= 1
-	saveGame()
-
-func getCarIndex():
-	return activeCarIndex
-
-func getGunIndex():
-	return activeGunIndex
-
-func getCarName():
-	return carNameArray[activeCarIndex]
-
-func getGunName():
-	return gunNameArray[activeGunIndex]
-
-func getMaxSlots():
-	return cars[carNameArray[activeCarIndex]]["slots"]
-
-func getNoOfCars():
-	return carNameArray.size()
-
-func getNoOfGuns():
-	return gunNameArray.size()
-
-func getUnlocked(query = getCarName()):
-	return upgs[query]["unlocked"]
-
-func getUnlockCostCar(query = getCarName()):
-	var cost = cars[query]["unlockCost"]
-	return cost
-
-func getUnlockCostGun(query = getGunName()):
-	var cost = guns[query]["unlockCost"]
-	return cost
-
-func unlockCar():
-	var cost = getUnlockCostCar()
-	if money < cost and not freeUpgrades:
-		return
-	upgs[getCarName()]["unlocked"] = true
-	if not freeUpgrades:
-		money -= cost
-	get_tree().call_group("unlockUI","updateUI")
-	saveGame()
-
-func unlockGun():
-	var cost = getUnlockCostGun()
-	if money < cost and not freeUpgrades:
-		return
-	upgs[getGunName()]["unlocked"] = true
-	if not freeUpgrades:
-		money -= cost
-	get_tree().call_group("unlockUI","updateUI")
-	saveGame()
 
 func getCarVariables():
 	var carName = getCarName()
@@ -303,23 +223,159 @@ func getGunVariables():
 		gunData[gunName]["misc"] = guns[gunName]["misc"]["levels"][upgs[gunName]["misc"]]
 	return gunData.duplicate(true)
 
-func upgradeCar(upgName):
-	var cost = getUpgradeCost(upgName)
+func initialiseCarUpgrades(carName):
+	carNameArray.append(carName)
+	upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":{"0":"pistol"}}
+	carUpgrNameArray = ["engine","steering","handling","armor"]
+	for slot in range(1,cars[carName]["slots"]):
+		upgs[carName]["slots"][str(slot)] = "empty"
+
+func initialiseGunUpgrades(gunName):
+	gunNameArray.append(gunName)
+	upgs[gunName] = {"unlocked":false,"firerate":0,"spread":0,"damage":0,"misc":0}
+	gunUpgrNameArray = ["firerate","spread","damage","misc"]
+
+func getGunInSlotName(slot):
+	if slot < getMaxSlots():
+		return upgs[getCarName()]["slots"][str(slot)]
+	else:
+		return "empty"
+
+func setWeaponSlot(slotNo, wpnName):
+	upgs[carNameArray[activeCarIndex]]["slots"][str(slotNo)] = wpnName
+	saveGame()
+
+func transferFunds():
+	money += levelMoney
+	levelMoney = 0
+
+func addMoney(mny):
+	money += mny
+	saveGame()
+
+func nextCar():
+	activeCarIndex += 1
+	saveGame()
+
+func nextGun():
+	activeGunIndex += 1
+	saveGame()
+
+func prevCar():
+	activeCarIndex -= 1
+	saveGame()
+
+func prevGun():
+	activeGunIndex -= 1
+	saveGame()
+
+func nextTarget(change = true):
+	var targets = get_tree().get_nodes_in_group("enemy")
+	if targets.empty(): # If there are no targets
+		return
+	if change == false: # If we're not changing
+		if target == null: # If there's no target
+			target = targets[0] # Grab the first target
+			target.targetted = true
+			targetPos = 0
+	else: # If we are changing
+		target.targetted = false
+		targetPos = (targetPos+1)%targets.size()
+		target = targets[targetPos]
+		target.targetted = true
+
+func setTarget(car):
+	if target != null:
+		target.targetted = false
+	target = car
+	target.targetted = true
+
+func getCarIndex():
+	return activeCarIndex
+
+func getGunIndex():
+	return activeGunIndex
+
+func getCarName():
+	return carNameArray[activeCarIndex]
+
+func getGunName():
+	return gunNameArray[activeGunIndex]
+
+func getMaxSlots():
+	return cars[carNameArray[activeCarIndex]]["slots"]
+
+func getNoOfCars():
+	return carNameArray.size()
+
+func getNoOfGuns():
+	return gunNameArray.size()
+
+
+
+# UNLOCK
+
+func getUnlocked(query = getCarName()):
+	return upgs[query]["unlocked"]
+
+func getUnlockCostCar(carName = getCarName()):
+	var cost = cars[carName]["unlockCost"]
+	return cost
+
+func getUnlockCostGun(gunName = getGunName()):
+	var cost = guns[gunName]["unlockCost"]
+	return cost
+
+func unlockCar(carName = getCarName()):
+	var cost = getUnlockCostCar(carName)
 	if money < cost and not freeUpgrades:
 		return
-	if upgs[getCarName()][upgName] < 5:
-		upgs[getCarName()][upgName] += 1
+	upgs[carName]["unlocked"] = true
+	if not freeUpgrades:
+		money -= cost
+	get_tree().call_group("unlockUI","updateUI")
+	saveGame()
+
+func unlockGun(gunName = getGunName()):
+	var cost = getUnlockCostGun(gunName)
+	if money < cost and not freeUpgrades:
+		return
+	upgs[gunName]["unlocked"] = true
+	if not freeUpgrades:
+		money -= cost
+	get_tree().call_group("unlockUI","updateUI")
+	saveGame()
+
+func unlockAll():
+	var prev_freeUpgrades = freeUpgrades
+	freeUpgrades = true
+	for carName in carNameArray:
+		unlockCar(carName)
+	for gunName in gunNameArray:
+		unlockGun(gunName)
+	freeUpgrades = prev_freeUpgrades
+
+
+
+# UPGRADES
+
+func upgradeCar(upgName,carName = getCarName()):
+	var cost = getUpgradeCost(upgName,carName)
+	if money < cost and not freeUpgrades:
+		return
+	if upgs[carName][upgName] < 5:
+		upgs[carName][upgName] += 1
 		if not freeUpgrades:
 			money -= cost
 		get_tree().call_group("moneyUI","updateUI")
 		saveGame()
 
-func upgradeGun(upgName):
-	var cost = getGunUpgradeCost(upgName)
+func upgradeGun(upgName,gunName = getGunName()):
+	var cost = getGunUpgradeCost(upgName,gunName)
 	if money < cost and not freeUpgrades:
 		return
-	if upgs[getGunName()][upgName] < 5:
-		upgs[getGunName()][upgName] += 1
+	if upgs[gunName][upgName] < 5:
+		upgs[gunName][upgName] += 1
 		if not freeUpgrades:
 			money -= cost
 		get_tree().call_group("moneyUI","updateUI")
@@ -328,18 +384,16 @@ func upgradeGun(upgName):
 func getUpgradeLevel(upgName, query = getCarName()):
 	return upgs[query][upgName]
 
-func getUpgradeCost(upgName):
-	var carName = getCarName()
+func getUpgradeCost(upgName,carName = getCarName()):
 	var baseCost = cars[carName][upgName]["baseCost"]
 	var mod = cars[carName][upgName]["mod"]
-	var level = getUpgradeLevel(upgName)
+	var level = getUpgradeLevel(upgName,carName)
 	if level < 5:
 		return ceil(baseCost * pow(mod,level))
 	else:
 		return ceil(baseCost * pow(mod,4))
 
-func getGunUpgradeCost(upgName):
-	var gunName = getGunName()
+func getGunUpgradeCost(upgName,gunName = getGunName()):
 	var baseCost = guns[gunName][upgName]["baseCost"]
 	var mod = guns[gunName][upgName]["mod"]
 	var level = getUpgradeLevel(upgName, gunName)
@@ -348,23 +402,28 @@ func getGunUpgradeCost(upgName):
 	else:
 		return ceil(baseCost * pow(mod,4))
 
-func resetInputs():
-	carVector = Vector2.ZERO
-	fire = false
-
-func resetCarUpgrades():
-	initialiseCarUpgrades(getCarName())
+func resetUpgrades():
+	if currentCribLocation == "Garage":
+		initialiseCarUpgrades(getCarName())
+	elif currentCribLocation == "GunShop":
+		initialiseGunUpgrades(getGunName())
 	saveGame()
 
-func resetGunUpgrades():
-	initialiseGunUpgrades(getGunName())
-	saveGame()
+func upgradeAll():
+	var prev_freeUpgrades = freeUpgrades
+	freeUpgrades = true
+	for carName in carNameArray:
+		for upgName in carUpgrNameArray:
+			for upg in cars[carName][upgName]["levels"].size():
+				upgradeCar(upgName,carName)
+	for gunName in gunNameArray:
+		for upgName in gunUpgrNameArray:
+			for upg in guns[gunName][upgName]["levels"].size():
+				upgradeGun(upgName,gunName)
+	freeUpgrades = prev_freeUpgrades
 
-func setTarget(car):
-	if target != null:
-		target.targetted = false
-	target = car
-	target.targetted = true
+
+
 
 func setCurrentCribLocation(location):
 	currentCribLocation = location
@@ -372,9 +431,7 @@ func setCurrentCribLocation(location):
 func _physics_process(_delta):
 	#print()
 	if autoTarget == true and target == null:
-		var targets = get_tree().get_nodes_in_group("enemy")
-		if not targets.empty():
-			setTarget(targets[0])
+		nextTarget(false)
 	if autoFire:
 		fire = true
 
@@ -384,7 +441,7 @@ func toggle(strVar):
 
 # SAVE / LOAD
 
-var saveVariables = ["upgs","activeCarIndex","money","autoTarget","autoFire","freeUpgrades"]
+var saveVariables = ["upgs","activeCarIndex","money","autoTarget","autoFire","freeUpgrades","invincible"]
 
 func resetSaveData():
 	initialiseData()

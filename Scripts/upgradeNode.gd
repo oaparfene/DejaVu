@@ -9,6 +9,7 @@ func _ready():
 	updateUI()
 
 func _on_btnUpg_pressed():
+	
 	match cribLocation:
 		0:
 			Globals.upgradeCar(upgName)

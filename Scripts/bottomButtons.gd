@@ -6,7 +6,7 @@ func _on_btnBack_pressed():
 	var _currentScene = get_tree().change_scene("res://Scenes/MenuScene.tscn")
 
 func _on_btnReset_pressed():
-	Globals.resetCarUpgrades()
+	Globals.resetUpgrades()
 	cribInner.get_node("Garage").updateUI()
 	cribInner.get_node("GunShop").updateUI()
 

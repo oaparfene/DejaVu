@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/texRoad.gd" type="Script" id=1]
 [ext_resource path="res://Assets/img_desert.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Road.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/camRoad.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/camRoad.gd" type="Script" id=4]
 [ext_resource path="res://Assets/img_safe.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sounds/snd_theme.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 1772.81 )
@@ -69,4 +70,8 @@ script = ExtResource( 4 )
 [node name="Sprite" type="Sprite" parent="camRoad"]
 visible = false
 texture = ExtResource( 5 )
+
+[node name="sndTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 [connection signal="timeout" from="timerSpawn" to="." method="_on_timerSpawn_timeout"]
+[connection signal="finished" from="sndTheme" to="." method="_on_sndTheme_finished"]

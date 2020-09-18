@@ -11,6 +11,8 @@ func _ready():
 	$labDescription.text = "Weapons Slot " + str(slot)
 
 func _on_weaponSlot_pressed():
+	if not Globals.getUnlocked():
+		return
 	wpnPopup = load_wpnPopup.instance()
 	add_child(wpnPopup)
 	wpnPopup.popup_centered()

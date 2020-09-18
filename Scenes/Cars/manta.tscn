@@ -9,6 +9,7 @@
 extents = Vector2( 11.061, 24.7491 )
 
 [node name="bodyCarManta" type="KinematicBody2D" groups=[
+"avoid",
 "player",
 ]]
 scale = Vector2( 4, 4 )

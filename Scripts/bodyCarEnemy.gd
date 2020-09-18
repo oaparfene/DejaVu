@@ -8,6 +8,12 @@ var targetted = false
 
 var ammo = 0
 
+func _ready():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$sndShot.pitch_scale = rng.randf_range(0.7,1.6)
+	print($sndShot.pitch_scale)
+
 func configure(carData):
 	$timerAttack.wait_time = carData["firerate"]
 	$timerState.wait_time = carData["stupid"]
@@ -48,6 +54,7 @@ func _on_timerAttack_timeout():
 		bodyBullet.set_collision_mask_bit(1,true)
 		get_parent().add_child(bodyBullet)
 		ammo -= 1
+		$sndShot.play()
 
 
 func _on_bodyCarEnemy_input_event(_viewport, event, _shape_idx):

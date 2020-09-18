@@ -71,7 +71,7 @@ func getBehaviour(bodyEntity,state):
 	bodyEntity.fireVector = new_fireVector
 
 func getClosestEntity(bodyEntity):
-	var entities = ( get_tree().get_nodes_in_group("player") + get_tree().get_nodes_in_group("enemy") ).duplicate()
+	var entities = get_tree().get_nodes_in_group("avoid").duplicate()
 	entities.erase(bodyEntity)
 	var closest = entities[0]
 	for entity in entities:

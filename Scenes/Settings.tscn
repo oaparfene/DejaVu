@@ -23,137 +23,228 @@ __meta__ = {
 }
 
 [node name="contButtons" type="GridContainer" parent="."]
-anchor_left = 0.1
 anchor_top = 0.2
-anchor_right = 0.9
+anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 50.0
+margin_right = -50.0
+custom_constants/vseparation = 11
+custom_constants/hseparation = 16
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="labTitle" type="Label" parent="contButtons"]
-margin_right = 430.0
-margin_bottom = 89.0
+margin_right = 482.0
+margin_bottom = 81.0
 size_flags_horizontal = 3
-text = "Dev Options"
-align = 1
+text = "Cheats"
 
 [node name="labBlank" type="Label" parent="contButtons"]
-margin_left = 434.0
-margin_right = 864.0
-margin_bottom = 89.0
+margin_left = 498.0
+margin_right = 980.0
+margin_bottom = 81.0
 size_flags_horizontal = 3
 align = 1
 
 [node name="btnTarget" type="Button" parent="contButtons"]
-margin_top = 93.0
-margin_right = 430.0
-margin_bottom = 182.0
+margin_top = 92.0
+margin_right = 482.0
+margin_bottom = 181.0
 size_flags_horizontal = 3
 text = "Auto Target"
 
 [node name="labTarget" type="Label" parent="contButtons"]
-margin_left = 434.0
-margin_top = 93.0
-margin_right = 864.0
-margin_bottom = 182.0
+margin_left = 498.0
+margin_top = 96.0
+margin_right = 980.0
+margin_bottom = 177.0
 size_flags_horizontal = 3
-text = "True"
+text = "False"
 align = 1
 
 [node name="btnFire" type="Button" parent="contButtons"]
-margin_top = 186.0
-margin_right = 430.0
-margin_bottom = 275.0
+margin_top = 192.0
+margin_right = 482.0
+margin_bottom = 281.0
 size_flags_horizontal = 3
 text = "Auto Fire"
 
 [node name="labFire" type="Label" parent="contButtons"]
-margin_left = 434.0
-margin_top = 186.0
-margin_right = 864.0
-margin_bottom = 275.0
+margin_left = 498.0
+margin_top = 196.0
+margin_right = 980.0
+margin_bottom = 277.0
 size_flags_horizontal = 3
-text = "True"
+text = "False"
 align = 1
 
-[node name="btnUpgrades" type="Button" parent="contButtons"]
-margin_top = 279.0
-margin_right = 430.0
-margin_bottom = 368.0
+[node name="btnInvincible" type="Button" parent="contButtons"]
+margin_top = 292.0
+margin_right = 482.0
+margin_bottom = 381.0
 size_flags_horizontal = 3
-text = "Free Upgrades"
+text = "Invincible"
 
-[node name="labUpgrades" type="Label" parent="contButtons"]
-margin_left = 434.0
-margin_top = 279.0
-margin_right = 864.0
-margin_bottom = 368.0
+[node name="labInvincible" type="Label" parent="contButtons"]
+margin_left = 498.0
+margin_top = 296.0
+margin_right = 980.0
+margin_bottom = 377.0
 size_flags_horizontal = 3
-text = "True"
+text = "False"
+align = 1
+
+[node name="btnRapidFire" type="Button" parent="contButtons"]
+margin_top = 392.0
+margin_right = 482.0
+margin_bottom = 481.0
+size_flags_horizontal = 3
+text = "Rapid Fire"
+
+[node name="labRapidFire" type="Label" parent="contButtons"]
+margin_left = 498.0
+margin_top = 396.0
+margin_right = 980.0
+margin_bottom = 477.0
+size_flags_horizontal = 3
+text = "False"
+align = 1
+
+[node name="labBlank4" type="Label" parent="contButtons"]
+margin_top = 492.0
+margin_right = 482.0
+margin_bottom = 573.0
+size_flags_horizontal = 3
+text = "Money"
+
+[node name="labBlank5" type="Label" parent="contButtons"]
+margin_left = 498.0
+margin_top = 492.0
+margin_right = 980.0
+margin_bottom = 573.0
+size_flags_horizontal = 3
 align = 1
 
 [node name="btnResetMoney" type="Button" parent="contButtons"]
-margin_top = 372.0
-margin_right = 430.0
-margin_bottom = 461.0
+margin_top = 584.0
+margin_right = 482.0
+margin_bottom = 673.0
 size_flags_horizontal = 3
 text = "Reset Money"
 
 [node name="labResetMoney" type="Label" parent="contButtons"]
-margin_left = 434.0
-margin_top = 372.0
-margin_right = 864.0
-margin_bottom = 461.0
+margin_left = 498.0
+margin_top = 588.0
+margin_right = 980.0
+margin_bottom = 669.0
 size_flags_horizontal = 3
 text = "0$"
 align = 1
 
-[node name="btnAddGrand" type="Button" parent="contButtons"]
-margin_top = 465.0
-margin_right = 430.0
-margin_bottom = 554.0
-size_flags_horizontal = 3
-text = "+ 1000$"
-
-[node name="labBlank2" type="Label" parent="contButtons"]
-margin_left = 434.0
-margin_top = 465.0
-margin_right = 864.0
-margin_bottom = 554.0
-size_flags_horizontal = 3
-align = 1
-
 [node name="btnMinusGrand" type="Button" parent="contButtons"]
-margin_top = 558.0
-margin_right = 430.0
-margin_bottom = 647.0
+margin_top = 684.0
+margin_right = 482.0
+margin_bottom = 773.0
 size_flags_horizontal = 3
 text = "- 1000$"
 
-[node name="labBlank3" type="Label" parent="contButtons"]
-margin_left = 434.0
-margin_top = 558.0
-margin_right = 864.0
-margin_bottom = 647.0
+[node name="btnAddGrand" type="Button" parent="contButtons"]
+margin_left = 498.0
+margin_top = 684.0
+margin_right = 980.0
+margin_bottom = 773.0
+size_flags_horizontal = 3
+text = "+ 1000$"
+
+[node name="btnUpgrades" type="Button" parent="contButtons"]
+margin_top = 784.0
+margin_right = 482.0
+margin_bottom = 873.0
+size_flags_horizontal = 3
+text = "Infinite Cash"
+
+[node name="labUpgrades" type="Label" parent="contButtons"]
+margin_left = 498.0
+margin_top = 788.0
+margin_right = 980.0
+margin_bottom = 869.0
+size_flags_horizontal = 3
+text = "False"
+align = 1
+
+[node name="labBlank6" type="Label" parent="contButtons"]
+margin_top = 884.0
+margin_right = 482.0
+margin_bottom = 965.0
+size_flags_horizontal = 3
+text = "Upgrades/Unlocks"
+
+[node name="labBlank7" type="Label" parent="contButtons"]
+margin_left = 498.0
+margin_top = 884.0
+margin_right = 980.0
+margin_bottom = 965.0
 size_flags_horizontal = 3
 align = 1
 
-[node name="btnBack" type="Button" parent="."]
-margin_left = 706.049
-margin_top = 1828.33
-margin_right = 1082.05
-margin_bottom = 1917.33
+[node name="btnUnlockAll" type="Button" parent="contButtons"]
+margin_top = 976.0
+margin_right = 482.0
+margin_bottom = 1065.0
+size_flags_horizontal = 3
+text = "Unlock All"
+
+[node name="btnUpgradeAll" type="Button" parent="contButtons"]
+margin_left = 498.0
+margin_top = 976.0
+margin_right = 980.0
+margin_bottom = 1065.0
+size_flags_horizontal = 3
+text = "Upgrade All"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnBack" type="Button" parent="HBoxContainer"]
+margin_right = 357.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="labBlank8" type="Label" parent="HBoxContainer"]
+margin_left = 361.0
+margin_top = 9.0
+margin_right = 718.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="labBlank9" type="Label" parent="HBoxContainer"]
+margin_left = 722.0
+margin_top = 9.0
+margin_right = 1080.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+align = 1
 [connection signal="pressed" from="contButtons/btnTarget" to="." method="_on_btnTarget_pressed"]
 [connection signal="pressed" from="contButtons/btnFire" to="." method="_on_btnFire_pressed"]
-[connection signal="pressed" from="contButtons/btnUpgrades" to="." method="_on_btnUpgrades_pressed"]
+[connection signal="pressed" from="contButtons/btnInvincible" to="." method="_on_btnInvincible_pressed"]
+[connection signal="pressed" from="contButtons/btnRapidFire" to="." method="_on_btnRapidFire_pressed"]
 [connection signal="pressed" from="contButtons/btnResetMoney" to="." method="_on_btnResetMoney_pressed"]
-[connection signal="pressed" from="contButtons/btnAddGrand" to="." method="_on_btnAddGrand_pressed"]
 [connection signal="pressed" from="contButtons/btnMinusGrand" to="." method="_on_btnMinusGrand_pressed"]
-[connection signal="pressed" from="btnBack" to="." method="_on_btnBack_pressed"]
+[connection signal="pressed" from="contButtons/btnAddGrand" to="." method="_on_btnAddGrand_pressed"]
+[connection signal="pressed" from="contButtons/btnUpgrades" to="." method="_on_btnUpgrades_pressed"]
+[connection signal="pressed" from="contButtons/btnUnlockAll" to="." method="_on_btnUnlockAll_pressed"]
+[connection signal="pressed" from="contButtons/btnUpgradeAll" to="." method="_on_btnUpgradeAll_pressed"]
+[connection signal="pressed" from="HBoxContainer/btnBack" to="." method="_on_btnBack_pressed"]

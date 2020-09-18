@@ -35,7 +35,9 @@ __meta__ = {
 [node name="viewRoad" type="Viewport" parent="contRoad"]
 size = Vector2( 1080, 1440 )
 handle_input_locally = false
+usage = 0
 render_target_update_mode = 3
+audio_listener_enable_2d = true
 physics_object_picking = true
 
 [node name="Road" parent="contRoad/viewRoad" instance=ExtResource( 1 )]

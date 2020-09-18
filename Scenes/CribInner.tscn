@@ -44,6 +44,10 @@ anchor_left = 0.3
 anchor_top = 0.2
 anchor_right = 0.7
 anchor_bottom = 0.6
+margin_left = -4.23804
+margin_top = -55.092
+margin_right = -4.23804
+margin_bottom = -55.092
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
@@ -52,65 +56,68 @@ __meta__ = {
 }
 
 [node name="btnLeft" type="Button" parent="Garage"]
-margin_left = 68.541
-margin_top = 569.081
-margin_right = 227.541
-margin_bottom = 921.081
+margin_left = 64.303
+margin_top = 513.989
+margin_right = 223.303
+margin_bottom = 865.989
 text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnRight" type="Button" parent="Garage"]
-margin_left = 822.498
-margin_top = 569.081
-margin_right = 981.498
-margin_bottom = 921.081
+margin_left = 818.26
+margin_top = 513.989
+margin_right = 977.26
+margin_bottom = 865.989
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnUnlock" type="Button" parent="Garage"]
-margin_left = 318.003
-margin_top = 654.912
-margin_right = 754.003
-margin_bottom = 822.912
+modulate = Color( 1, 1, 1, 0.498039 )
+margin_left = 313.765
+margin_top = 599.82
+margin_right = 749.765
+margin_bottom = 767.82
 text = "1500$"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="upgradeEngine" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 65.1137
-margin_top = 205.822
-margin_right = 425.114
-margin_bottom = 397.822
+margin_left = 70.0
+margin_top = 170.0
+margin_right = 430.0
+margin_bottom = 362.0
 
 [node name="upgradeSteering" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 612.37
-margin_top = 207.655
-margin_right = 972.37
-margin_bottom = 399.655
+margin_left = 650.0
+margin_top = 170.0
+margin_right = 1010.0
+margin_bottom = 362.0
 
 [node name="upgradeArmor" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 88.995
-margin_top = 1127.27
-margin_right = 448.995
-margin_bottom = 1319.27
+margin_left = 70.0
+margin_top = 1050.0
+margin_right = 430.0
+margin_bottom = 1242.0
 
 [node name="upgradeHandling" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 639.916
-margin_top = 1133.63
-margin_right = 999.916
-margin_bottom = 1325.63
+margin_left = 650.0
+margin_top = 1050.0
+margin_right = 1010.0
+margin_bottom = 1242.0
 
 [node name="ctnWeaponSlots" type="GridContainer" parent="Garage"]
 anchor_top = 0.7
 anchor_right = 1.0
 anchor_bottom = 0.9
 margin_left = 40.0
+margin_top = -60.6129
 margin_right = -40.0
+margin_bottom = -60.0
 custom_constants/vseparation = 20
 custom_constants/hseparation = 200
 columns = 2
@@ -174,8 +181,10 @@ anchor_left = 0.3
 anchor_top = 0.2
 anchor_right = 0.7
 anchor_bottom = 0.6
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -4.23804
+margin_top = -55.092
+margin_right = 35.762
+margin_bottom = -15.092
 texture = ExtResource( 7 )
 stretch_mode = 6
 __meta__ = {
@@ -183,61 +192,62 @@ __meta__ = {
 }
 
 [node name="btnRight" type="Button" parent="GunShop"]
-margin_left = 821.048
-margin_top = 593.108
-margin_right = 980.048
-margin_bottom = 945.108
+margin_left = 816.81
+margin_top = 538.016
+margin_right = 975.81
+margin_bottom = 890.016
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnLeft" type="Button" parent="GunShop"]
-margin_left = 61.7517
-margin_top = 603.787
-margin_right = 220.752
-margin_bottom = 955.787
+margin_left = 57.5137
+margin_top = 548.695
+margin_right = 216.514
+margin_bottom = 900.695
 text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnUnlock" type="Button" parent="GunShop"]
-margin_left = 331.767
-margin_top = 699.861
-margin_right = 767.767
-margin_bottom = 867.861
+modulate = Color( 1, 1, 1, 0.498039 )
+margin_left = 327.529
+margin_top = 644.769
+margin_right = 763.529
+margin_bottom = 812.769
 text = "1500$"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="upgradeFireRate" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 141.085
-margin_top = 173.786
-margin_right = 501.085
-margin_bottom = 365.786
+margin_left = 50.0
+margin_top = 170.0
+margin_right = 410.0
+margin_bottom = 362.0
 cribLocation = 1
 
 [node name="upgradeSpread" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 613.619
-margin_top = 1025.41
-margin_right = 973.619
-margin_bottom = 1217.41
+margin_left = 650.0
+margin_top = 1050.0
+margin_right = 1010.0
+margin_bottom = 1242.0
 cribLocation = 1
 
 [node name="upgradeMisc" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 85.0219
-margin_top = 1036.09
+margin_left = 85.022
+margin_top = 1050.0
 margin_right = 445.022
-margin_bottom = 1228.09
+margin_bottom = 1242.0
 cribLocation = 1
 
 [node name="upgradeDamage" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 632.306
-margin_top = 167.112
-margin_right = 992.307
-margin_bottom = 359.112
+margin_left = 650.0
+margin_top = 170.0
+margin_right = 1010.0
+margin_bottom = 362.0
 cribLocation = 1
 
 [node name="CoinShop" type="Control" parent="."]
