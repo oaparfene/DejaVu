@@ -12,7 +12,6 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	$sndShot.pitch_scale = rng.randf_range(0.7,1.6)
-	print($sndShot.pitch_scale)
 
 func configure(carData):
 	$timerAttack.wait_time = carData["firerate"]
