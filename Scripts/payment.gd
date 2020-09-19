@@ -4,6 +4,7 @@ extends Node
 var payment
 
 func _ready():
+	
 	if Engine.has_singleton("GodotGooglePlayBilling"):
 		payment = Engine.get_singleton("GodotGooglePlayBilling")
 
