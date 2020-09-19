@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 Globals="*res://Scripts/Globals.gd"
 AI="*res://Scripts/AI.gd"
 Guns="*res://Scripts/Guns.gd"
+Payment="*res://Scripts/payment.gd"
 
 [display]
 
