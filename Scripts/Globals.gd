@@ -160,7 +160,7 @@ var guns = {
 var upgs = {}
 
 func _ready():
-	OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # this is the rick roll line, disable it after you got pranked bro
+	#OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # this is the rick roll line, disable it after you got pranked bro
 	initialiseData()
 	loadGame()
 

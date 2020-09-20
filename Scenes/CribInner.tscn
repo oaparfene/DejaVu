@@ -41,13 +41,11 @@ __meta__ = {
 
 [node name="texCar" type="TextureRect" parent="Garage"]
 anchor_left = 0.3
-anchor_top = 0.2
+anchor_top = 0.15
 anchor_right = 0.7
-anchor_bottom = 0.6
-margin_left = -4.23804
-margin_top = -55.092
-margin_right = -4.23804
-margin_bottom = -55.092
+anchor_bottom = 0.55
+margin_top = 2.24487
+margin_bottom = 2.24487
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
@@ -56,20 +54,22 @@ __meta__ = {
 }
 
 [node name="btnLeft" type="Button" parent="Garage"]
-margin_left = 64.303
-margin_top = 513.989
-margin_right = 223.303
-margin_bottom = 865.989
+anchor_top = 0.2
+anchor_bottom = 0.5
+margin_left = 40.0
+margin_right = 240.0
 text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnRight" type="Button" parent="Garage"]
-margin_left = 818.26
-margin_top = 513.989
-margin_right = 977.26
-margin_bottom = 865.989
+anchor_left = 1.0
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_right = -40.0
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,28 +87,38 @@ __meta__ = {
 }
 
 [node name="upgradeEngine" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 70.0
-margin_top = 170.0
-margin_right = 430.0
-margin_bottom = 362.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 400.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 360, 200 )
 
 [node name="upgradeSteering" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 650.0
-margin_top = 170.0
-margin_right = 1010.0
-margin_bottom = 362.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -400.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 360, 200 )
 
 [node name="upgradeArmor" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 70.0
-margin_top = 1050.0
-margin_right = 430.0
-margin_bottom = 1242.0
+anchor_top = 0.55
+anchor_bottom = 0.55
+margin_left = 40.0
+margin_right = 400.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 360, 200 )
 
 [node name="upgradeHandling" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 650.0
-margin_top = 1050.0
-margin_right = 1010.0
-margin_bottom = 1242.0
+anchor_left = 1.0
+anchor_top = 0.55
+anchor_right = 1.0
+anchor_bottom = 0.55
+margin_left = -400.0
+margin_right = -40.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 360, 200 )
 
 [node name="ctnWeaponSlots" type="GridContainer" parent="Garage"]
 anchor_top = 0.7
@@ -192,20 +202,22 @@ __meta__ = {
 }
 
 [node name="btnRight" type="Button" parent="GunShop"]
-margin_left = 816.81
-margin_top = 538.016
-margin_right = 975.81
-margin_bottom = 890.016
+anchor_left = 1.0
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_right = -40.0
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnLeft" type="Button" parent="GunShop"]
-margin_left = 57.5137
-margin_top = 548.695
-margin_right = 216.514
-margin_bottom = 900.695
+anchor_top = 0.2
+anchor_bottom = 0.5
+margin_left = 40.0
+margin_right = 240.0
 text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -223,31 +235,41 @@ __meta__ = {
 }
 
 [node name="upgradeFireRate" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 50.0
-margin_top = 170.0
-margin_right = 410.0
-margin_bottom = 362.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 300.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 360, 200 )
 cribLocation = 1
 
 [node name="upgradeSpread" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 650.0
-margin_top = 1050.0
-margin_right = 1010.0
-margin_bottom = 1242.0
+anchor_left = 1.0
+anchor_top = 0.55
+anchor_right = 1.0
+anchor_bottom = 0.55
+margin_left = -400.0
+margin_right = -40.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 360, 200 )
 cribLocation = 1
 
 [node name="upgradeMisc" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 85.022
-margin_top = 1050.0
-margin_right = 445.022
-margin_bottom = 1242.0
+anchor_top = 0.55
+anchor_bottom = 0.55
+margin_left = 40.0
+margin_right = 400.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 360, 200 )
 cribLocation = 1
 
 [node name="upgradeDamage" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 650.0
-margin_top = 170.0
-margin_right = 1010.0
-margin_bottom = 362.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -400.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 360, 200 )
 cribLocation = 1
 
 [node name="CoinShop" type="Control" parent="."]
