@@ -116,6 +116,7 @@ var enemies = {
 
 var guns = {
 	"pistol":{
+		"displayName":"Pistol",
 		"unlockCost":0,
 		"speed":1600,
 		"firerate":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5], 		"baseCost":50, 	"mod":1.15},
@@ -124,6 +125,7 @@ var guns = {
 		"misc":		{"levels":[1.05, 1.10, 1.15, 1.20, 1.25, 1.30], "baseCost":100, "mod":1.15} # kill bonus
 	},
 	"shotgun":{
+		"displayName":"Combat Shotgun",
 		"unlockCost":500,
 		"speed":1600,
 		"firerate":	{"levels":[2, 1.8, 1.6, 1.4, 1.2, 1], 			"baseCost":50, 	"mod":1.15},
@@ -132,14 +134,25 @@ var guns = {
 		"misc":		{"levels":[5, 6, 7, 8, 9, 10], 					"baseCost":100, "mod":1.15} # projectiles
 	},
 	"smg":{
+		"displayName":"Uzi",
 		"unlockCost":1500,
 		"speed":1600,
 		"firerate":	{"levels":[0.3, 0.25, 0.2, 0.15, 0.10, 0.05], 	"baseCost":50, 	"mod":1.15},
-		"spread":	{"levels":[0.6, 0.5, 0.4, 0.3, 0.2, 0.1],	"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[5, 8, 11, 14, 17, 20], 			"baseCost":100, "mod":1.15},
+		"spread":	{"levels":[0.6, 0.5, 0.4, 0.3, 0.2, 0.1],		"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[5, 8, 11, 14, 17, 20], 				"baseCost":100, "mod":1.15},
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # ricochet
 	},
+	"rifle":{
+		"displayName":"AK-47",
+		"unlockCost":50000,
+		"speed":1200,
+		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
+	},
 	"sniper":{
+		"displayName":"Barret 50.cal",
 		"unlockCost":2500,
 		"speed":1600,
 		"firerate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
@@ -148,12 +161,40 @@ var guns = {
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # armor negation
 	},
 	"rpg":{
+		"displayName":"Rocket Laucher",
 		"unlockCost":5000,
 		"speed":1200,
 		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
 		"spread":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
 		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
 		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # radius
+	},
+	"flamethrower":{
+		"displayName":"Flamethrower",
+		"unlockCost":12000,
+		"speed":1200,
+		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
+	},
+	"cannon":{
+		"displayName":"Gauss Cannon",
+		"unlockCost":50000,
+		"speed":1200,
+		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
+	},
+	"minigun":{
+		"displayName":"Gatling Gun",
+		"unlockCost":100000,
+		"speed":2000,
+		"firerate":	{"levels":[0.05, 0.045, 0.04, 0.035, 0.03, 0.025], 	"baseCost":50, 	"mod":1.15},
+		"spread":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
+		"damage":	{"levels":[5, 7, 9, 11, 13, 15], 				"baseCost":100, "mod":1.15},
+		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
 	}
 }
 

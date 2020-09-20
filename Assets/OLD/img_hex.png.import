@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/img_explosion.png-eb620d15ad0f2e7dc6ddbd78af599e19.stex"
+path="res://.import/img_hex.png-67d792b47e368d6adea4ea5b7f11fb65.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/img_explosion.png"
-dest_files=[ "res://.import/img_explosion.png-eb620d15ad0f2e7dc6ddbd78af599e19.stex" ]
+source_file="res://Assets/OLD/img_hex.png"
+dest_files=[ "res://.import/img_hex.png-67d792b47e368d6adea4ea5b7f11fb65.stex" ]
 
 [params]
 

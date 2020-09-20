@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/img_dax.png-8ff98e5a248ac4c0eccb85bb9c41055d.stex"
+path="res://.import/img_flamethrower.png-44d2c0b520909c55acd80efb41f77d33.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cars/img_dax.png"
-dest_files=[ "res://.import/img_dax.png-8ff98e5a248ac4c0eccb85bb9c41055d.stex" ]
+source_file="res://Assets/Guns/img_flamethrower.png"
+dest_files=[ "res://.import/img_flamethrower.png-44d2c0b520909c55acd80efb41f77d33.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/img_hex.png-5160a2614be754b78a8846494f2625fa.stex"
+path="res://.import/img_rifle.png-3f47ed2ddb561fbf96cd6902fb47a12a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cars/img_hex.png"
-dest_files=[ "res://.import/img_hex.png-5160a2614be754b78a8846494f2625fa.stex" ]
+source_file="res://Assets/Guns/img_rifle.png"
+dest_files=[ "res://.import/img_rifle.png-3f47ed2ddb561fbf96cd6902fb47a12a.stex" ]
 
 [params]
 
