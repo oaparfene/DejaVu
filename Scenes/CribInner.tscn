@@ -5,7 +5,7 @@
 [ext_resource path="res://ThemeMain.tres" type="Theme" id=3]
 [ext_resource path="res://Scripts/Garage.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/GunShop.gd" type="Script" id=5]
-[ext_resource path="res://Assets/VanHunter/cars/car.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Cars/img_manta.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Guns/img_sniper.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Crib.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/CameraCrib.gd" type="Script" id=10]
@@ -31,21 +31,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Garage"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="texCar" type="TextureRect" parent="Garage"]
 anchor_left = 0.3
-anchor_top = 0.15
+anchor_top = 0.05
 anchor_right = 0.7
-anchor_bottom = 0.55
+anchor_bottom = 0.45
 margin_top = 2.24487
 margin_bottom = 2.24487
+mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
@@ -54,8 +47,8 @@ __meta__ = {
 }
 
 [node name="btnLeft" type="Button" parent="Garage"]
-anchor_top = 0.2
-anchor_bottom = 0.5
+anchor_top = 0.1
+anchor_bottom = 0.4
 margin_left = 40.0
 margin_right = 240.0
 text = "<"
@@ -65,9 +58,9 @@ __meta__ = {
 
 [node name="btnRight" type="Button" parent="Garage"]
 anchor_left = 1.0
-anchor_top = 0.2
+anchor_top = 0.1
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 0.4
 margin_left = -240.0
 margin_right = -40.0
 text = ">"
@@ -86,85 +79,118 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="upgradeEngine" parent="Garage" instance=ExtResource( 1 )]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 400.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 360, 200 )
-
-[node name="upgradeSteering" parent="Garage" instance=ExtResource( 1 )]
-anchor_left = 1.0
+[node name="TabContainer" type="TabContainer" parent="Garage"]
+anchor_top = 0.5
 anchor_right = 1.0
-margin_left = -400.0
-margin_top = 40.0
-margin_right = -40.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 360, 200 )
-
-[node name="upgradeArmor" parent="Garage" instance=ExtResource( 1 )]
-anchor_top = 0.55
-anchor_bottom = 0.55
+anchor_bottom = 1.0
 margin_left = 40.0
-margin_right = 400.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 360, 200 )
-
-[node name="upgradeHandling" parent="Garage" instance=ExtResource( 1 )]
-anchor_left = 1.0
-anchor_top = 0.55
-anchor_right = 1.0
-anchor_bottom = 0.55
-margin_left = -400.0
 margin_right = -40.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 360, 200 )
+margin_bottom = -300.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ctnWeaponSlots" type="GridContainer" parent="Garage"]
-anchor_top = 0.7
+[node name="Upgrades" type="Tabs" parent="Garage/TabContainer"]
+visible = false
 anchor_right = 1.0
-anchor_bottom = 0.9
-margin_left = 40.0
-margin_top = -60.6129
-margin_right = -40.0
-margin_bottom = -60.0
-custom_constants/vseparation = 20
-custom_constants/hseparation = 200
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 96.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 1
+tab_close_display_policy = 1
+
+[node name="upgradeEngine" parent="Garage/TabContainer/Upgrades" instance=ExtResource( 1 )]
+margin_left = 36.0406
+margin_top = 13.3484
+margin_right = 956.041
+margin_bottom = 143.348
+
+[node name="upgradeSteering" parent="Garage/TabContainer/Upgrades" instance=ExtResource( 1 )]
+margin_left = 35.9768
+margin_top = 145.924
+margin_right = 955.977
+margin_bottom = 275.924
+
+[node name="upgradeArmor" parent="Garage/TabContainer/Upgrades" instance=ExtResource( 1 )]
+margin_left = 36.9813
+margin_top = 419.213
+margin_right = 956.981
+margin_bottom = 549.213
+
+[node name="upgradeHandling" parent="Garage/TabContainer/Upgrades" instance=ExtResource( 1 )]
+margin_left = 37.4379
+margin_top = 280.447
+margin_right = 957.438
+margin_bottom = 410.447
+
+[node name="Gun Slots" type="Tabs" parent="Garage/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 96.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 1
+tab_close_display_policy = 2
+
+[node name="GridContainer" type="GridContainer" parent="Garage/TabContainer/Gun Slots"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+custom_constants/vseparation = 120
+custom_constants/hseparation = 150
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="weaponSlot" parent="Garage/ctnWeaponSlots" instance=ExtResource( 2 )]
+[node name="weaponSlot" parent="Garage/TabContainer/Gun Slots/GridContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 400.0
 margin_bottom = 200.0
 
-[node name="weaponSlot2" parent="Garage/ctnWeaponSlots" instance=ExtResource( 2 )]
+[node name="weaponSlot2" parent="Garage/TabContainer/Gun Slots/GridContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 600.0
-margin_right = 1000.0
+margin_left = 550.0
+margin_right = 950.0
 margin_bottom = 200.0
 slot = 1
 
-[node name="weaponSlot3" parent="Garage/ctnWeaponSlots" instance=ExtResource( 2 )]
+[node name="weaponSlot3" parent="Garage/TabContainer/Gun Slots/GridContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 220.0
+margin_top = 320.0
 margin_right = 400.0
-margin_bottom = 420.0
+margin_bottom = 520.0
 slot = 2
 
-[node name="weaponSlot4" parent="Garage/ctnWeaponSlots" instance=ExtResource( 2 )]
+[node name="weaponSlot4" parent="Garage/TabContainer/Gun Slots/GridContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 600.0
-margin_top = 220.0
-margin_right = 1000.0
-margin_bottom = 420.0
+margin_left = 550.0
+margin_top = 320.0
+margin_right = 950.0
+margin_bottom = 520.0
 slot = 3
+
+[node name="Skins" type="Tabs" parent="Garage/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 96.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 1
+tab_close_display_policy = 1
 
 [node name="GunShop" type="Control" parent="." groups=[
 "unlockUI",
@@ -174,14 +200,6 @@ margin_right = 2160.0
 margin_bottom = 1920.0
 mouse_filter = 2
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="GunShop"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -234,43 +252,66 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="upgradeFireRate" parent="GunShop" instance=ExtResource( 1 )]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 300.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 360, 200 )
-cribLocation = 1
-
-[node name="upgradeSpread" parent="GunShop" instance=ExtResource( 1 )]
-anchor_left = 1.0
-anchor_top = 0.55
+[node name="TabContainer" type="TabContainer" parent="GunShop"]
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.55
-margin_left = -400.0
-margin_right = -40.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 360, 200 )
-cribLocation = 1
-
-[node name="upgradeMisc" parent="GunShop" instance=ExtResource( 1 )]
-anchor_top = 0.55
-anchor_bottom = 0.55
+anchor_bottom = 1.0
 margin_left = 40.0
-margin_right = 400.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 360, 200 )
+margin_right = -40.0
+margin_bottom = -300.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upgrades" type="Tabs" parent="GunShop/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 96.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 1
+tab_close_display_policy = 1
+
+[node name="upgradeDamage" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
+margin_left = 36.0406
+margin_top = 13.3484
+margin_right = 956.041
+margin_bottom = 143.348
 cribLocation = 1
 
-[node name="upgradeDamage" parent="GunShop" instance=ExtResource( 1 )]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -400.0
-margin_top = 40.0
-margin_right = -40.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 360, 200 )
+[node name="upgradeSpread" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
+margin_left = 35.9768
+margin_top = 145.924
+margin_right = 955.977
+margin_bottom = 275.924
 cribLocation = 1
+
+[node name="upgradeMisc" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
+margin_left = 36.9813
+margin_top = 419.213
+margin_right = 956.981
+margin_bottom = 549.213
+cribLocation = 1
+
+[node name="upgradeFirerate" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
+margin_left = 37.4379
+margin_top = 280.447
+margin_right = 957.438
+margin_bottom = 410.447
+cribLocation = 1
+
+[node name="Skins" type="Tabs" parent="GunShop/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 1
+tab_close_display_policy = 1
 
 [node name="CoinShop" type="Control" parent="."]
 margin_right = 40.0
