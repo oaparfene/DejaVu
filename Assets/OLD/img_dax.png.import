@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/img_bad3.png-f67327264041f32b838cfb6e05c72f46.stex"
+path="res://.import/img_dax.png-31a49bbae678a12907b50d0b0eb6840d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cars/img_bad3.png"
-dest_files=[ "res://.import/img_bad3.png-f67327264041f32b838cfb6e05c72f46.stex" ]
+source_file="res://Assets/OLD/img_dax.png"
+dest_files=[ "res://.import/img_dax.png-31a49bbae678a12907b50d0b0eb6840d.stex" ]
 
 [params]
 

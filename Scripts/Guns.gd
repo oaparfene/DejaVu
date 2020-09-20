@@ -37,6 +37,23 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 				bodyBullet.set_collision_mask_bit(3,true)
 				projectiles.append({"projectile":bodyBullet,"delay":0})
 		
+		"smg":
+			var relVector = getTargetVector(bodyEntity,targetEntity)
+			var bodyBullet = bodyBullet_load.instance()
+			bodyBullet.position = bodyEntity.position
+			bodyBullet.fireVector = applySpread(relVector,gunData["spread"])
+			bodyBullet.rotation = bodyBullet.fireVector.angle()
+			bodyBullet.speed = gunData["speed"]
+			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
+			bodyBullet.set_collision_mask_bit(3,true)
+			projectiles.append({"projectile":bodyBullet,"delay":0})
+		
+		"rifle":
+			pass
+		
+		"sniper":
+			pass
+		
 		"rpg":
 			
 			var relVector = getTargetVector(bodyEntity,targetEntity)
@@ -50,7 +67,22 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			bodyRocket.set_collision_mask_bit(3,true)
 			projectiles.append({"projectile":bodyRocket,"delay":0})
 		
-		"smg":
+		"flamethrower":
+			pass
+		
+		"cannon":
+			var relVector = getTargetVector(bodyEntity,targetEntity)
+			var bodyBullet = bodyBullet_load.instance()
+			bodyBullet.position = bodyEntity.position
+			bodyBullet.fireVector = applySpread(relVector,gunData["spread"])
+			bodyBullet.rotation = bodyBullet.fireVector.angle()
+			bodyBullet.speed = gunData["speed"]
+			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
+			bodyBullet.set_collision_mask_bit(3,true)
+			projectiles.append({"projectile":bodyBullet,"delay":0})
+			bodyEntity.appliedForce += -bodyBullet.fireVector*500
+		
+		"minigun":
 			var relVector = getTargetVector(bodyEntity,targetEntity)
 			var bodyBullet = bodyBullet_load.instance()
 			bodyBullet.position = bodyEntity.position
