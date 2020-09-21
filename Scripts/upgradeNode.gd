@@ -4,8 +4,9 @@ var upgName
 export var cribLocation:int
 
 func _ready():
-	upgName = name.right(7).to_lower()
-	$labName.text = upgName
+	upgName = name.right(7)
+	$labName.text = upgName + ":"
+	upgName = upgName.to_lower()
 	updateUI()
 
 func _on_btnUpg_pressed():

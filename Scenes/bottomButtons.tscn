@@ -28,6 +28,7 @@ margin_left = 361.0
 margin_right = 718.0
 margin_bottom = 90.0
 size_flags_horizontal = 3
+disabled = true
 action_mode = 0
 text = "Reset"
 __meta__ = {

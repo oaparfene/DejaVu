@@ -36,12 +36,17 @@ anchor_left = 0.3
 anchor_top = 0.05
 anchor_right = 0.7
 anchor_bottom = 0.45
-margin_top = 2.24487
-margin_bottom = 2.24487
 mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnUnlock" type="Button" parent="Garage/texCar"]
+rect_min_size = Vector2( 420, 160 )
+text = "1500$"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,19 +67,10 @@ anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.4
 margin_left = -240.0
+margin_top = 2.37842
 margin_right = -40.0
+margin_bottom = 2.37842
 text = ">"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="btnUnlock" type="Button" parent="Garage"]
-modulate = Color( 1, 1, 1, 0.498039 )
-margin_left = 313.765
-margin_top = 599.82
-margin_right = 749.765
-margin_bottom = 767.82
-text = "1500$"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -92,7 +88,6 @@ __meta__ = {
 }
 
 [node name="Upgrades" type="Tabs" parent="Garage/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -127,6 +122,7 @@ margin_right = 957.438
 margin_bottom = 410.447
 
 [node name="Gun Slots" type="Tabs" parent="Garage/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -206,24 +202,27 @@ __meta__ = {
 
 [node name="texGun" type="TextureRect" parent="GunShop"]
 anchor_left = 0.3
-anchor_top = 0.2
+anchor_top = 0.05
 anchor_right = 0.7
-anchor_bottom = 0.6
-margin_left = -4.23804
-margin_top = -55.092
-margin_right = 35.762
-margin_bottom = -15.092
+anchor_bottom = 0.45
 texture = ExtResource( 7 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="btnUnlock" type="Button" parent="GunShop/texGun"]
+rect_min_size = Vector2( 420, 160 )
+text = "1500$"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="btnRight" type="Button" parent="GunShop"]
 anchor_left = 1.0
-anchor_top = 0.2
+anchor_top = 0.1
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 0.4
 margin_left = -240.0
 margin_right = -40.0
 text = ">"
@@ -232,22 +231,11 @@ __meta__ = {
 }
 
 [node name="btnLeft" type="Button" parent="GunShop"]
-anchor_top = 0.2
-anchor_bottom = 0.5
+anchor_top = 0.1
+anchor_bottom = 0.4
 margin_left = 40.0
 margin_right = 240.0
 text = "<"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="btnUnlock" type="Button" parent="GunShop"]
-modulate = Color( 1, 1, 1, 0.498039 )
-margin_left = 327.529
-margin_top = 644.769
-margin_right = 763.529
-margin_bottom = 812.769
-text = "1500$"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -306,10 +294,10 @@ cribLocation = 1
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 5.0
+margin_top = 96.0
+margin_right = -5.0
+margin_bottom = -5.0
 mouse_filter = 1
 tab_close_display_policy = 1
 
@@ -339,9 +327,9 @@ drag_margin_bottom = 0.0
 script = ExtResource( 10 )
 
 [node name="camTween" type="Tween" parent="CameraCrib"]
+[connection signal="pressed" from="Garage/texCar/btnUnlock" to="Garage" method="_on_btnUnlock_pressed"]
 [connection signal="pressed" from="Garage/btnLeft" to="Garage" method="_on_btnLeft_pressed"]
 [connection signal="pressed" from="Garage/btnRight" to="Garage" method="_on_btnRight_pressed"]
-[connection signal="pressed" from="Garage/btnUnlock" to="Garage" method="_on_btnUnlock_pressed"]
+[connection signal="pressed" from="GunShop/texGun/btnUnlock" to="GunShop" method="_on_btnUnlock_pressed"]
 [connection signal="pressed" from="GunShop/btnRight" to="GunShop" method="_on_btnRight_pressed"]
 [connection signal="pressed" from="GunShop/btnLeft" to="GunShop" method="_on_btnLeft_pressed"]
-[connection signal="pressed" from="GunShop/btnUnlock" to="GunShop" method="_on_btnUnlock_pressed"]
