@@ -8,8 +8,9 @@ var camPos = Vector2.ZERO
 
 var activeCarIndex:int = 0
 var activeGunIndex:int = 0
-var currentCribLocation= "Garage"
-var targetPos = 0
+var currentCribLocation = "Garage"
+var currentLevel: int
+var targetPos: int = 0
 var input = false
 
 var carNameArray = []
@@ -77,7 +78,8 @@ var enemies = {
 		"armor":5,
 		"handling":2,
 		"mass":20,
-		"stupid":3
+		"stupid":3,
+		"difficulty":1
 	},
 	"virtue":{
 		"health":350,
@@ -88,7 +90,8 @@ var enemies = {
 		"armor":10,
 		"handling":3,
 		"mass":40,
-		"stupid":2
+		"stupid":2,
+		"difficulty":3
 	},
 	"viper":{
 		"health":800,
@@ -99,7 +102,8 @@ var enemies = {
 		"armor":15,
 		"handling":5,
 		"mass":80,
-		"stupid":1
+		"stupid":1.5,
+		"difficulty":6
 	},
 	"baron":{
 		"health":2000,
@@ -110,7 +114,8 @@ var enemies = {
 		"armor":25,
 		"handling":2,
 		"mass":300,
-		"stupid":5
+		"stupid":5,
+		"difficulty":8
 	},
 }
 
@@ -197,6 +202,53 @@ var guns = {
 		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
 	}
 }
+
+var roadmap = [
+	{
+		"ID": 0,
+		"displayName": "Desert Wastes",
+		"basePain": 2,
+		"enemyList": [
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"virtue", "boss":true}
+		],
+		"background": "desert"
+	},
+	
+	{
+		"ID": 1,
+		"displayName": "Sandy Shores",
+		"basePain": 3,
+		"enemyList": [
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"virtue"},
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"virtue"}
+		],
+		"background": "desert"
+	},
+	
+	{
+		"ID": 2,
+		"displayName": "The Heat Abyss",
+		"basePain": 4,
+		"enemyList": [
+			{"carName":"virtue"},
+			{"carName":"toad"},
+			{"carName":"virtue"},
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"viper", "boss":true}
+		],
+		"background": "desert"
+	},
+]
 
 var upgs = {}
 

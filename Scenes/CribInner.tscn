@@ -92,7 +92,6 @@ __meta__ = {
 }
 
 [node name="Upgrades" type="Tabs" parent="Garage/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -127,6 +126,7 @@ margin_right = 957.438
 margin_bottom = 410.447
 
 [node name="Gun Slots" type="Tabs" parent="Garage/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -306,10 +306,10 @@ cribLocation = 1
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 5.0
+margin_top = 96.0
+margin_right = -5.0
+margin_bottom = -5.0
 mouse_filter = 1
 tab_close_display_policy = 1
 
