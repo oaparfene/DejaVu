@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/contButtons.gd" type="Script" id=1]
+[ext_resource path="res://Assets/resStyleBoxSharpEdges.tres" type="StyleBox" id=2]
 
 [node name="contButtons" type="HBoxContainer" groups=[
 "moneyUI",
 ]]
 anchor_right = 1.0
+custom_constants/separation = 0
 alignment = 1
 script = ExtResource( 1 )
 __meta__ = {
@@ -13,30 +15,42 @@ __meta__ = {
 }
 
 [node name="btnCars" type="Button" parent="."]
-margin_right = 267.0
-margin_bottom = 20.0
+margin_right = 270.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
 text = "Cars"
 
 [node name="btnGuns" type="Button" parent="."]
-margin_left = 271.0
-margin_right = 538.0
-margin_bottom = 20.0
+margin_left = 270.0
+margin_right = 540.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
 text = "Guns"
 
 [node name="btnCoins" type="Button" parent="."]
-margin_left = 542.0
-margin_right = 809.0
-margin_bottom = 20.0
+margin_left = 540.0
+margin_right = 810.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
 text = "Coins"
 
 [node name="btnEnergy" type="Button" parent="."]
-margin_left = 813.0
+margin_left = 810.0
 margin_right = 1080.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
 text = "Energy"
 [connection signal="pressed" from="btnCars" to="." method="_on_btnCars_pressed"]
 [connection signal="pressed" from="btnGuns" to="." method="_on_btnGuns_pressed"]
