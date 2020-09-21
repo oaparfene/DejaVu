@@ -266,6 +266,8 @@ func resetInputs():
 	fire = false
 
 func initialiseData():
+	activeCarIndex = 0
+	activeGunIndex = 0
 	carNameArray = []
 	for carName in cars:
 		initialiseCarUpgrades(carName)

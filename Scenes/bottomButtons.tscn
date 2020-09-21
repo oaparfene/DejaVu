@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/bottomButtons.gd" type="Script" id=1]
+[ext_resource path="res://Assets/resStyleBoxSharpEdges.tres" type="StyleBox" id=2]
 
 [node name="bottomButtons" type="HBoxContainer"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -90.0
+custom_constants/separation = 0
 alignment = 1
 script = ExtResource( 1 )
 __meta__ = {
@@ -14,9 +16,12 @@ __meta__ = {
 }
 
 [node name="btnBack" type="Button" parent="."]
-margin_right = 357.0
+margin_right = 360.0
 margin_bottom = 90.0
 size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
 action_mode = 0
 text = "Back"
 __meta__ = {
@@ -24,10 +29,15 @@ __meta__ = {
 }
 
 [node name="btnReset" type="Button" parent="."]
-margin_left = 361.0
-margin_right = 718.0
+margin_left = 360.0
+margin_right = 720.0
 margin_bottom = 90.0
 size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+disabled = true
 action_mode = 0
 text = "Reset"
 __meta__ = {
@@ -35,10 +45,13 @@ __meta__ = {
 }
 
 [node name="btnPlay" type="Button" parent="."]
-margin_left = 722.0
+margin_left = 720.0
 margin_right = 1080.0
 margin_bottom = 90.0
 size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
 action_mode = 0
 text = "Play"
 __meta__ = {
