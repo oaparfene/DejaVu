@@ -79,7 +79,7 @@ var enemies = {
 		"handling":2,
 		"mass":20,
 		"stupid":3,
-		"difficulty":1
+		"pain":1
 	},
 	"virtue":{
 		"health":350,
@@ -91,7 +91,7 @@ var enemies = {
 		"handling":3,
 		"mass":40,
 		"stupid":2,
-		"difficulty":3
+		"pain":3
 	},
 	"viper":{
 		"health":800,
@@ -103,7 +103,7 @@ var enemies = {
 		"handling":5,
 		"mass":80,
 		"stupid":1.5,
-		"difficulty":6
+		"pain":6
 	},
 	"baron":{
 		"health":2000,
@@ -115,7 +115,7 @@ var enemies = {
 		"handling":2,
 		"mass":300,
 		"stupid":5,
-		"difficulty":8
+		"pain":8
 	},
 }
 
@@ -207,6 +207,19 @@ var roadmap = [
 	{
 		"ID": 0,
 		"displayName": "Desert Wastes",
+		"basePain": 1,
+		"enemyList": [
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"toad"},
+		],
+		"background": "desert",
+		"reward": 500
+	},
+	
+	{
+		"ID": 1,
+		"displayName": "The Heat Abyss",
 		"basePain": 2,
 		"enemyList": [
 			{"carName":"toad"},
@@ -215,12 +228,13 @@ var roadmap = [
 			{"carName":"toad"},
 			{"carName":"virtue", "boss":true}
 		],
-		"background": "desert"
+		"background": "desert",
+		"reward": 1000
 	},
 	
 	{
-		"ID": 1,
-		"displayName": "Sandy Shores",
+		"ID": 2,
+		"displayName": "Jungle Outskirts",
 		"basePain": 3,
 		"enemyList": [
 			{"carName":"toad"},
@@ -230,12 +244,13 @@ var roadmap = [
 			{"carName":"toad"},
 			{"carName":"virtue"}
 		],
-		"background": "desert"
+		"background": "forest",
+		"reward": 1500
 	},
 	
 	{
-		"ID": 2,
-		"displayName": "The Heat Abyss",
+		"ID": 3,
+		"displayName": "The Vine Kingdom",
 		"basePain": 4,
 		"enemyList": [
 			{"carName":"virtue"},
@@ -246,11 +261,69 @@ var roadmap = [
 			{"carName":"toad"},
 			{"carName":"viper", "boss":true}
 		],
-		"background": "desert"
+		"background": "forest",
+		"reward": 2000
+	},
+	
+	{
+		"ID": 4,
+		"displayName": "Snowy Hills",
+		"basePain": 6,
+		"enemyList": [
+			{"carName":"toad"},
+			{"carName":"toad"},
+			{"carName":"virtue"},
+			{"carName":"virtue"},
+			{"carName":"toad"},
+			{"carName":"viper"},
+			{"carName":"toad"},
+			{"carName":"viper"},
+		],
+		"background": "snow",
+		"reward": 2500
+	},
+	
+	{
+		"ID": 5,
+		"displayName": "Blizzard",
+		"basePain": 8,
+		"enemyList": [
+			{"carName":"virtue"},
+			{"carName":"toad"},
+			{"carName":"virtue"},
+			{"carName":"virtue"},
+			{"carName":"toad"},
+			{"carName":"viper"},
+			{"carName":"virtue"},
+			{"carName":"baron", "boss":true},
+		],
+		"background": "snow",
+		"reward": 3000
+	},
+	
+	{
+		"ID": 6,
+		"displayName": "Cityscape",
+		"basePain": 16,
+		"enemyList": [
+			{"carName":"virtue"},
+			{"carName":"virtue"},
+			{"carName":"viper"},
+			{"carName":"virtue"},
+			{"carName":"baron"},
+			{"carName":"virtue"},
+			{"carName":"viper"},
+			{"carName":"viper"},
+			{"carName":"baron"},
+		],
+		"background": "night",
+		"reward": 5000
 	},
 ]
 
 var upgs = {}
+
+var levelUnlocks = []
 
 func _ready():
 	#OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # this is the rick roll line, disable it after you got pranked bro
@@ -271,9 +344,15 @@ func initialiseData():
 	carNameArray = []
 	for carName in cars:
 		initialiseCarUpgrades(carName)
+	upgs["squid"]["unlocked"] = true
 	gunNameArray = []
 	for gunName in guns:
 		initialiseGunUpgrades(gunName)
+	upgs["pistol"]["unlocked"] = true
+	levelUnlocks = []
+	for level in roadmap:
+		levelUnlocks.append(false)
+	levelUnlocks[0] = true
 	money = 0
 
 func getCarVariables():
@@ -300,6 +379,7 @@ func getEnemyCarVariables(carName):
 	carData["armor"] = enemies[carName]["armor"]
 	carData["handling"] = enemies[carName]["handling"]
 	carData["mass"] = enemies[carName]["mass"]
+	carData["pain"] = enemies[carName]["pain"]
 	carData["stupid"] = enemies[carName]["stupid"]
 	return carData.duplicate(true)
 
@@ -407,7 +487,25 @@ func getNoOfCars():
 func getNoOfGuns():
 	return gunNameArray.size()
 
+# LEVEL
 
+func getCurrentLevel():
+	return roadmap[currentLevel].duplicate(true)
+
+func gainLevelReward():
+	levelMoney += roadmap[currentLevel]["reward"]
+
+func setLevel(levelID):
+	currentLevel = levelID
+	saveGame()
+
+func unlockNextLevel():
+	if currentLevel + 1 == levelUnlocks.size():
+		return
+	levelUnlocks[currentLevel+1] = true
+
+func isLevelUnlocked(levelID):
+	return levelUnlocks[levelID]
 
 # UNLOCK
 
@@ -537,7 +635,17 @@ func toggle(strVar):
 
 # SAVE / LOAD
 
-var saveVariables = ["upgs","activeCarIndex","money","autoTarget","autoFire","freeUpgrades","invincible"]
+var saveVariables = [
+	"upgs",
+	"activeCarIndex",
+	"money",
+	"autoTarget",
+	"autoFire",
+	"freeUpgrades",
+	"invincible",
+	"currentLevel",
+	"unlocks"
+	]
 
 func resetSaveData():
 	initialiseData()

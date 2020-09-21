@@ -5,7 +5,7 @@ var currentScene
 
 func _on_labPlay_pressed():
 	if Globals.getUnlocked():
-		currentScene = get_tree().change_scene("res://Scenes/Runway.tscn")
+		currentScene = get_tree().change_scene("res://Scenes/Roadmap.tscn")
 
 func _on_labGarage_pressed():
 	currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")

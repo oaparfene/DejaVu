@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/img_desert.png-7ee8f41afcd8153fd871e408741b9703.stex"
+path="res://.import/img_forest.png-57303702d2475c5f0ac54e8064df7cf4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Levels/img_desert.png"
-dest_files=[ "res://.import/img_desert.png-7ee8f41afcd8153fd871e408741b9703.stex" ]
+source_file="res://Assets/Levels/img_forest.png"
+dest_files=[ "res://.import/img_forest.png-57303702d2475c5f0ac54e8064df7cf4.stex" ]
 
 [params]
 
