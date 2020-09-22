@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/Road.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/camRoad.gd" type="Script" id=4]
 [ext_resource path="res://Assets/img_safe.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sounds/snd_theme.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sounds/snd_theme2.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 1772.81 )

@@ -383,7 +383,7 @@ func getCarVariables():
 	carData["handling"] = 	cars[carName]["handling"]["levels"][upgs[carName]["handling"]]
 	carData["armor"] = 		cars[carName]["armor"]["levels"][upgs[carName]["armor"]]
 	carData["mass"] = 		cars[carName]["mass"]
-	roadSpeed = carData["speed"]*2
+	roadSpeed = 1000 + carData["speed"]*0.2
 	return carData.duplicate(true)
 
 func getEnemyCarVariables(carName):
