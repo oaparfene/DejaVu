@@ -25,6 +25,7 @@ var handling:float
 var armor:float
 var slots:Dictionary
 var gunNames:Array
+var skinName:String
 
 var money
 

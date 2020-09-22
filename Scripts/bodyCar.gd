@@ -11,8 +11,12 @@ var haveFuel = true
 func _ready():
 	var carData = Globals.getCarVariables()
 	slots = Globals.getGunVariables()
+	
 	for variable in carData:
 		set(variable,carData[variable])
+	
+	$sprCar.texture = load("res://Assets/Cars/img_"+skinName+".png")
+	
 	for gunName in slots:
 		gunNames.append(gunName)
 		slots[gunName]["fire"] = false # Set fire to false
@@ -34,7 +38,7 @@ func _ready():
 		audio.volume_db = -10
 		add_child(audio)
 		slots[gunName]["sound"] = audio # Store the audio reference
-		
+	
 	health = maxHealth
 	mass *= 1 + float(armor)/100
 	Globals.resetInputs()

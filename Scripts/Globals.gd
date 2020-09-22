@@ -31,6 +31,7 @@ var rapidFire = false
 
 var cars = {
 	"squid":{
+		"displayName": "Squid",
 		"health":500,
 		"unlockCost":0,
 		"engine":	{"levels":[300, 350, 400, 450, 500, 550], 		"baseCost":100, 	"mod":1.15},
@@ -40,6 +41,7 @@ var cars = {
 		"slots":4,
 		"mass":30},
 	"vice":{
+		"displayName": "Vice",
 		"health":800,
 		"unlockCost":1500,
 		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":200, 	"mod":1.15},
@@ -49,6 +51,7 @@ var cars = {
 		"slots":4,
 		"mass":40},
 	"manta":{
+		"displayName": "Manta",
 		"health":1000,
 		"unlockCost":4000,
 		"engine":	{"levels":[800, 850, 900, 950, 1000, 1050], 	"baseCost":400, 	"mod":1.15},
@@ -58,6 +61,7 @@ var cars = {
 		"slots":4,
 		"mass":60},
 	"goliath":{
+		"displayName": "Goliath",
 		"health":2000,
 		"unlockCost":10000,
 		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":600, 	"mod":1.15},
@@ -374,31 +378,25 @@ func initialiseData():
 	money = 0
 
 func getCarVariables():
-	var carName = getCarName()
+	var carName = getCarName() # Get current car name
 	var carData = {}
-	carData["carName"] = 	carName
-	carData["maxHealth"] = 	cars[carName]["health"]
-	carData["speed"] = 		cars[carName]["engine"]["levels"][upgs[carName]["engine"]]
-	carData["steer"] = 		cars[carName]["steering"]["levels"][upgs[carName]["steering"]]
-	carData["handling"] = 	cars[carName]["handling"]["levels"][upgs[carName]["handling"]]
-	carData["armor"] = 		cars[carName]["armor"]["levels"][upgs[carName]["armor"]]
-	carData["mass"] = 		cars[carName]["mass"]
+	
+	for property in cars: # Loop through the car properties
+		if property in carUpgrNameArray: # If this property is upgradeable
+			# Save the correct upgrade value
+			carData[property] = cars[carName][property]["levels"][upgs[carName][property]]
+		else:
+			carData[property] = cars[carName][property]
+	carData["skinName"] = skinNameDict[upgs[carName]["equippedSkin"]]
+	
 	roadSpeed = 1000 + carData["speed"]*0.2
 	return carData.duplicate(true)
 
 func getEnemyCarVariables(carName):
 	var carData = {}
 	carData["carName"] = carName
-	carData["maxHealth"] = enemies[carName]["health"]
-	carData["money"] = enemies[carName]["money"]
-	carData["firerate"] = enemies[carName]["firerate"]
-	carData["speed"] = enemies[carName]["engine"]
-	carData["steer"] = enemies[carName]["steering"]
-	carData["armor"] = enemies[carName]["armor"]
-	carData["handling"] = enemies[carName]["handling"]
-	carData["mass"] = enemies[carName]["mass"]
-	carData["pain"] = enemies[carName]["pain"]
-	carData["stupid"] = enemies[carName]["stupid"]
+	for property in enemies:
+		carData[property] = cars[carName][property]
 	return carData.duplicate(true)
 
 func getGunVariables():
