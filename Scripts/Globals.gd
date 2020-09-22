@@ -68,6 +68,24 @@ var cars = {
 		"mass":100}
 }
 
+var skinNameDict = {
+	"squid":{
+		"squid":{"costIRL":-1,"costCoins":-1}
+	},
+	"vice":{
+		"vice":{"costIRL":-1,"costCoins":-1}
+	},
+	"manta":{
+		"manta":{"costIRL":-1,"costCoins":-1},
+		"dongle":{"costIRL":1,"costCoins":-1}
+	},
+	"goliath":{
+		"goliath":{"costIRL":-1,"costCoins":-1},
+		"ballzack":{"costIRL":1,"costCoins":-1},
+		"dickinson":{"costIRL":1,"costCoins":-1}
+	}
+}
+
 var enemies = {
 	"toad":{
 		"health":150,

@@ -14,9 +14,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sprWeapon" type="Sprite" parent="."]
-position = Vector2( 100, 100 )
-rotation = -0.785398
-scale = Vector2( 4, 4 )
+[node name="sprWeapon" type="TextureRect" parent="."]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+rect_rotation = -45.0
+rect_pivot_offset = Vector2( 80, 80 )
 texture = ExtResource( 1 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="." to="." method="_on_objGridItem_pressed"]

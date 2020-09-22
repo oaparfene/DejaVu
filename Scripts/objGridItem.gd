@@ -1,11 +1,11 @@
 extends Button
 
-signal weapon_selected(name)
+signal item_selected(name)
 
-var currentWeaponName
+var currentItemName
 
 func _ready():
 	pass 
 
 func _on_objGridItem_pressed():
-	emit_signal("weapon_selected", currentWeaponName)
+	emit_signal("item_selected", currentItemName)
