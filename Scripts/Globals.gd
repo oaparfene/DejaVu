@@ -419,14 +419,17 @@ func getGunVariables():
 
 func initialiseCarUpgrades(carName):
 	carNameArray.append(carName)
-	upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":{"0":"pistol"}}
+	upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":{"0":"pistol"},"equippedSkin":carName,"skinList":{}}
+	for skinName in skinNameDict[carName]:
+		upgs[carName]["skinList"][skinName] = 1 # 0 is locked, 1 is unlocked
+	upgs[carName]["skinList"][carName] = 1
 	carUpgrNameArray = ["engine","steering","handling","armor"]
 	for slot in range(1,cars[carName]["slots"]):
 		upgs[carName]["slots"][str(slot)] = "empty"
 
 func initialiseGunUpgrades(gunName):
 	gunNameArray.append(gunName)
-	upgs[gunName] = {"unlocked":false,"firerate":0,"accuracy":0,"damage":0,"misc":0}
+	upgs[gunName] = {"unlocked":false,"firerate":0,"accuracy":0,"damage":0,"misc":0,"equippedSkin":gunName,"skinList":{}}
 	gunUpgrNameArray = ["firerate","accuracy","damage","misc"]
 
 func getGunInSlotName(slot):
