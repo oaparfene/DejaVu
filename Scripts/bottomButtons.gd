@@ -12,4 +12,4 @@ func _on_btnReset_pressed():
 
 func _on_btnPlay_pressed():
 	if Globals.getUnlocked():
-		var _currentScene = get_tree().change_scene("res://Scenes/Runway.tscn")
+		var _currentScene = get_tree().change_scene("res://Scenes/Roadmap.tscn")

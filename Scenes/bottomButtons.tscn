@@ -53,7 +53,7 @@ custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/normal = ExtResource( 2 )
 action_mode = 0
-text = "Play"
+text = "Map"
 __meta__ = {
 "_edit_use_anchors_": false
 }

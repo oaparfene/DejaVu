@@ -7,7 +7,7 @@ var aoe:float
 func _ready():
 	type = "rocket"
 
-func impact(kinCollisionInfo):
+func impact(_kinCollisionInfo):
 	var sprExplosion = sprExplosion_load.instance()
 	sprExplosion.position = position
 	sprExplosion.scale = Vector2.ONE * (aoe/500)

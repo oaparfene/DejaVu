@@ -7,6 +7,7 @@ var fire = false
 var targetted = false
 
 var ammo = 0
+var pain: int
 
 func _ready():
 	var rng = RandomNumberGenerator.new()
@@ -14,6 +15,7 @@ func _ready():
 	$sndShot.pitch_scale = rng.randf_range(0.7,1.6)
 
 func configure(carData):
+	pain = carData["pain"]
 	$timerAttack.wait_time = carData["firerate"]
 	$timerState.wait_time = carData["stupid"]
 	for variable in carData:
