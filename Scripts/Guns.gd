@@ -17,7 +17,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			var relVector = getTargetVector(bodyEntity,targetEntity)
 			var bodyBullet = bodyBullet_load.instance()
 			bodyBullet.position = bodyEntity.position
-			bodyBullet.fireVector = applySpread(relVector,gunData["spread"])
+			bodyBullet.fireVector = applySpread(relVector,gunData["accuracy"])
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
@@ -30,7 +30,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 				var relVector = getTargetVector(bodyEntity,targetEntity)
 				var bodyBullet = bodyBullet_load.instance()
 				bodyBullet.position = bodyEntity.position
-				bodyBullet.fireVector = applySpread(relVector,gunData["spread"])
+				bodyBullet.fireVector = applySpread(relVector,gunData["accuracy"])
 				bodyBullet.rotation = bodyBullet.fireVector.angle()
 				bodyBullet.speed = gunData["speed"]
 				bodyBullet.mass = ( float(gunData["damage"])/float(gunData["speed"]) )/float(gunData["misc"])
@@ -41,7 +41,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			var relVector = getTargetVector(bodyEntity,targetEntity)
 			var bodyBullet = bodyBullet_load.instance()
 			bodyBullet.position = bodyEntity.position
-			bodyBullet.fireVector = applySpread(relVector,gunData["spread"])
+			bodyBullet.fireVector = applySpread(relVector,gunData["accuracy"])
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
@@ -59,7 +59,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			var relVector = getTargetVector(bodyEntity,targetEntity)
 			var bodyRocket = bodyRocket_load.instance()
 			bodyRocket.position = bodyEntity.position
-			bodyRocket.fireVector = applySpread(relVector,gunData["spread"])
+			bodyRocket.fireVector = applySpread(relVector,gunData["accuracy"])
 			bodyRocket.rotation = bodyRocket.fireVector.angle()
 			bodyRocket.speed = gunData["speed"]
 			bodyRocket.aoe = gunData["misc"]
@@ -74,7 +74,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			var relVector = getTargetVector(bodyEntity,targetEntity)
 			var bodyBullet = bodyBullet_load.instance()
 			bodyBullet.position = bodyEntity.position
-			bodyBullet.fireVector = applySpread(relVector,gunData["spread"])
+			bodyBullet.fireVector = applySpread(relVector,gunData["accuracy"])
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
@@ -86,7 +86,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			var relVector = getTargetVector(bodyEntity,targetEntity)
 			var bodyBullet = bodyBullet_load.instance()
 			bodyBullet.position = bodyEntity.position
-			bodyBullet.fireVector = applySpread(relVector,gunData["spread"])
+			bodyBullet.fireVector = applySpread(relVector,gunData["accuracy"])
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])

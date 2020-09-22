@@ -303,7 +303,7 @@ margin_right = 956.041
 margin_bottom = 143.348
 cribLocation = 1
 
-[node name="upgradeSpread" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
+[node name="upgradeAccuracy" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
 margin_left = 35.9768
 margin_top = 145.924
 margin_right = 955.977
