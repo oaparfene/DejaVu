@@ -66,4 +66,4 @@ func _on_timerSpawn_timeout():
 
 
 func _on_sndTheme_finished():
-	$sndTheme.play()
+	$sndTheme.play(9.125)
