@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/purchasePopup.gd" type="Script" id=1]
+[ext_resource path="res://ThemeMain.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/Cars/img_dongle.png" type="Texture" id=3]
+
+[node name="purchasePopup" type="PopupPanel"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -180.0
+margin_bottom = -1020.0
+rect_min_size = Vector2( 900, 900 )
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texItem" type="TextureRect" parent="vBox"]
+margin_right = 860.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 400 )
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="lab" type="Label" parent="vBox"]
+margin_top = 404.0
+margin_right = 860.0
+margin_bottom = 485.0
+text = "Purchase <item>?"
+align = 1
+
+[node name="VSeparator" type="MarginContainer" parent="vBox"]
+margin_top = 489.0
+margin_right = 860.0
+margin_bottom = 609.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="btnBuyIRL" type="Button" parent="vBox"]
+margin_top = 613.0
+margin_right = 860.0
+margin_bottom = 702.0
+text = "BUY"
+
+[node name="VSeparator2" type="MarginContainer" parent="vBox"]
+margin_top = 706.0
+margin_right = 860.0
+margin_bottom = 766.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="btnBuyCoins" type="Button" parent="vBox"]
+margin_top = 770.0
+margin_right = 860.0
+margin_bottom = 859.0
+text = "BUY"
+[connection signal="about_to_show" from="." to="." method="_on_purchasePopup_about_to_show"]
+[connection signal="pressed" from="vBox/btnBuyIRL" to="." method="_on_btnBuyIRL_pressed"]
+[connection signal="pressed" from="vBox/btnBuyCoins" to="." method="_on_btnBuyCoins_pressed"]

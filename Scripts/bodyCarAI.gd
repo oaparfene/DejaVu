@@ -36,7 +36,7 @@ func configure(carData,forMenu = false):
 			gunData[property] = gunData[property]["levels"][upgradeLevel]
 	$timerAttack.wait_time = gunData["firerate"]
 	$sndShot.stream = load("res://Assets/Sounds/snd_"+str(gunName)+".wav")
-	$sndShot.volume_db = -20
+	$sndShot.volume_db = -30
 	health = maxHealth
 	$sprCar.texture = load("res://Assets/Cars/img_"+carName+".png")
 	add_to_group(team)

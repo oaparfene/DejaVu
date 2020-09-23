@@ -74,19 +74,19 @@ var cars = {
 
 var skinNameDict = {
 	"squid":{
-		"squid":{"costIRL":-1,"costCoins":-1}
+		"squid":{"costIRL":-1,"costCoins":100}
 	},
 	"vice":{
-		"vice":{"costIRL":-1,"costCoins":-1}
+		"vice":{"costIRL":-1,"costCoins":100}
 	},
 	"manta":{
-		"manta":{"costIRL":-1,"costCoins":-1},
-		"dongle":{"costIRL":1,"costCoins":-1}
+		"manta":{"costIRL":-1,"costCoins":100},
+		"dongle":{"costIRL":1,"costCoins":100}
 	},
 	"goliath":{
-		"goliath":{"costIRL":-1,"costCoins":-1},
-		"ballzack":{"costIRL":1,"costCoins":-1},
-		"dickinson":{"costIRL":1,"costCoins":-1}
+		"goliath":{"costIRL":-1,"costCoins":100},
+		"ballzack":{"costIRL":1,"costCoins":100},
+		"dickinson":{"costIRL":1,"costCoins":100}
 	}
 }
 
@@ -438,7 +438,7 @@ func initialiseCarUpgrades(carName):
 	carNameArray.append(carName)
 	upgs[carName] = {"unlocked":false,"engine":0,"steering":0,"handling":0,"armor":0,"slots":{"0":"pistol"},"equippedSkin":carName,"skinList":{}}
 	for skinName in skinNameDict[carName]:
-		upgs[carName]["skinList"][skinName] = 1 # 0 is locked, 1 is unlocked
+		upgs[carName]["skinList"][skinName] = 0 # 0 is locked, 1 is unlocked
 	upgs[carName]["skinList"][carName] = 1
 	carUpgrNameArray = ["engine","steering","handling","armor"]
 	for slot in range(1,cars[carName]["slots"]):
@@ -666,9 +666,25 @@ func upgradeAll():
 
 # SKINS
 
-func setSkin(skinName):
-	var carName = getCarName()
-	upgs[carName]["equippedSkin"] = skinName
+func setSkin(itemName, skinName):
+	upgs[itemName]["equippedSkin"] = skinName
+
+func getSkinCostCoins(itemName, skinName):
+	return skinNameDict[itemName][skinName]["costCoins"]
+
+func getSkinCostIRL(itemName, skinName):
+	return skinNameDict[itemName][skinName]["costIRL"]
+
+
+
+# IAPs
+
+func purchaseCoins(cost):
+	if money < cost and not freeUpgrades:
+		return false # purchase failure
+	if not freeUpgrades:
+		money -= cost
+	return true # purchase success
 
 
 
