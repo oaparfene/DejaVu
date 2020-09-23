@@ -4,7 +4,7 @@ onready var sprExplosion_load = preload("res://Scenes/Projectiles/sprExplosion.t
 
 var aoe:float
 
-func _ready():
+func _init():
 	type = "rocket"
 
 func impact(_kinCollisionInfo):
@@ -12,7 +12,7 @@ func impact(_kinCollisionInfo):
 	sprExplosion.position = position
 	sprExplosion.scale = Vector2.ONE * (aoe/500)
 	get_parent().add_child(sprExplosion)
-	for entity in get_tree().get_nodes_in_group("enemy")+get_tree().get_nodes_in_group("player"):
+	for entity in get_tree().get_nodes_in_group("car"):
 		var relVector = entity.position - position
 		var prox = relVector.length()
 		if prox <= aoe:

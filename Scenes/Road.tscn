@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/texRoad.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Levels/img_desert.png" type="Texture" id=2]
@@ -6,12 +6,7 @@
 [ext_resource path="res://Scripts/camRoad.gd" type="Script" id=4]
 [ext_resource path="res://Assets/img_safe.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sounds/snd_theme2.wav" type="AudioStream" id=6]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 1772.81 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 625.754, 5 )
+[ext_resource path="res://Scenes/bodyBorder.tscn" type="PackedScene" id=7]
 
 [node name="Road" type="Control"]
 anchor_right = 1.0
@@ -35,24 +30,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bodyBorder" type="StaticBody2D" parent="."]
-collision_mask = 0
-
-[node name="shapeLeft" type="CollisionShape2D" parent="bodyBorder"]
-position = Vector2( 22.2363, -205.819 )
-shape = SubResource( 1 )
-
-[node name="shapeRight" type="CollisionShape2D" parent="bodyBorder"]
-position = Vector2( 1061.9, -219.777 )
-shape = SubResource( 1 )
-
-[node name="shapeTop" type="CollisionShape2D" parent="bodyBorder"]
-position = Vector2( 540, -1080 )
-shape = SubResource( 2 )
-
-[node name="shapeBottom" type="CollisionShape2D" parent="bodyBorder"]
-position = Vector2( 532.597, 1415.71 )
-shape = SubResource( 2 )
+[node name="bodyBorder" parent="." instance=ExtResource( 7 )]
 
 [node name="timerSpawn" type="Timer" parent="."]
 wait_time = 3.0

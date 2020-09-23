@@ -18,8 +18,9 @@ func _on_objSkinDisplay_pressed():
 
 func setSkin(input_skinName):
 	skinName = input_skinName
-	get_tree().call_group("unlockUI","updateUI")
+	Globals.setSkin(skinName)
 	skinPopup.queue_free()
+	get_tree().call_group("unlockUI","updateUI")
 
 func updateUI():
 	if carName == Globals.getCarName():

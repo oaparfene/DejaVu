@@ -12,7 +12,7 @@ func _ready():
 
 
 func _on_btnBack_pressed():
-	get_tree().change_scene("res://Scenes/Garage.tscn")
+	var _currentScene = get_tree().change_scene("res://Scenes/Garage.tscn")
 
 func _on_btnPlay_pressed():
-	get_tree().change_scene("res://Scenes/Runway.tscn")
+	var _currentScene = get_tree().change_scene("res://Scenes/Runway.tscn")

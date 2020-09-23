@@ -14,13 +14,14 @@ var collidedThisTick = false		# Have we collided with a car this _physics_proces
 var appliedForce = Vector2.ZERO		# Any collision force being applied
 
 var team
+var isPlayer = false
 
 var carName:String
 var health:float
 var mass:float
 var maxHealth:float
-var speed:float
-var steer:float
+var engine:float
+var steering:float
 var handling:float
 var armor:float
 var slots:Dictionary
@@ -28,6 +29,15 @@ var gunNames:Array
 var skinName:String
 
 var money
+
+func _ready():
+	add_to_group("car")
+
+func setCollision():
+	set_collision_layer_bit(Globals.teamBits[team],true)
+	set_collision_mask_bit(9,true)
+	for otherTeam in Globals.teamBits:
+		set_collision_mask_bit(Globals.teamBits[otherTeam],true)
 
 func handleMovement(delta):
 	
@@ -40,39 +50,47 @@ func handleMovement(delta):
 	actVector += (carVector - actVector)*delta*handling
 	appliedForce += (Vector2.ZERO - appliedForce)*delta
 	
-	velocity.y = actVector.y*speed*(1+int(velocity.y > 0)*0.40)
-	velocity.x = actVector.x*steer
+	velocity.y = actVector.y*engine*(1+int(velocity.y > 0)*0.40)
+	velocity.x = actVector.x*steering
 	velocity += appliedForce
 	
 	var _returnedVelocity = move_and_slide(velocity)
 	actVelocity = (position-prevPos)/delta
+	var kinCollisionInfo
 	var noOfCollisions = get_slide_count()
-	if get_slide_count() > 0:
-		var kinCollisionInfo = get_slide_collision(noOfCollisions-1)
+	if noOfCollisions > 0:
+		kinCollisionInfo = get_slide_collision(noOfCollisions-1)
 		if kinCollisionInfo: # If we collided
 			if "Car" in kinCollisionInfo.collider.name:
 				carCollision(kinCollisionInfo)
-			elif "Lose" in kinCollisionInfo.collider.name and team == "player":
+			elif "Lose" in kinCollisionInfo.collider.name and isPlayer:
 				var _currentScene = get_tree().change_scene("res://Scenes/GameOver.tscn")
 	
 	$sprBro.rotation = fireVector.angle() # Update bro's aiming position
 	$sprCar.rotation = actVector.x/3 # Handle rotation
+	
+	return kinCollisionInfo
 
 func damage(dmg):
+	
 	if dmg < 0:
 		return
-	if Globals.invincible and team == "player":
+	
+	if Globals.invincible and isPlayer:
 		dmg = 0
+	
 	var damage = ( (1-armor/100.0)*dmg )
 	health -= damage
-	if team == "enemy":
-		if health <= 0:
-			Globals.levelMoney += money
-			queue_free()
-	elif team == "player":
+	
+	if isPlayer:
 		get_tree().call_group("healthUI","updateUI",health,maxHealth)
 		if health <= 0:
 			var _currentScene = get_tree().change_scene("res://Scenes/GameOver.tscn")
+	else:
+		if health <= 0:
+			Globals.levelMoney += money
+			queue_free()
+	
 	$prgHealth.value = 100*(health/maxHealth)
 	#print(name," took ",damage," dmg")
 
@@ -95,17 +113,3 @@ func calculateCollision(normal,other_actVelocity,other_mass):
 		appliedForce += newSpeed*(-normal)
 		#print(name," took ",-colliderImpulse," impact")
 		damage(-colliderImpulse/600)
-
-func tryToShoot(gunName):
-	var target
-	if team == "player":
-		target = Globals.target
-	else:
-		target = get_tree().get_nodes_in_group("player")[0]
-	if slots[gunName]["fire"] == true and slots[gunName]["timer"].time_left == 0 and target != null:
-		var projectiles = Guns.getGunBehaviour(slots[gunName],self,target)
-		for bulletData in projectiles:
-			get_parent().add_child(bulletData["projectile"])
-		slots[gunName]["sound"].play()
-		slots[gunName]["timer"].start()
-		

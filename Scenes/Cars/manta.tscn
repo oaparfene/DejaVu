@@ -8,14 +8,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.061, 24.7491 )
 
-[node name="bodyCarManta" type="KinematicBody2D" groups=[
-"avoid",
-"player",
-]]
+[node name="bodyCarManta" type="KinematicBody2D"]
 scale = Vector2( 4, 4 )
 z_as_relative = false
-collision_layer = 2
-collision_mask = 9
+collision_layer = 0
 script = ExtResource( 3 )
 
 [node name="partDirt" type="CPUParticles2D" parent="."]

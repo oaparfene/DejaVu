@@ -4,7 +4,7 @@ var roadSpeed = 500
 var carVector = Vector2.ZERO
 var fire = false
 var target = null
-var camPos = Vector2.ZERO
+var camPos = Vector2(540,960)
 
 var activeCarIndex:int = 0
 var activeGunIndex:int = 0
@@ -32,7 +32,7 @@ var rapidFire = false
 var cars = {
 	"squid":{
 		"displayName": "Squid",
-		"health":500,
+		"maxHealth":500,
 		"unlockCost":0,
 		"engine":	{"levels":[300, 350, 400, 450, 500, 550], 		"baseCost":100, 	"mod":1.15},
 		"steering":	{"levels":[100, 125, 150, 175, 200, 225], 		"baseCost":80, 		"mod":1.20},
@@ -42,7 +42,7 @@ var cars = {
 		"mass":30},
 	"vice":{
 		"displayName": "Vice",
-		"health":800,
+		"maxHealth":800,
 		"unlockCost":1500,
 		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":200, 	"mod":1.15},
 		"steering":	{"levels":[200, 225, 250, 275, 300, 325], 		"baseCost":180, 	"mod":1.20},
@@ -52,7 +52,7 @@ var cars = {
 		"mass":40},
 	"manta":{
 		"displayName": "Manta",
-		"health":1000,
+		"maxHealth":1000,
 		"unlockCost":4000,
 		"engine":	{"levels":[800, 850, 900, 950, 1000, 1050], 	"baseCost":400, 	"mod":1.15},
 		"steering":	{"levels":[400, 425, 550, 575, 600, 625], 		"baseCost":350, 	"mod":1.20},
@@ -62,7 +62,7 @@ var cars = {
 		"mass":60},
 	"goliath":{
 		"displayName": "Goliath",
-		"health":2000,
+		"maxHealth":2000,
 		"unlockCost":10000,
 		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":600, 	"mod":1.15},
 		"steering":	{"levels":[200, 225, 250, 275, 300, 325], 		"baseCost":550, 	"mod":1.20},
@@ -92,52 +92,56 @@ var skinNameDict = {
 
 var enemies = {
 	"toad":{
-		"health":150,
+		"maxHealth":150,
 		"money":50,
-		"firerate":1,
 		"engine":300,
 		"steering":100,
 		"armor":5,
 		"handling":2,
 		"mass":20,
 		"stupid":3,
-		"pain":1
+		"pain":1,
+		"gunName":"pistol",
+		"maxAmmo": 5
 	},
 	"virtue":{
-		"health":350,
+		"maxHealth":350,
 		"money":125,
-		"firerate":0.3,
 		"engine":400,
 		"steering":300,
 		"armor":10,
 		"handling":3,
-		"mass":40,
+		"mass":25,
 		"stupid":2,
-		"pain":3
+		"pain":3,
+		"gunName":"smg",
+		"maxAmmo": 5
 	},
 	"viper":{
-		"health":800,
+		"maxHealth":800,
 		"money":300,
-		"firerate":0.1,
 		"engine":600,
 		"steering":600,
 		"armor":15,
-		"handling":5,
-		"mass":80,
+		"handling":3,
+		"mass":30,
 		"stupid":1.5,
-		"pain":6
+		"pain":6,
+		"gunName":"shotgun",
+		"maxAmmo": 2
 	},
 	"baron":{
-		"health":2000,
+		"maxHealth":2000,
 		"money":500,
-		"firerate":0.2,
 		"engine":300,
 		"steering":100,
 		"armor":25,
 		"handling":2,
 		"mass":300,
 		"stupid":5,
-		"pain":8
+		"pain":8,
+		"gunName":"rpg",
+		"maxAmmo": 3
 	},
 }
 
@@ -154,74 +158,74 @@ var guns = {
 	"shotgun":{
 		"displayName":"Combat Shotgun",
 		"unlockCost":500,
-		"speed":1600,
-		"firerate":	{"levels":[2, 1.8, 1.6, 1.4, 1.2, 1], 			"baseCost":50, 	"mod":1.15},
-		"accuracy":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5],			"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[100, 120, 140, 160, 180, 200], 		"baseCost":100, "mod":1.15},
+		"speed":2400,
+		"firerate":	{"levels":[2, 1.8, 1.6, 1.4, 1.2, 1], 			"baseCost":75, 	"mod":1.15},
+		"accuracy":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5],			"baseCost":90, 	"mod":1.15},
+		"damage":	{"levels":[100, 120, 140, 160, 180, 200], 		"baseCost":125, "mod":1.15},
 		"misc":		{"levels":[5, 6, 7, 8, 9, 10], 					"baseCost":100, "mod":1.15} # projectiles
 	},
 	"smg":{
 		"displayName":"Uzi",
-		"unlockCost":1500,
+		"unlockCost":2400,
 		"speed":1600,
-		"firerate":	{"levels":[0.3, 0.25, 0.2, 0.15, 0.10, 0.05], 	"baseCost":50, 	"mod":1.15},
-		"accuracy":	{"levels":[0.6, 0.5, 0.4, 0.3, 0.2, 0.1],		"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[5, 8, 11, 14, 17, 20], 				"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # ricochet
+		"firerate":	{"levels":[0.3, 0.25, 0.2, 0.15, 0.10, 0.05], 	"baseCost":200, "mod":1.15},
+		"accuracy":	{"levels":[0.6, 0.5, 0.4, 0.3, 0.2, 0.1],		"baseCost":150, "mod":1.15},
+		"damage":	{"levels":[5, 8, 11, 14, 17, 20], 				"baseCost":250, "mod":1.15},
+		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":0, 	"mod":1.15} # ricochet
 	},
-	"rifle":{
-		"displayName":"AK-47",
-		"unlockCost":50000,
-		"speed":1200,
-		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
-		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
-	},
-	"sniper":{
-		"displayName":"Barret 50.cal",
-		"unlockCost":2500,
-		"speed":1600,
-		"firerate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":50, 	"mod":1.15},
-		"accuracy":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":100, "mod":1.15} # armor negation
-	},
+#	"rifle":{
+#		"displayName":"AK-47",
+#		"unlockCost":4500,
+#		"speed":1200,
+#		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":300, "mod":1.15},
+#		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":250, "mod":1.15},
+#		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":400, "mod":1.15},
+#		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":0, 	"mod":1.15} # arc
+#	},
+#	"sniper":{
+#		"displayName":"Barret 50.cal",
+#		"unlockCost":7000,
+#		"speed":1600,
+#		"firerate":	{"levels":[2, 1.7, 1.4, 1.1, 0.8, 0.5], 		"baseCost":500, "mod":1.15},
+#		"accuracy":	{"levels":[0.3, 0.25, 0.20, 0.15, 0.1, 0.05],	"baseCost":380, "mod":1.15},
+#		"damage":	{"levels":[15, 20, 25, 30, 35, 40], 			"baseCost":600, "mod":1.15},
+#		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":0, 	"mod":1.15} # armor negation
+#	},
 	"rpg":{
 		"displayName":"Rocket Laucher",
-		"unlockCost":5000,
+		"unlockCost":10000,
 		"speed":1200,
-		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
-		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # radius
+		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":800, "mod":1.15},
+		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":500, "mod":1.15},
+		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":900, "mod":1.15},
+		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":650, "mod":1.15} # radius
 	},
-	"flamethrower":{
-		"displayName":"Flamethrower",
-		"unlockCost":12000,
-		"speed":1200,
-		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
-		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
-	},
+#	"flamethrower":{
+#		"displayName":"Flamethrower",
+#		"unlockCost":25000,
+#		"speed":1200,
+#		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":1200,"mod":1.15},
+#		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":800, "mod":1.15},
+#		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":1300,"mod":1.15},
+#		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":0,	"mod":1.15} # arc
+#	},
 	"cannon":{
 		"displayName":"Gauss Cannon",
 		"unlockCost":50000,
-		"speed":1200,
-		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":50, 	"mod":1.15},
-		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
+		"speed":4000,
+		"firerate":	{"levels":[4, 3.5, 3, 2.5, 2, 1.5], 			"baseCost":1500,"mod":1.15},
+		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":1100,"mod":1.15},
+		"damage":	{"levels":[500, 600, 700, 800, 900, 1000], 		"baseCost":1600,"mod":1.15},
+		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":0,	"mod":1.15} # arc
 	},
 	"minigun":{
 		"displayName":"Gatling Gun",
 		"unlockCost":100000,
-		"speed":2000,
-		"firerate":	{"levels":[0.05, 0.045, 0.04, 0.035, 0.03, 0.025], 	"baseCost":50, 	"mod":1.15},
-		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":50, 	"mod":1.15},
-		"damage":	{"levels":[5, 7, 9, 11, 13, 15], 				"baseCost":100, "mod":1.15},
-		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":100, "mod":1.15} # arc
+		"speed":3000,
+		"firerate":	{"levels":[0.05, 0.045, 0.04, 0.035, 0.03, 0.025],"baseCost":2000,"mod":1.15},
+		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":1500,"mod":1.15},
+		"damage":	{"levels":[5, 7, 9, 11, 13, 15], 				"baseCost":2250,"mod":1.15},
+		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":0,	"mod":1.15} # arc
 	}
 }
 
@@ -229,10 +233,10 @@ var roadmap = [
 	{
 		"ID": 0,
 		"displayName": "Desert Wastes",
-		"basePain": 1,
+		"basePain": 2,
 		"enemyList": [
 			{"carName":"toad"},
-			{"carName":"toad"},
+			{"carName":"toad", "team":"survivor"},
 			{"carName":"toad"},
 		],
 		"background": "desert",
@@ -347,6 +351,20 @@ var upgs = {}
 
 var levelUnlocks = []
 
+var teamBits = {
+	"survivor":1,
+	"merc":3,
+	"toad":20,
+	"virtue":19,
+	"viper":18,
+	"baron":17
+}
+
+var projectileBits = {
+	"ballistic":2,
+	"rocket":4
+}
+
 func _ready():
 	#OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # this is the rick roll line, disable it after you got pranked bro
 	initialiseData()
@@ -377,26 +395,27 @@ func initialiseData():
 	levelUnlocks[0] = true
 	money = 0
 
-func getCarVariables():
-	var carName = getCarName() # Get current car name
+func getCarVariables(carName = getCarName()):
 	var carData = {}
 	
-	for property in cars: # Loop through the car properties
+	carData["carName"] = carName
+	for property in cars[carName]: # Loop through the car properties
 		if property in carUpgrNameArray: # If this property is upgradeable
 			# Save the correct upgrade value
 			carData[property] = cars[carName][property]["levels"][upgs[carName][property]]
 		else:
 			carData[property] = cars[carName][property]
-	carData["skinName"] = skinNameDict[upgs[carName]["equippedSkin"]]
+	carData["skinName"] = upgs[carName]["equippedSkin"]
 	
-	roadSpeed = 1000 + carData["speed"]*0.2
+	roadSpeed = 1000 + carData["engine"]*0.2
 	return carData.duplicate(true)
 
 func getEnemyCarVariables(carName):
 	var carData = {}
 	carData["carName"] = carName
-	for property in enemies:
-		carData[property] = cars[carName][property]
+	for property in enemies[carName]:
+		carData[property] = enemies[carName][property]
+	carData["gunData"] = guns[ carData["gunName"] ]
 	return carData.duplicate(true)
 
 func getGunVariables():
@@ -465,7 +484,7 @@ func prevGun():
 	saveGame()
 
 func nextTarget(change = true):
-	var targets = get_tree().get_nodes_in_group("enemy")
+	var targets = AI.getEnemies("survivor")
 	if targets.empty(): # If there are no targets
 		return
 	if change == false: # If we're not changing
@@ -480,6 +499,8 @@ func nextTarget(change = true):
 		target.targetted = true
 
 func setTarget(car):
+	if car.team == "survivor":
+		return
 	if target != null:
 		target.targetted = false
 	target = car
@@ -570,6 +591,8 @@ func unlockAll():
 		unlockCar(carName)
 	for gunName in gunNameArray:
 		unlockGun(gunName)
+	for levelID in range(levelUnlocks.size()):
+		levelUnlocks[levelID] = true
 	freeUpgrades = prev_freeUpgrades
 
 
@@ -641,6 +664,15 @@ func upgradeAll():
 
 
 
+# SKINS
+
+func setSkin(skinName):
+	var carName = getCarName()
+	upgs[carName]["equippedSkin"] = skinName
+
+
+
+# MISC
 
 func setCurrentCribLocation(location):
 	currentCribLocation = location
@@ -669,7 +701,7 @@ var saveVariables = [
 	"freeUpgrades",
 	"invincible",
 	"currentLevel",
-	"unlocks"
+	"levelUnlocks"
 	]
 
 func resetSaveData():

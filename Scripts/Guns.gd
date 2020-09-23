@@ -7,7 +7,7 @@ var rng = RandomNumberGenerator.new()
 
 func getGunBehaviour(gunData,bodyEntity,targetEntity):
 	
-	print(bodyEntity.name," fired ",gunData["gunName"])
+	#print(bodyEntity.name," fired ",gunData["gunName"])
 	var projectiles = []
 	
 	match gunData["gunName"]:
@@ -21,7 +21,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
-			bodyBullet.set_collision_mask_bit(3,true)
+			bodyBullet.setCollision(bodyEntity.team)
 			projectiles.append({"projectile":bodyBullet,"delay":0})
 		
 		"shotgun":
@@ -34,7 +34,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 				bodyBullet.rotation = bodyBullet.fireVector.angle()
 				bodyBullet.speed = gunData["speed"]
 				bodyBullet.mass = ( float(gunData["damage"])/float(gunData["speed"]) )/float(gunData["misc"])
-				bodyBullet.set_collision_mask_bit(3,true)
+				bodyBullet.setCollision(bodyEntity.team)
 				projectiles.append({"projectile":bodyBullet,"delay":0})
 		
 		"smg":
@@ -45,7 +45,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
-			bodyBullet.set_collision_mask_bit(3,true)
+			bodyBullet.setCollision(bodyEntity.team)
 			projectiles.append({"projectile":bodyBullet,"delay":0})
 		
 		"rifle":
@@ -64,7 +64,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			bodyRocket.speed = gunData["speed"]
 			bodyRocket.aoe = gunData["misc"]
 			bodyRocket.mass = float(gunData["damage"])/float(gunData["speed"])
-			bodyRocket.set_collision_mask_bit(3,true)
+			bodyRocket.setCollision(bodyEntity.team)
 			projectiles.append({"projectile":bodyRocket,"delay":0})
 		
 		"flamethrower":
@@ -78,7 +78,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
-			bodyBullet.set_collision_mask_bit(3,true)
+			bodyBullet.setCollision(bodyEntity.team)
 			projectiles.append({"projectile":bodyBullet,"delay":0})
 			bodyEntity.appliedForce += -bodyBullet.fireVector*500
 		
@@ -90,15 +90,20 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
-			bodyBullet.set_collision_mask_bit(3,true)
+			bodyBullet.setCollision(bodyEntity.team)
 			projectiles.append({"projectile":bodyBullet,"delay":0})
-	
 	
 	return projectiles
 
 func getTargetVector(bodyEntity,targetEntity):
-	if Globals.target == null:
+	var target = null
+	if bodyEntity.isPlayer:
+		target = Globals.target
+	else:
+		target = bodyEntity.target
+	if target == null:
 		return Vector2(0,-1) # Looking up
+		
 	var relVector = targetEntity.position - bodyEntity.position
 	return relVector.normalized()
 

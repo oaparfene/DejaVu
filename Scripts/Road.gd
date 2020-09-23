@@ -32,7 +32,7 @@ func _ready():
 func _on_timerSpawn_timeout():
 	
 	# Get the Array of enemies
-	var enemies = get_tree().get_nodes_in_group("enemy")
+	var enemies = AI.getEnemies("survivor")
 	var noOfEnemies = enemies.size()
 	
 	# Cap number of enemies
@@ -58,9 +58,26 @@ func _on_timerSpawn_timeout():
 	# Spawn enemy car
 	var spawnData = enemyCarArray[0]
 	var bodyCarEnemy = load_bodyCarEnemy.instance()
+	
+	# Set team name
+	if spawnData.has("team"):
+		bodyCarEnemy.team = spawnData["team"]
+	else:
+		bodyCarEnemy.team = "merc"
+	
+	# Configure
 	bodyCarEnemy.configure(Globals.getEnemyCarVariables(spawnData["carName"]))
+	
+	# Check if boss
+	if spawnData.has("boss"):
+		bodyCarEnemy.pain = 999
+	
+	# Spawn in random position
 	var spawnY = $camRoad.position.y
+	rng.randomize()
 	bodyCarEnemy.position = Vector2(rng.randf_range(250, 850), spawnY - 960 + rng.randi_range(0,1)*1920)
+	
+	# Add to scene
 	add_child(bodyCarEnemy)
 	enemyCarArray.remove(0)
 

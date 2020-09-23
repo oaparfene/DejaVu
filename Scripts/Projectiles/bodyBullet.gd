@@ -1,6 +1,6 @@
 extends "res://Scripts/Projectiles/classProjectile.gd"
 
-func _ready():
+func _init():
 	type = "ballistic"
 
 func impact(kinCollisionInfo):

@@ -42,14 +42,17 @@ func _ready():
 	health = maxHealth
 	mass *= 1 + float(armor)/100
 	Globals.resetInputs()
-	team = "player"
+	isPlayer = true
+	team = "survivor"
+	add_to_group("survivor")
+	add_to_group("player")
+	
+	setCollision()
 
 func _physics_process(delta):
 	
 	handleMovement(delta)
-	
 	Runway.get_node("areaMove/sprActual").position = 150 * actVector
-	
 	get_tree().call_group("gunsUI","updateUI",slots)
 
 func areaMove_changed(vector):
@@ -61,6 +64,15 @@ func fireGun(gunName):
 
 func ceaseGun(gunName):
 	slots[gunName]["fire"] = false
+
+func tryToShoot(gunName):
+	var target = Globals.target
+	if slots[gunName]["fire"] == true and slots[gunName]["timer"].time_left == 0 and target != null:
+		var projectiles = Guns.getGunBehaviour(slots[gunName],self,target)
+		for bulletData in projectiles:
+			get_parent().add_child(bulletData["projectile"])
+		slots[gunName]["sound"].play()
+		slots[gunName]["timer"].start()
 
 var inputKeys = [KEY_1,KEY_2,KEY_3,KEY_4]
 

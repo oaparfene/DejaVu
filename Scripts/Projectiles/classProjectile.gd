@@ -11,3 +11,9 @@ func _physics_process(delta):
 		if not "Border" in kinCollisionInfo.collider.name:
 			call("impact",kinCollisionInfo)
 		queue_free()
+
+func setCollision(team):
+	set_collision_layer_bit(Globals.projectileBits[type],true)
+	for otherTeam in Globals.teamBits:
+		if otherTeam != team:
+			set_collision_mask_bit(Globals.teamBits[otherTeam],true)
