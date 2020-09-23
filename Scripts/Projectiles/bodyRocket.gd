@@ -17,6 +17,6 @@ func impact(_kinCollisionInfo):
 		var prox = relVector.length()
 		if prox <= aoe:
 			entity.damage((1-prox/aoe)*(mass*speed))
-			entity.appliedForce += relVector.normalized()*speed*(1-prox/aoe)*70.0/(entity.mass)
+			entity.appliedForce += relVector.normalized()*speed*(1-prox/aoe)*20.0/(entity.mass)
 	queue_free()
 

@@ -1,6 +1,6 @@
 extends Node
 
-var roadSpeed = 500
+var roadSpeed = 1000
 var carVector = Vector2.ZERO
 var fire = false
 var target = null

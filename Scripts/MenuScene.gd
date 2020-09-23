@@ -28,7 +28,7 @@ func spawnCar():
 	var spawnData = Globals.getEnemyCarVariables(team)
 	var bodyCar = load("res://Scenes/Cars/bodyCarEnemy.tscn").instance()
 	bodyCar.team = team
-	bodyCar.configure(spawnData)
+	bodyCar.configure(spawnData,true)
 	
 	# Spawn in random position
 	var spawnY = rect_size.y/2

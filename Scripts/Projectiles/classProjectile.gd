@@ -17,3 +17,6 @@ func setCollision(team):
 	for otherTeam in Globals.teamBits:
 		if otherTeam != team:
 			set_collision_mask_bit(Globals.teamBits[otherTeam],true)
+
+func damage(_dmg):
+	pass

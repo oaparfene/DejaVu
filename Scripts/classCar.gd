@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var bodyBullet_load = preload("res://Scenes/Projectiles/bodyBullet.tscn")
+var death_load = preload("res://Scenes/death.tscn")
 
 var carVector = Vector2.ZERO		# Input movement vector
 var fireVector = Vector2.ZERO		# Shooting vector
@@ -89,6 +90,10 @@ func damage(dmg):
 	else:
 		if health <= 0:
 			Globals.levelMoney += money
+			var death = death_load.instance()
+			death.position = position
+			death.configure(mass,$sprCar.texture,actVector.x/3)
+			get_parent().add_child(death)
 			queue_free()
 	
 	$prgHealth.value = 100*(health/maxHealth)

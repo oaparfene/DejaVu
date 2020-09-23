@@ -18,7 +18,7 @@ func _ready():
 	rng.randomize()
 	$sndShot.pitch_scale = rng.randf_range(0.7,1.6)
 
-func configure(carData):
+func configure(carData,forMenu = false):
 	pain = carData["pain"]
 	for variable in carData:
 		set(variable,carData[variable])
@@ -26,8 +26,12 @@ func configure(carData):
 	for property in gunData:
 		if property in Globals.gunUpgrNameArray:
 			rng.randomize()
-			var chaosInt = rng.randi_range(-1,1)
-			var upgradeLevel = clamp(0, int(Globals.getCurrentLevel()["ID"]/1.5 + chaosInt - 1), 5)
+			var upgradeLevel
+			if forMenu:
+				upgradeLevel = rng.randi_range(0,5)
+			else:
+				var chaosInt = rng.randi_range(-1,1)
+				upgradeLevel = clamp(0, int(Globals.getCurrentLevel()["ID"]/1.5 + chaosInt - 1), 5)
 			#print(name," has ",property, " level ",str(upgradeLevel))
 			gunData[property] = gunData[property]["levels"][upgradeLevel]
 	$timerAttack.wait_time = gunData["firerate"]
@@ -50,6 +54,11 @@ func _physics_process(delta):
 	
 	$sprCar/sprTarget.visible = targetted
 	$sprState.texture = load("res://Assets/Icons/img_"+state+".png")
+	
+	if health/maxHealth < 0.50:
+		$partSmoke.emitting = true
+		if health/maxHealth < 0.25:
+			$partFire.emitting = true
 
 func tryToShoot():
 	target = AI.getTargetEntity(self,AI.getEnemies(team))

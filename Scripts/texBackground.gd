@@ -9,6 +9,6 @@ func _ready():
 
 func _physics_process(delta):
 	
-	rect_position.y += delta*810
+	rect_position.y += delta*Globals.roadSpeed
 	if rect_position.y > 0:
 		rect_position.y -= 810
