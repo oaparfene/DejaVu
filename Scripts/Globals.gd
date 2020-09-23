@@ -158,7 +158,7 @@ var guns = {
 	"shotgun":{
 		"displayName":"Combat Shotgun",
 		"unlockCost":500,
-		"speed":2400,
+		"speed":2000,
 		"firerate":	{"levels":[2, 1.8, 1.6, 1.4, 1.2, 1], 			"baseCost":75, 	"mod":1.15},
 		"accuracy":	{"levels":[1, 0.9, 0.8, 0.7, 0.6, 0.5],			"baseCost":90, 	"mod":1.15},
 		"damage":	{"levels":[100, 120, 140, 160, 180, 200], 		"baseCost":125, "mod":1.15},
