@@ -114,7 +114,7 @@ func calculateCollision(normal,other_actVelocity,other_mass):
 	var ourSpeed = -actVelocity.dot(normal)
 	var newSpeed = ( 1*other_mass*(colliderSpeed-ourSpeed) + mass*ourSpeed + other_mass*colliderSpeed )/( mass + other_mass )
 	var colliderImpulse = colliderSpeed * other_mass
-	if -colliderImpulse > mass*30: # Ignore small collisions
+	if -colliderImpulse > mass*20: # Ignore small collisions
 		appliedForce += newSpeed*(-normal)
 		#print(name," took ",-colliderImpulse," impact")
 		damage(-colliderImpulse/600)

@@ -1,7 +1,21 @@
 extends Node
 
 var states = ["shoot","evade","ram"]
+
+var newStates = {
+	"shoot":{"timer":false},
+	"evade":{"timer":2},
+	"ram":{"timer":3},
+	}
+
 #var states = ["evade","shoot"]
+
+var stateTable = {
+	"maintain":	{"maintain":0,	"shoot":0.7,	"evade":0,		"ram":0.3},
+	"shoot":	{"maintain":0,	"shoot":0,		"evade":0.3,	"ram":0.7},
+	"evade":	{"maintain":0,	"shoot":0.5,	"evade":0,		"ram":0.5},
+	"ram":		{"maintain":0,	"shoot":0.2,	"evade":0.8,	"ram":0},
+}
 
 var rng = RandomNumberGenerator.new()
 
@@ -72,30 +86,16 @@ func getBehaviour(bodyEntity,state):
 		
 		"maintain":
 			if bodyEntity.position.y - Globals.camPos.y < heights["top"]:
-				var collInfo = bodyEntity.move_and_collide(Vector2(0,1)*50,true,true,true)
-				if not collInfo:
-					new_carVector = Vector2(0,1)
-				else:
-					new_carVector = Vector2(0,-1)
+				new_carVector += Vector2(0,1)
 			elif bodyEntity.position.y - Globals.camPos.y > heights["bottom"]:
-				var collInfo = bodyEntity.move_and_collide(Vector2(0,-1)*50,true,true,true)
-				if not collInfo:
-					new_carVector = Vector2(0,-1)
-				else:
-					new_carVector = Vector2(0,1)
+				new_carVector += Vector2(0,-1)
 			
 			if bodyEntity.position.x - Globals.camPos.x < widths["left"]:
-				var collInfo = bodyEntity.move_and_collide(Vector2(1,0)*50,true,true,true)
-				if not collInfo:
-					new_carVector = Vector2(1,0)
-				else:
-					new_carVector = Vector2(-1,0)
+				new_carVector += Vector2(1,0)
 			elif bodyEntity.position.x - Globals.camPos.x > widths["right"]:
-				var collInfo = bodyEntity.move_and_collide(Vector2(-1,0)*50,true,true,true)
-				if not collInfo:
-					new_carVector = Vector2(-1,0)
-				else:
-					new_carVector = Vector2(1,0)
+				new_carVector += Vector2(-1,0)
+			
+			new_carVector = new_carVector.normalized()
 			
 			# If we're in view
 			if inView(bodyEntity):
@@ -126,19 +126,6 @@ func getClosestEntity(bodyEntity):
 			closest = entity
 	return closest
 
-func getNewState(bodyEntity,state=""):
-	rng.randomize()
-	var newState = ""
-	if not inView(bodyEntity):
-		newState = "maintain"
-	else:
-		var newStates = states.duplicate()
-		newStates.erase(state)
-		newState = newStates[rng.randi_range(0,newStates.size()-1)]
-		
-	#print(bodyEntity.name," is now in ",newState," mode")
-	return newState
-
 func inView(bodyEntity):
 	
 	if bodyEntity.position.y - Globals.camPos.y < heights["top"] or bodyEntity.position.y - Globals.camPos.y > heights["bottom"]:
@@ -147,6 +134,20 @@ func inView(bodyEntity):
 		return false
 	
 	return true
-	
+
+func getNewState(bodyEntity,state=""):
+	rng.randomize()
+	var newState = "maintain" # Default to maintain
+	if inView(bodyEntity):
+		rng.randomize()
+		var prob = rng.randf_range(0,1)
+		for potState in states:
+			prob -= stateTable[state][potState]
+			if prob < 0:
+				newState = potState
+				break
+		
+	#print(bodyEntity.name," is now in ",newState," mode")
+	return newState
 
 

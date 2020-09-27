@@ -13,7 +13,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.9717, 23.0475 )
 
-[node name="bodyCarEnemy" type="KinematicBody2D"]
+[node name="bodyCarAI" type="KinematicBody2D"]
 scale = Vector2( 4, 4 )
 z_as_relative = false
 input_pickable = true
@@ -80,7 +80,6 @@ process_mode = 0
 autostart = true
 
 [node name="prgHealth" parent="." instance=ExtResource( 4 )]
-visible = false
 mouse_filter = 2
 
 [node name="sprState" type="Sprite" parent="."]
@@ -91,5 +90,8 @@ texture = ExtResource( 6 )
 [node name="sndShot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -10.0
+
+[node name="timerState" type="Timer" parent="."]
+process_mode = 0
 [connection signal="input_event" from="." to="." method="_on_bodyCarEnemy_input_event"]
 [connection signal="timeout" from="timerAttack" to="." method="_on_timerAttack_timeout"]
