@@ -1,6 +1,5 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scenes/upgradeNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/weaponSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ThemeMain.tres" type="Theme" id=3]
 [ext_resource path="res://Scripts/Garage.gd" type="Script" id=4]
@@ -12,6 +11,7 @@
 [ext_resource path="res://Scripts/CameraCrib.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/objSkinDisplay.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/objSkinsTab.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Upgrades.gd" type="Script" id=13]
 
 [node name="CribInner" type="Control"]
 margin_right = 40.0
@@ -111,30 +111,15 @@ margin_right = -8.0
 margin_bottom = -8.0
 mouse_filter = 1
 tab_close_display_policy = 1
+script = ExtResource( 13 )
 
-[node name="upgradeEngine" parent="Garage/TabContainer/Upgrades" instance=ExtResource( 1 )]
-margin_left = 36.0406
-margin_top = 13.3484
-margin_right = 956.041
-margin_bottom = 143.348
-
-[node name="upgradeSteering" parent="Garage/TabContainer/Upgrades" instance=ExtResource( 1 )]
-margin_left = 35.9768
-margin_top = 145.924
-margin_right = 955.977
-margin_bottom = 275.924
-
-[node name="upgradeArmor" parent="Garage/TabContainer/Upgrades" instance=ExtResource( 1 )]
-margin_left = 36.9813
-margin_top = 419.213
-margin_right = 956.981
-margin_bottom = 549.213
-
-[node name="upgradeHandling" parent="Garage/TabContainer/Upgrades" instance=ExtResource( 1 )]
-margin_left = 37.4379
-margin_top = 280.447
-margin_right = 957.438
-margin_bottom = 410.447
+[node name="VBoxContainer" type="VBoxContainer" parent="Garage/TabContainer/Upgrades"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Gun Slots" type="Tabs" parent="Garage/TabContainer"]
 visible = false
@@ -195,6 +180,7 @@ slot = 3
 [node name="Skins" type="Tabs" parent="Garage/TabContainer" groups=[
 "skinUI",
 ]]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -315,34 +301,16 @@ margin_right = -8.0
 margin_bottom = -8.0
 mouse_filter = 1
 tab_close_display_policy = 1
-
-[node name="upgradeDamage" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
-margin_left = 36.0406
-margin_top = 13.3484
-margin_right = 956.041
-margin_bottom = 143.348
+script = ExtResource( 13 )
 cribLocation = 1
 
-[node name="upgradeAccuracy" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
-margin_left = 35.9768
-margin_top = 145.924
-margin_right = 955.977
-margin_bottom = 275.924
-cribLocation = 1
-
-[node name="upgradeMisc" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
-margin_left = 36.9813
-margin_top = 419.213
-margin_right = 956.981
-margin_bottom = 549.213
-cribLocation = 1
-
-[node name="upgradeFirerate" parent="GunShop/TabContainer/Upgrades" instance=ExtResource( 1 )]
-margin_left = 37.4379
-margin_top = 280.447
-margin_right = 957.438
-margin_bottom = 410.447
-cribLocation = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="GunShop/TabContainer/Upgrades"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Skins" type="Tabs" parent="GunShop/TabContainer"]
 visible = false

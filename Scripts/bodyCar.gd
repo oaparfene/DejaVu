@@ -20,6 +20,7 @@ func _ready():
 	for gunName in slots:
 		gunNames.append(gunName)
 		slots[gunName]["fire"] = false # Set fire to false
+		slots[gunName]["ammo"] = slots[gunName]["maxAmmo"]
 		
 		 # Create firerate timer
 		var timer = Timer.new()
@@ -66,6 +67,8 @@ func ceaseGun(gunName):
 	slots[gunName]["fire"] = false
 
 func tryToShoot(gunName):
+	if slots[gunName]["ammo"] == 0:
+		return
 	var target = Globals.target
 	if slots[gunName]["fire"] == true and slots[gunName]["timer"].time_left == 0 and target != null:
 		var projectiles = Guns.getGunBehaviour(slots[gunName],self,target)
@@ -73,6 +76,7 @@ func tryToShoot(gunName):
 			get_parent().add_child(bulletData["projectile"])
 		slots[gunName]["sound"].play()
 		slots[gunName]["timer"].start()
+		slots[gunName]["ammo"] -= 1
 
 var inputKeys = [KEY_1,KEY_2,KEY_3,KEY_4]
 
