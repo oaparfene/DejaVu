@@ -15,6 +15,7 @@ func updateUI(slots):
 	if gunName == "empty":
 		return
 	modulate = Color(1,1,1) * (1-slots[gunName]["timer"].time_left/slots[gunName]["timer"].wait_time)
+	get_node("../labAmmo").text = str(slots[gunName]["ammo"])
 
 func _on_btnFire_pressed():
 	get_tree().call_group("player","fireGun",Globals.getGunInSlotName(slot))

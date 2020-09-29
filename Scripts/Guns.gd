@@ -21,6 +21,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
+			bodyBullet.get_node("texBullet").texture = load("res://Assets/Guns/img_pistol_ammo.png")
 			bodyBullet.setCollision(bodyEntity.team)
 			projectiles.append({"projectile":bodyBullet,"delay":0})
 		
@@ -34,6 +35,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 				bodyBullet.rotation = bodyBullet.fireVector.angle()
 				bodyBullet.speed = gunData["speed"]
 				bodyBullet.mass = ( float(gunData["damage"])/float(gunData["speed"]) )/float(gunData["misc"])
+				bodyBullet.get_node("texBullet").texture = load("res://Assets/Guns/img_shotgun_ammo.png")
 				bodyBullet.setCollision(bodyEntity.team)
 				projectiles.append({"projectile":bodyBullet,"delay":0})
 		
@@ -45,6 +47,7 @@ func getGunBehaviour(gunData,bodyEntity,targetEntity):
 			bodyBullet.rotation = bodyBullet.fireVector.angle()
 			bodyBullet.speed = gunData["speed"]
 			bodyBullet.mass = float(gunData["damage"])/float(gunData["speed"])
+			bodyBullet.get_node("texBullet").texture = load("res://Assets/Guns/img_smg_ammo.png")
 			bodyBullet.setCollision(bodyEntity.team)
 			projectiles.append({"projectile":bodyBullet,"delay":0})
 		

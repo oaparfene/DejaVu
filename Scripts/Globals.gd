@@ -221,7 +221,7 @@ var guns = {
 		"speed":3000,
 		"firerate":	{"levels":[0.05, 0.045, 0.04, 0.035, 0.03, 0.025],"baseCost":2000,"mod":1.15},
 		"accuracy":	{"levels":[0.5, 0.4, 0.3, 0.2, 0.1, 0.05],		"baseCost":1500,"mod":1.15},
-		"damage":	{"levels":[5, 7, 9, 11, 13, 15], 				"baseCost":2250,"mod":1.15},
+		"damage":	{"levels":[10, 13, 16, 20, 24, 30], 				"baseCost":2250,"mod":1.15},
 		"maxAmmo":	{"levels":[50, 70, 100, 150, 200, 300], 				"baseCost":150, "mod":1.15},
 		"misc":		{"levels":[300,350,400,450,500,550], 			"baseCost":0,	"mod":1.15} # arc
 	}
@@ -234,7 +234,7 @@ var roadmap = [
 		"basePain": 2,
 		"enemyList": [
 			{"carName":"toad"},
-			{"carName":"toad", "team":"survivor"},
+			{"carName":"toad"},
 			{"carName":"toad"},
 		],
 		"background": "desert",
