@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Guns/img_smg_ammo.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 2 )
+extents = Vector2( 10, 4 )
 
 [node name="bodyBullet" type="KinematicBody2D"]
 show_behind_parent = true
