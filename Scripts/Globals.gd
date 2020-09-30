@@ -87,7 +87,28 @@ var skinNameDict = {
 		"goliath":{"costIRL":-1,"costCoins":100},
 		"ballzack":{"costIRL":1,"costCoins":100},
 		"dickinson":{"costIRL":1,"costCoins":100}
-	}
+	},
+	"pistol":{
+		"pistol":{"costIRL":-1,"costCoins":100}
+	},
+	"smg":{
+		"pistol":{"costIRL":-1,"costCoins":100}
+	},
+	"shotgun":{
+		"pistol":{"costIRL":-1,"costCoins":100}
+	},
+	"sniper":{
+		"pistol":{"costIRL":-1,"costCoins":100}
+	},
+	"rpg":{
+		"pistol":{"costIRL":-1,"costCoins":100}
+	},
+	"cannon":{
+		"pistol":{"costIRL":-1,"costCoins":100}
+	},
+	"minigun":{
+		"pistol":{"costIRL":-1,"costCoins":100}
+	},
 }
 
 var enemies = {
@@ -447,6 +468,9 @@ func initialiseCarUpgrades(carName):
 func initialiseGunUpgrades(gunName):
 	gunNameArray.append(gunName)
 	upgs[gunName] = {"unlocked":false,"firerate":0,"accuracy":0,"damage":0,"misc":0,"equippedSkin":gunName,"skinList":{}}
+	for skinName in skinNameDict[gunName]:
+		upgs[gunName]["skinList"][skinName] = 0 # 0 is locked, 1 is unlocked
+	upgs[gunName]["skinList"][gunName] = 1
 	gunUpgrNameArray = ["firerate","accuracy","damage","misc"]
 
 func getGunInSlotName(slot):

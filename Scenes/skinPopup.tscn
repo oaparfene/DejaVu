@@ -21,7 +21,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="vBox"]
-margin_right = 900.0
+margin_right = 892.0
 margin_bottom = 14.0
 text = "Skins:"
 align = 1
@@ -29,7 +29,7 @@ valign = 1
 
 [node name="gridCtn" type="GridContainer" parent="vBox"]
 margin_top = 18.0
-margin_right = 900.0
+margin_right = 892.0
 margin_bottom = 18.0
 custom_constants/vseparation = 20
 custom_constants/hseparation = 20

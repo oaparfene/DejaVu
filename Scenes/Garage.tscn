@@ -33,6 +33,7 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="CribInner" parent="ctnViewport/Viewport" instance=ExtResource( 1 )]
+follow_viewport_enable = true
 
 [node name="contButtons" parent="." instance=ExtResource( 4 )]
 margin_bottom = 90.0

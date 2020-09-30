@@ -1,7 +1,7 @@
 extends Tabs
 
 var skinName
-var carName
+var gunName
 
 var skinPopup
 
@@ -9,12 +9,12 @@ var load_skinPopup = preload("res://Scenes/skinPopup.tscn")
 var load_purchasePopup = preload("res://Scenes/purchasePopup.tscn")
 
 func _ready():
-	carName = Globals.getCarName()
-	skinName = carName
+	gunName = Globals.getGunName()
+	skinName = gunName
 
 func _on_objSkinDisplay_pressed():
 	skinPopup = load_skinPopup.instance()
-	skinPopup.setItemType("car")
+	skinPopup.setItemType("gun")
 	add_child(skinPopup)
 	skinPopup.popup_centered()
 
@@ -24,16 +24,16 @@ func setSkin(input_skinName):
 	get_tree().call_group("unlockUI","updateUI")
 
 func updateUI():
-	if carName != Globals.getCarName():
-		carName = Globals.getCarName()
-		skinName = carName
-		get_parent().get_parent().get_node("texCar").texture = load("res://Assets/Cars/img_" + skinName + ".png")
+	if gunName != Globals.getGunName():
+		gunName = Globals.getGunName()
+		skinName = gunName
+		get_parent().get_parent().get_node("texGun").texture = load("res://Assets/Guns/img_" + skinName + ".png")
 	
 	$labSkinName.text = skinName
-	$objSkinDisplay/Sprite.texture = load("res://Assets/Cars/img_" + skinName + ".png")
-	
-	if Globals.upgs[carName]["skinList"][skinName] == 1:
-		Globals.setSkin(carName, skinName)
+	$objSkinDisplay/Sprite.texture = load("res://Assets/Guns/img_" + skinName + ".png")
+
+	if Globals.upgs[gunName]["skinList"][skinName] == 1:
+		Globals.setSkin(gunName, skinName)
 		$btnSkin.text = "equipped"
 		$btnSkin.disabled = true
 	else:
@@ -42,8 +42,8 @@ func updateUI():
 
 
 func _on_btnSkin_pressed():
-	var resPath = "res://Assets/Cars/img_" + skinName + ".png"
+	var resPath = "res://Assets/Guns/img_" + skinName + ".png"
 	var purchasePopup = load_purchasePopup.instance()
-	purchasePopup.configure(resPath, skinName, Globals.getSkinCostIRL(carName, skinName), Globals.getSkinCostCoins(carName, skinName), carName)
+	purchasePopup.configure(resPath, skinName, Globals.getSkinCostIRL(gunName, skinName), Globals.getSkinCostCoins(gunName, skinName), gunName)
 	add_child(purchasePopup)
 	purchasePopup.popup_centered()
