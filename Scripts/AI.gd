@@ -60,9 +60,9 @@ func getBehaviour(bodyEntity,state):
 			bodyEntity.fire = true
 			
 			# If we're out of ammo
-			if bodyEntity.ammo == 0:
+			if bodyEntity.gunData["ammo"] == 0:
 				bodyEntity.state = getNewState(bodyEntity,"shoot")
-				bodyEntity.ammo = bodyEntity.maxAmmo
+				bodyEntity.reload()
 		
 		"ram":
 			bodyEntity.target = targetEntity

@@ -12,10 +12,10 @@
 [ext_resource path="res://Scripts/prgHealth.gd" type="Script" id=14]
 [ext_resource path="res://Assets/img_safe.png" type="Texture" id=15]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 120, 105 )
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 424.261
 
 [node name="Runway" type="Control"]
@@ -95,8 +95,18 @@ texture = ExtResource( 8 )
 [node name="btnFire" type="TouchScreenButton" parent="areaAttack/contFire/objFire0" groups=[
 "gunsUI",
 ]]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 script = ExtResource( 7 )
+
+[node name="labAmmo" type="Label" parent="areaAttack/contFire/objFire0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="objFire1" type="Button" parent="areaAttack/contFire"]
 margin_left = 247.0
@@ -119,9 +129,19 @@ texture = ExtResource( 8 )
 [node name="btnFire" type="TouchScreenButton" parent="areaAttack/contFire/objFire1" groups=[
 "gunsUI",
 ]]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 script = ExtResource( 7 )
 slot = 1
+
+[node name="labAmmo" type="Label" parent="areaAttack/contFire/objFire1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="objFire2" type="Button" parent="areaAttack/contFire"]
 margin_top = 217.0
@@ -144,9 +164,19 @@ texture = ExtResource( 8 )
 [node name="btnFire" type="TouchScreenButton" parent="areaAttack/contFire/objFire2" groups=[
 "gunsUI",
 ]]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 script = ExtResource( 7 )
 slot = 2
+
+[node name="labAmmo" type="Label" parent="areaAttack/contFire/objFire2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="objFire3" type="Button" parent="areaAttack/contFire"]
 margin_left = 247.0
@@ -170,9 +200,19 @@ texture = ExtResource( 8 )
 [node name="btnFire" type="TouchScreenButton" parent="areaAttack/contFire/objFire3" groups=[
 "gunsUI",
 ]]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 script = ExtResource( 7 )
 slot = 3
+
+[node name="labAmmo" type="Label" parent="areaAttack/contFire/objFire3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="areaMove" type="Area2D" parent="."]
 position = Vector2( 250, 1686 )
@@ -195,7 +235,7 @@ __meta__ = {
 
 [node name="shapeCircle" type="CollisionShape2D" parent="areaMove"]
 visible = false
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="sprActual" type="Sprite" parent="areaMove"]
 scale = Vector2( 0.4, 0.4 )

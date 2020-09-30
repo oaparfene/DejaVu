@@ -16,6 +16,7 @@ margin_right = 800.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 920, 130 )
 mouse_filter = 2
+size_flags_horizontal = 3
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -23,9 +24,8 @@ __meta__ = {
 }
 
 [node name="labName" type="Label" parent="."]
+anchor_right = 0.25
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_right = 200.0
 custom_fonts/font = SubResource( 1 )
 text = "Engine:"
 align = 1
@@ -35,33 +35,38 @@ __meta__ = {
 }
 
 [node name="texLevel" type="TextureRect" parent="."]
-anchor_right = 1.0
+anchor_left = 0.25
+anchor_right = 0.6
 anchor_bottom = 1.0
-margin_left = 255.811
-margin_top = 19.946
-margin_right = -536.189
-margin_bottom = -57.054
-rect_scale = Vector2( 2, 2 )
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
 mouse_filter = 2
 texture = ExtResource( 4 )
-stretch_mode = 5
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnUpg" type="Button" parent="."]
-margin_left = 521.084
-margin_top = 21.0594
-margin_right = 801.084
-margin_bottom = 111.059
-rect_min_size = Vector2( 280, 90 )
+anchor_left = 0.6
+anchor_right = 0.85
+anchor_bottom = 1.0
+margin_top = 16.0
+margin_bottom = -16.0
 text = "100$"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btnInfo" type="Button" parent="."]
-margin_left = 815.786
-margin_top = 21.1892
-margin_right = 905.786
-margin_bottom = 111.189
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -114.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
 rect_min_size = Vector2( 90, 90 )
 text = "I"
 __meta__ = {

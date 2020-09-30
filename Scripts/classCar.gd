@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-var bodyBullet_load = preload("res://Scenes/Projectiles/bodyBullet.tscn")
 var death_load = preload("res://Scenes/death.tscn")
 
 var carVector = Vector2.ZERO		# Input movement vector
@@ -14,17 +13,17 @@ var prevPos = Vector2.ZERO			# Last car position in _physics_process(delta)
 var collidedThisTick = false		# Have we collided with a car this _physics_process(delta)
 var appliedForce = Vector2.ZERO		# Any collision force being applied
 
-var team
-var isPlayer = false
+var team: String
+var isPlayer: bool = false
 
 var carName:String
 var health:float
 var mass:float
 var maxHealth:float
 var engine:float
-var steering:float
 var handling:float
 var armor:float
+var turnRatio:float
 var slots:Dictionary
 var gunNames:Array
 var skinName:String
@@ -52,7 +51,7 @@ func handleMovement(delta):
 	appliedForce += (Vector2.ZERO - appliedForce)*delta
 	
 	velocity.y = actVector.y*engine*(1+int(velocity.y > 0)*0.40)
-	velocity.x = actVector.x*steering
+	velocity.x = actVector.x*engine*turnRatio
 	velocity += appliedForce
 	
 	var _returnedVelocity = move_and_slide(velocity)
