@@ -92,22 +92,22 @@ var skinNameDict = {
 		"pistol":{"costIRL":-1,"costCoins":100}
 	},
 	"smg":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"smg":{"costIRL":-1,"costCoins":100}
 	},
 	"shotgun":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"shotgun":{"costIRL":-1,"costCoins":100}
 	},
 	"sniper":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"sniper":{"costIRL":-1,"costCoins":100}
 	},
 	"rpg":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"rpg":{"costIRL":-1,"costCoins":100}
 	},
 	"cannon":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"cannon":{"costIRL":-1,"costCoins":100}
 	},
 	"minigun":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"minigun":{"costIRL":-1,"costCoins":100}
 	},
 }
 

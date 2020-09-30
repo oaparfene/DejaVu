@@ -10,13 +10,14 @@ var load_purchasePopup = preload("res://Scenes/purchasePopup.tscn")
 
 func _ready():
 	gunName = Globals.getGunName()
-	skinName = gunName
+	skinName = Globals.getItemSkin(gunName)
 
 func _on_objSkinDisplay_pressed():
 	skinPopup = load_skinPopup.instance()
 	skinPopup.setItemType("gun")
 	add_child(skinPopup)
 	skinPopup.popup_centered()
+	skinPopup.rect_position += Vector2(1080, 0)
 
 func setSkin(input_skinName):
 	skinName = input_skinName
@@ -26,7 +27,7 @@ func setSkin(input_skinName):
 func updateUI():
 	if gunName != Globals.getGunName():
 		gunName = Globals.getGunName()
-		skinName = gunName
+		skinName = Globals.getItemSkin(gunName)
 		get_parent().get_parent().get_node("texGun").texture = load("res://Assets/Guns/img_" + skinName + ".png")
 	
 	$labSkinName.text = skinName
