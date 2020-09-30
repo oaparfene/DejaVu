@@ -704,14 +704,17 @@ func upgradeAll():
 
 # SKINS
 
-func setSkin(itemName, skinName):
-	upgs[itemName]["equippedSkin"] = skinName
+func setSkin(objName, skinName):
+	upgs[objName]["equippedSkin"] = skinName
 
-func getSkinCostCoins(itemName, skinName):
-	return skinNameDict[itemName][skinName]["costCoins"]
+func getItemSkin(objName):
+	return upgs[objName]["equippedSkin"]
 
-func getSkinCostIRL(itemName, skinName):
-	return skinNameDict[itemName][skinName]["costIRL"]
+func getSkinCostCoins(objName, skinName):
+	return skinNameDict[objName][skinName]["costCoins"]
+
+func getSkinCostIRL(objName, skinName):
+	return skinNameDict[objName][skinName]["costIRL"]
 
 
 
