@@ -1,12 +1,12 @@
 extends Panel
 
-var upgName
-export var cribLocation:int
+var upgName: String
+var cribLocation: int
 
-func _ready():
-	upgName = name.right(7)
+func configure(location,upgName_pass):
+	upgName = upgName_pass
+	cribLocation = location
 	$labName.text = upgName + ":"
-	upgName = upgName.to_lower()
 	updateUI()
 
 func _on_btnUpg_pressed():

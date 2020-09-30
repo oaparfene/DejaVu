@@ -7,8 +7,6 @@ var fire = false
 var targetted = false
 var target = null
 
-var maxAmmo: int
-var ammo: int
 var pain: int
 var gunName: String
 var gunData: Dictionary
@@ -19,9 +17,10 @@ func _ready():
 	$sndShot.pitch_scale = rng.randf_range(0.7,1.6)
 
 func configure(carData,forMenu = false):
-	pain = carData["pain"]
+	# General Configure
 	for variable in carData:
 		set(variable,carData[variable])
+	# Gun configure
 	gunData["gunName"] = gunName
 	for property in gunData:
 		if property in Globals.gunUpgrNameArray:
@@ -34,13 +33,15 @@ func configure(carData,forMenu = false):
 				upgradeLevel = clamp(0, int(Globals.getCurrentLevel()["ID"]/1.5 + chaosInt - 1), 5)
 			#print(name," has ",property, " level ",str(upgradeLevel))
 			gunData[property] = gunData[property]["levels"][upgradeLevel]
+	reload()
 	$timerAttack.wait_time = gunData["firerate"]
 	$sndShot.stream = load("res://Assets/Sounds/snd_"+str(gunName)+".wav")
 	$sndShot.volume_db = -30
 	health = maxHealth
 	$sprCar.texture = load("res://Assets/Cars/img_"+carName+".png")
+	# Set team
 	add_to_group(team)
-	
+	# Set collision data
 	setCollision()
 
 func _physics_process(delta):
@@ -67,7 +68,7 @@ func tryToShoot():
 		get_parent().add_child(bulletData["projectile"])
 	$sndShot.play()
 	$timerAttack.start()
-	ammo -= 1
+	gunData["ammo"] -= 1
 
 
 func _on_timerAttack_timeout():
@@ -80,3 +81,6 @@ func _on_bodyCarEnemy_input_event(_viewport, event, _shape_idx):
 	if event is InputEventScreenTouch:
 		
 		Globals.setTarget(self)
+
+func reload():
+	gunData["ammo"] = gunData["maxAmmo"]
