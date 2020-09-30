@@ -483,9 +483,9 @@ func initialiseGunUpgrades(gunName):
 			upgs[gunName][upgName] = 0 # Init its upgrade index
 			gunUpgrNameArray.append(upgName)
 	# Now we want to initialise the skin data
-#	for skinName in skinNameDict[gunName]:
-#		upgs[gunName]["skinList"][skinName] = 0 # 0 is locked, 1 is unlocked
-#	upgs[gunName]["skinList"][gunName] = 1
+	for skinName in skinNameDict[gunName]:
+		upgs[gunName]["skinList"][skinName] = 0 # 0 is locked, 1 is unlocked
+	upgs[gunName]["skinList"][gunName] = 1
 
 func getGunInSlotName(slot):
 	if slot < getMaxSlots():

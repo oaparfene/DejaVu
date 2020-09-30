@@ -1,6 +1,7 @@
 extends Tabs
 
 onready var upgradeNode_load = preload("res://Scenes/upgradeNode.tscn")
+onready var vBoxContainer = get_node("VBoxContainer")
 
 export(int) var cribLocation
 
@@ -14,4 +15,4 @@ func _ready():
 	for upgName in upgNames:
 		var upgradeNode = upgradeNode_load.instance()
 		upgradeNode.configure(cribLocation,upgName)
-		$VBoxContainer.add_child(upgradeNode)
+		vBoxContainer.add_child(upgradeNode)
