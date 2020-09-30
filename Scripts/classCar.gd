@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 var death_load = preload("res://Scenes/death.tscn")
+var objLoot_load = preload("res://Scenes/objLoot.tscn")
+
+var rng = RandomNumberGenerator.new()
 
 var carVector = Vector2.ZERO		# Input movement vector
 var fireVector = Vector2.ZERO		# Shooting vector
@@ -12,6 +15,8 @@ var actVelocity = Vector2.ZERO		# Actual velocity of the car
 var prevPos = Vector2.ZERO			# Last car position in _physics_process(delta)
 var collidedThisTick = false		# Have we collided with a car this _physics_process(delta)
 var appliedForce = Vector2.ZERO		# Any collision force being applied
+var lootProb = 0.15
+var isDead = false
 
 var team: String
 var isPlayer: bool = false
@@ -36,6 +41,8 @@ func _ready():
 func setCollision():
 	set_collision_layer_bit(Globals.teamBits[team],true)
 	set_collision_mask_bit(9,true)
+	if isPlayer:
+		set_collision_mask_bit(5,true)
 	for otherTeam in Globals.teamBits:
 		set_collision_mask_bit(Globals.teamBits[otherTeam],true)
 
@@ -61,15 +68,28 @@ func handleMovement(delta):
 	if noOfCollisions > 0:
 		kinCollisionInfo = get_slide_collision(noOfCollisions-1)
 		if kinCollisionInfo: # If we collided
-			if "Car" in kinCollisionInfo.collider.name:
+			var entity = kinCollisionInfo.collider
+			var entityName = entity.name
+			if "Car" in entityName:
 				carCollision(kinCollisionInfo)
-			elif "Lose" in kinCollisionInfo.collider.name and isPlayer:
+			elif "Lose" in entityName and isPlayer:
 				var _currentScene = get_tree().change_scene("res://Scenes/GameOver.tscn")
+			elif "Loot" in entityName:
+				var ammoType = entity.ammoType
+				entity.queue_free()
+				gainAmmo(ammoType)
 	
 	$sprBro.rotation = fireVector.angle() # Update bro's aiming position
 	$sprCar.rotation = actVector.x/3 # Handle rotation
 	
 	return kinCollisionInfo
+
+func gainAmmo(gunName):
+	rng.randomize()
+	var amount = rng.randfn(slots[gunName]["maxAmmo"]/3,slots[gunName]["maxAmmo"]/8)
+	print("Gained ",amount," ",gunName," ammo!")
+	amount = clamp(ceil(amount),0,slots[gunName]["maxAmmo"]-slots[gunName]["ammo"])
+	slots[gunName]["ammo"] += amount
 
 func damage(dmg):
 	
@@ -82,20 +102,32 @@ func damage(dmg):
 	var damage = ( (1-armor/100.0)*dmg )
 	health -= damage
 	
-	if isPlayer:
-		get_tree().call_group("healthUI","updateUI",health,maxHealth)
-		if health <= 0:
-			var _currentScene = get_tree().change_scene("res://Scenes/GameOver.tscn")
-	else:
-		if health <= 0:
-			Globals.levelMoney += money
-			var death = death_load.instance()
-			death.position = position
-			death.configure(mass,$sprCar.texture,actVector.x/3)
-			get_parent().add_child(death)
-			queue_free()
-	
 	$prgHealth.value = 100*(health/maxHealth)
+	
+	if isPlayer:
+			get_tree().call_group("healthUI","updateUI",health,maxHealth)
+	
+	if health > 0 or isDead:
+		return
+	else:
+		isDead = true
+	
+	if isPlayer:
+		var _currentScene = get_tree().change_scene("res://Scenes/GameOver.tscn")
+	else:
+		Globals.levelMoney += money
+		var death = death_load.instance()
+		death.position = position
+		death.configure(mass,$sprCar.texture,actVector.x/3)
+		get_parent().add_child(death)
+		
+		if rng.randf_range(0,1) <= lootProb:
+			var objLoot = objLoot_load.instance()
+			objLoot.position = position
+			get_parent().add_child(objLoot)
+		
+		queue_free()
+	
 	#print(name," took ",damage," dmg")
 
 
