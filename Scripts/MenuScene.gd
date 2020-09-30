@@ -8,6 +8,7 @@ var teams = [
 	"virtue","toad","viper","toad",
 	"virtue","toad","toad","virtue",
 	"toad","baron"]
+
 var turn = 0
 var rng = RandomNumberGenerator.new()
 
