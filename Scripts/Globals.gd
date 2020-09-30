@@ -92,22 +92,22 @@ var skinNameDict = {
 		"pistol":{"costIRL":-1,"costCoins":100}
 	},
 	"smg":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"smg":{"costIRL":-1,"costCoins":100}
 	},
 	"shotgun":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"shotgun":{"costIRL":-1,"costCoins":100}
 	},
 	"sniper":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"sniper":{"costIRL":-1,"costCoins":100}
 	},
 	"rpg":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"rpg":{"costIRL":-1,"costCoins":100}
 	},
 	"cannon":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"cannon":{"costIRL":-1,"costCoins":100}
 	},
 	"minigun":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"minigun":{"costIRL":-1,"costCoins":100}
 	},
 }
 
@@ -704,14 +704,17 @@ func upgradeAll():
 
 # SKINS
 
-func setSkin(itemName, skinName):
-	upgs[itemName]["equippedSkin"] = skinName
+func setSkin(objName, skinName):
+	upgs[objName]["equippedSkin"] = skinName
 
-func getSkinCostCoins(itemName, skinName):
-	return skinNameDict[itemName][skinName]["costCoins"]
+func getItemSkin(objName):
+	return upgs[objName]["equippedSkin"]
 
-func getSkinCostIRL(itemName, skinName):
-	return skinNameDict[itemName][skinName]["costIRL"]
+func getSkinCostCoins(objName, skinName):
+	return skinNameDict[objName][skinName]["costCoins"]
+
+func getSkinCostIRL(objName, skinName):
+	return skinNameDict[objName][skinName]["costIRL"]
 
 
 

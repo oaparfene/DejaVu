@@ -8,11 +8,9 @@ func setItemType(input_itemType):
 	if input_itemType == "car": 
 		itemType = "Cars"
 		activeItemName = Globals.getCarName()
-		#rect_position = Vector2(80, 0)
 	else:
 		itemType = "Guns"
 		activeItemName = Globals.getGunName()
-		#rect_position = Vector2(80, 0) 
 
 func _on_skinPopup_about_to_show():
 	for skinName in Globals.skinNameDict[activeItemName]:
