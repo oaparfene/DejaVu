@@ -10,7 +10,6 @@ var target = null
 var pain: int
 var gunName: String
 var gunData: Dictionary
-var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
