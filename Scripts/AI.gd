@@ -103,6 +103,10 @@ func getBehaviour(bodyEntity,state):
 	
 	bodyEntity.carVector = new_carVector
 	bodyEntity.fireVector = new_fireVector
+	
+	if not inView(bodyEntity):
+		bodyEntity.state = "maintain"
+		bodyEntity.reload()
 
 func getTargetEntity(bodyEntity,enemyEntities):
 	if enemyEntities.empty():
