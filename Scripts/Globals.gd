@@ -155,7 +155,7 @@ var enemies = {
 		"armor":25,
 		"handling":2,
 		"turnRatio":0.3,
-		"mass":300,
+		"mass":80,
 		"pain":8,
 		"gunName":"rpg"
 	},

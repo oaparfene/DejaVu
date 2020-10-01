@@ -12,7 +12,7 @@ func _ready():
 	tween.start()
 
 func configure(mass,carTexture,carRotation):
-	$sprExplosion.scale = (30/mass) * Vector2.ONE * 5
+	$sprExplosion.scale = (5 + mass/8) * Vector2.ONE
 	$sprCar.texture = carTexture
 	$sprCar.rotation = carRotation
 
