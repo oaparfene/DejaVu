@@ -11,5 +11,8 @@ func _on_btnReset_pressed():
 	cribInner.get_node("GunShop").updateUI()
 
 func _on_btnPlay_pressed():
+	if !Globals.useEnergy(1):
+		print("not enough energy") # prompt to watch ad
+		return
 	if Globals.getUnlocked():
 		var _currentScene = get_tree().change_scene("res://Scenes/Roadmap.tscn")

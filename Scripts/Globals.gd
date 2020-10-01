@@ -21,6 +21,9 @@ var gunUpgrNameArray = []
 var money = 0
 var levelMoney = 0
 
+var energy = 0
+var maxEnergy = 5
+
 # DEV MODE
 
 var autoTarget = false
@@ -413,6 +416,7 @@ func initialiseData():
 		levelUnlocks.append(false)
 	levelUnlocks[0] = true
 	money = 0
+	energy = maxEnergy
 
 func getCarVariables(carName = getCarName()):
 	var carData = {}
@@ -716,6 +720,21 @@ func getSkinCostCoins(objName, skinName):
 func getSkinCostIRL(objName, skinName):
 	return skinNameDict[objName][skinName]["costIRL"]
 
+
+
+# Energy
+
+func getMaxEnergy():
+	return maxEnergy
+
+func getEnergy():
+	return energy
+
+func useEnergy(amount):
+	if energy < amount:
+		return false
+	energy -= amount
+	return true
 
 
 # IAPs
