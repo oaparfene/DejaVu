@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/3.png-6c8ad9d25684dbe5b883f922dc8cfa7c.stex"
+path="res://.import/img_lootDrop.png-3bc5e6c5b798e5e4a689538a234338ad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/blast/3.png"
-dest_files=[ "res://.import/3.png-6c8ad9d25684dbe5b883f922dc8cfa7c.stex" ]
+source_file="res://Assets/img_lootDrop.png"
+dest_files=[ "res://.import/img_lootDrop.png-3bc5e6c5b798e5e4a689538a234338ad.stex" ]
 
 [params]
 

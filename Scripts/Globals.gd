@@ -46,27 +46,27 @@ var cars = {
 	"vice":{
 		"displayName": "Vice",
 		"maxHealth":800,
-		"unlockCost":1500,
+		"unlockCost":5000,
 		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":200, 	"mod":1.15},
 		"handling":	{"levels":[3, 3.2, 3.4, 3.6, 3.8, 4], 			"baseCost":225, 	"mod":1.10},
 		"armor":	{"levels":[5, 10, 15, 20, 25, 30], 				"baseCost":250, 	"mod":1.10},
 		"turnRatio":0.7,
 		"slots":4,
-		"mass":40},
+		"mass":30},
 	"manta":{
 		"displayName": "Manta",
 		"maxHealth":1000,
-		"unlockCost":4000,
+		"unlockCost":12000,
 		"engine":	{"levels":[800, 850, 900, 950, 1000, 1050], 	"baseCost":400, 	"mod":1.15},
 		"handling":	{"levels":[4, 4.2, 4.4, 4.6, 4.8, 5], 			"baseCost":425, 	"mod":1.10},
 		"armor":	{"levels":[0, 4, 8, 12, 16, 20], 				"baseCost":450, 	"mod":1.10},
 		"turnRatio":0.9,
 		"slots":4,
-		"mass":60},
+		"mass":25},
 	"goliath":{
 		"displayName": "Goliath",
 		"maxHealth":2000,
-		"unlockCost":10000,
+		"unlockCost":40000,
 		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":600, 	"mod":1.15},
 		"handling":	{"levels":[1, 1.2, 1.4, 1.6, 1.8, 2], 			"baseCost":625, 	"mod":1.10},
 		"armor":	{"levels":[25, 30, 35, 40, 45, 50], 			"baseCost":650, 	"mod":1.10},
@@ -186,9 +186,9 @@ var guns = {
 		"displayName":"Uzi",
 		"unlockCost":2400,
 		"speed":1600,
-		"firerate":	{"levels":[0.3, 0.25, 0.2, 0.15, 0.10, 0.05], 	"baseCost":200, "mod":1.15},
+		"firerate":	{"levels":[0.15, 0.13, 0.11, 0.09, 0.07, 0.05], 	"baseCost":200, "mod":1.15},
 		"accuracy":	{"levels":[0.6, 0.5, 0.4, 0.3, 0.2, 0.1],		"baseCost":150, "mod":1.15},
-		"damage":	{"levels":[5, 8, 11, 14, 17, 20], 				"baseCost":250, "mod":1.15},
+		"damage":	{"levels":[3, 5, 7, 9, 12, 15], 				"baseCost":250, "mod":1.15},
 		"maxAmmo":	{"levels":[24, 36, 48, 60, 90, 120], 				"baseCost":150, "mod":1.15},
 		"misc":		{"levels":[1.05,1.10,1.15,1.20,1.25,1.30], 		"baseCost":0, 	"mod":1.15} # ricochet
 	},
@@ -262,7 +262,7 @@ var roadmap = [
 			{"carName":"toad"},
 		],
 		"background": "desert",
-		"reward": 500
+		"reward": 250
 	},
 	
 	{
@@ -277,7 +277,7 @@ var roadmap = [
 			{"carName":"virtue", "boss":true}
 		],
 		"background": "desert",
-		"reward": 1000
+		"reward": 500
 	},
 	
 	{
@@ -293,7 +293,7 @@ var roadmap = [
 			{"carName":"virtue"}
 		],
 		"background": "forest",
-		"reward": 1500
+		"reward": 600
 	},
 	
 	{
@@ -310,7 +310,7 @@ var roadmap = [
 			{"carName":"viper", "boss":true}
 		],
 		"background": "forest",
-		"reward": 2000
+		"reward": 800
 	},
 	
 	{
@@ -328,7 +328,7 @@ var roadmap = [
 			{"carName":"viper"},
 		],
 		"background": "snow",
-		"reward": 2500
+		"reward": 1000
 	},
 	
 	{
@@ -346,7 +346,7 @@ var roadmap = [
 			{"carName":"baron", "boss":true},
 		],
 		"background": "snow",
-		"reward": 3000
+		"reward": 1300
 	},
 	
 	{
@@ -365,7 +365,7 @@ var roadmap = [
 			{"carName":"baron"},
 		],
 		"background": "night",
-		"reward": 5000
+		"reward": 1500
 	},
 ]
 

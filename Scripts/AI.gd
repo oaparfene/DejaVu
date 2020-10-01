@@ -63,6 +63,10 @@ func getBehaviour(bodyEntity,state):
 			if bodyEntity.gunData["ammo"] == 0:
 				bodyEntity.state = getNewState(bodyEntity,"shoot")
 				bodyEntity.reload()
+			
+			if not inView(bodyEntity):
+				bodyEntity.state = "maintain"
+				bodyEntity.reload()
 		
 		"ram":
 			bodyEntity.target = targetEntity
@@ -103,10 +107,6 @@ func getBehaviour(bodyEntity,state):
 	
 	bodyEntity.carVector = new_carVector
 	bodyEntity.fireVector = new_fireVector
-	
-	if not inView(bodyEntity):
-		bodyEntity.state = "maintain"
-		bodyEntity.reload()
 
 func getTargetEntity(bodyEntity,enemyEntities):
 	if enemyEntities.empty():

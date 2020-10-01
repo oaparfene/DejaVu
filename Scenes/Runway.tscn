@@ -86,11 +86,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sprWeapon" type="Sprite" parent="areaAttack/contFire/objFire0"]
-position = Vector2( 100, 100 )
-rotation = -0.785398
-scale = Vector2( 4, 4 )
+[node name="sprWeapon" type="TextureRect" parent="areaAttack/contFire/objFire0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
 texture = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btnFire" type="TouchScreenButton" parent="areaAttack/contFire/objFire0" groups=[
 "gunsUI",
@@ -120,11 +127,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sprWeapon" type="Sprite" parent="areaAttack/contFire/objFire1"]
-position = Vector2( 100, 100 )
-rotation = -0.785398
-scale = Vector2( 4, 4 )
+[node name="sprWeapon" type="TextureRect" parent="areaAttack/contFire/objFire1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
 texture = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btnFire" type="TouchScreenButton" parent="areaAttack/contFire/objFire1" groups=[
 "gunsUI",
@@ -155,11 +169,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sprWeapon" type="Sprite" parent="areaAttack/contFire/objFire2"]
-position = Vector2( 100, 100 )
-rotation = -0.785398
-scale = Vector2( 4, 4 )
+[node name="sprWeapon" type="TextureRect" parent="areaAttack/contFire/objFire2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
 texture = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btnFire" type="TouchScreenButton" parent="areaAttack/contFire/objFire2" groups=[
 "gunsUI",
@@ -191,11 +212,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sprWeapon" type="Sprite" parent="areaAttack/contFire/objFire3"]
-position = Vector2( 100, 100 )
-rotation = -0.785398
-scale = Vector2( 4, 4 )
+[node name="sprWeapon" type="TextureRect" parent="areaAttack/contFire/objFire3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
 texture = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btnFire" type="TouchScreenButton" parent="areaAttack/contFire/objFire3" groups=[
 "gunsUI",
