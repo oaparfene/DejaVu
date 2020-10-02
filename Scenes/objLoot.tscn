@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Guns/img_pistol.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/objLoot.gd" type="Script" id=2]
+[ext_resource path="res://Assets/img_lootDrop.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
@@ -26,7 +27,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="texLoot"]
+[node name="texBox" type="TextureRect" parent="texLoot"]
 show_behind_parent = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -36,6 +37,8 @@ margin_left = -40.0
 margin_top = -40.0
 margin_right = 40.0
 margin_bottom = 40.0
+texture = ExtResource( 3 )
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

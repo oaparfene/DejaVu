@@ -106,6 +106,12 @@ func damage(dmg):
 	
 	if isPlayer:
 			get_tree().call_group("healthUI","updateUI",health,maxHealth)
+	else:
+		$twnDamage.interpolate_property(
+			self,"modulate",Color(1,0,0), Color(1,1,1),
+			0.2,Tween.TRANS_LINEAR,Tween.EASE_IN
+		)
+		$twnDamage.start()
 	
 	if health > 0 or isDead:
 		return
@@ -118,6 +124,8 @@ func damage(dmg):
 		Globals.levelMoney += money
 		var death = death_load.instance()
 		death.position = position
+		rng.randomize()
+		death.get_node("sprExplosion").rotation_degrees = rng.randi_range(0,360)
 		death.configure(mass,$sprCar.texture,actVector.x/3)
 		get_parent().add_child(death)
 		

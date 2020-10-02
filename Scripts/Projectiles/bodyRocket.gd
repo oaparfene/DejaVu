@@ -10,7 +10,8 @@ func _init():
 func impact(_kinCollisionInfo):
 	var sprExplosion = sprExplosion_load.instance()
 	sprExplosion.position = position
-	sprExplosion.scale = Vector2.ONE * (aoe/500)
+	sprExplosion.rotation_degrees += rotation_degrees
+	sprExplosion.scale = Vector2.ONE * (aoe/64)
 	get_parent().add_child(sprExplosion)
 	for entity in get_tree().get_nodes_in_group("car"):
 		var relVector = entity.position - position
