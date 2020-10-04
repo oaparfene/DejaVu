@@ -32,6 +32,17 @@ var freeUpgrades = false
 var invincible = false
 var rapidFire = false
 
+var coinShopData = [
+	{"Coins":2000, "Price":0.49},
+	{"Coins":5000, "Price":0.99},
+	{"Coins":12000, "Price":1.99},
+	{"Coins":40000, "Price":4.99},
+	{"Coins":100000, "Price":9.99},
+	{"Coins":250000, "Price":19.99},
+	{"Coins":500000, "Price":29.99},
+	{"Coins":1000000, "Price":49.99},
+]
+
 var cars = {
 	"squid":{
 		"displayName": "Squid",
@@ -746,6 +757,8 @@ func purchaseCoins(cost):
 		money -= cost
 	return true # purchase success
 
+func getCoinShopData():
+	return coinShopData
 
 
 # MISC

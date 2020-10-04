@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/objBuyItem.gd" type="Script" id=1]
+
+[node name="btnBuyCoins" type="Button"]
+margin_right = 450.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 450, 450 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labCoins" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.8
+text = "1000 Coins"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labPrice" type="Label" parent="."]
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "$0.99"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="." to="." method="_on_btnBuyCoins_pressed"]
