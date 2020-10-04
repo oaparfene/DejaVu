@@ -13,3 +13,7 @@ func _on_btnGarage_pressed():
 
 func _on_btnMenu_pressed():
 	var _currentScene = get_tree().change_scene("res://Scenes/MenuScene.tscn")
+
+
+func _on_btnAd_pressed():
+	pass # show ad

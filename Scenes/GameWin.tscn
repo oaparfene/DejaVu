@@ -65,22 +65,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btnReplay" type="Button" parent="contButtons"]
+[node name="btnAd" type="Button" parent="contButtons"]
 margin_right = 756.0
 margin_bottom = 89.0
-text = "Replay"
+text = "Double Coins!"
 
-[node name="btnGarage" type="Button" parent="contButtons"]
+[node name="btnReplay" type="Button" parent="contButtons"]
 margin_top = 105.0
 margin_right = 756.0
 margin_bottom = 194.0
-text = "Garage"
+text = "Replay"
 
-[node name="btnMenu" type="Button" parent="contButtons"]
+[node name="btnGarage" type="Button" parent="contButtons"]
 margin_top = 210.0
 margin_right = 756.0
 margin_bottom = 299.0
+text = "Garage"
+
+[node name="btnMenu" type="Button" parent="contButtons"]
+margin_top = 315.0
+margin_right = 756.0
+margin_bottom = 404.0
 text = "Menu"
+[connection signal="pressed" from="contButtons/btnAd" to="." method="_on_btnAd_pressed"]
 [connection signal="pressed" from="contButtons/btnReplay" to="." method="_on_btnReplay_pressed"]
 [connection signal="pressed" from="contButtons/btnGarage" to="." method="_on_btnGarage_pressed"]
 [connection signal="pressed" from="contButtons/btnMenu" to="." method="_on_btnMenu_pressed"]
