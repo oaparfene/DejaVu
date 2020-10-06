@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_theme3.wav-ddcadbf2a0285024760c3b9c2a540ecc.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/snd_theme3.wav"
+dest_files=[ "res://.import/snd_theme3.wav-ddcadbf2a0285024760c3b9c2a540ecc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
