@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Road.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Runway.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/img_center.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/objFire.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Guns/img_sniper.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sounds/snd_theme3.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/img_health.png" type="Texture" id=13]
 [ext_resource path="res://Scripts/prgHealth.gd" type="Script" id=14]
 [ext_resource path="res://Assets/img_safe.png" type="Texture" id=15]
@@ -290,6 +291,11 @@ script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="sndTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+autoplay = true
 [connection signal="pressed" from="areaAttack/contFire/objFire0/btnFire" to="areaAttack/contFire/objFire0/btnFire" method="_on_btnFire_pressed"]
 [connection signal="released" from="areaAttack/contFire/objFire0/btnFire" to="areaAttack/contFire/objFire0/btnFire" method="_on_btnFire_released"]
 [connection signal="pressed" from="areaAttack/contFire/objFire1/btnFire" to="areaAttack/contFire/objFire1/btnFire" method="_on_btnFire_pressed"]

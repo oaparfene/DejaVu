@@ -130,6 +130,7 @@ autostart = true
 [node name="sndMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -10.0
+autoplay = true
 
 [node name="bodyBorder" type="StaticBody2D" parent="."]
 position = Vector2( -3.56348, 773.3 )
