@@ -22,6 +22,7 @@ animations = [ {
 } ]
 
 [node name="death" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 28 )
 
 [node name="sprCar" type="Sprite" parent="."]
