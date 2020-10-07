@@ -9,7 +9,7 @@
 extents = Vector2( 10.8626, 38.4405 )
 
 [node name="bodyCarGoliath" type="KinematicBody2D"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 z_as_relative = false
 collision_layer = 0
 script = ExtResource( 3 )
@@ -35,6 +35,7 @@ color = Color( 0.372549, 0.341176, 0.341176, 1 )
 shape = SubResource( 1 )
 
 [node name="sprCar" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="sprBro" type="Sprite" parent="."]

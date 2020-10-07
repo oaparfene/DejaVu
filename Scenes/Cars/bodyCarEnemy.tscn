@@ -14,7 +14,7 @@
 extents = Vector2( 13.9717, 23.0475 )
 
 [node name="bodyCarAI" type="KinematicBody2D"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 z_as_relative = false
 input_pickable = true
 collision_layer = 0
@@ -63,12 +63,14 @@ color = Color( 0, 0, 0, 0.498039 )
 [node name="partFire" parent="." instance=ExtResource( 9 )]
 
 [node name="sprCar" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 z_index = 10
 z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="sprTarget" type="Sprite" parent="sprCar"]
 modulate = Color( 1, 0.298039, 0.298039, 1 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="sprBro" type="Sprite" parent="."]
