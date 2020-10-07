@@ -134,6 +134,8 @@ func damage(dmg):
 			objLoot.position = position
 			get_parent().add_child(objLoot)
 		
+		if Globals.target == self:
+			Globals.target = null
 		queue_free()
 	
 	#print(name," took ",damage," dmg")
