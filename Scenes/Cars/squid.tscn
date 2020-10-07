@@ -9,7 +9,7 @@
 extents = Vector2( 9.67201, 17.0105 )
 
 [node name="bodyCarSquid" type="KinematicBody2D"]
-scale = Vector2( 4, 4 )
+scale = Vector2( 2, 2 )
 z_as_relative = false
 collision_layer = 0
 script = ExtResource( 3 )

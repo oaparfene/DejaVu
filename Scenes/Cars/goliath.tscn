@@ -9,7 +9,7 @@
 extents = Vector2( 10.8626, 38.4405 )
 
 [node name="bodyCarGoliath" type="KinematicBody2D"]
-scale = Vector2( 4, 4 )
+scale = Vector2( 2, 2 )
 z_as_relative = false
 collision_layer = 0
 script = ExtResource( 3 )

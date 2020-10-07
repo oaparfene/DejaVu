@@ -88,14 +88,17 @@ var cars = {
 
 var skinNameDict = {
 	"squid":{
-		"squid":{"costIRL":-1,"costCoins":100}
+		"squid":{"costIRL":-1,"costCoins":100},
+		"skrilla":{"costIRL":1,"costCoins":100}
 	},
 	"vice":{
-		"vice":{"costIRL":-1,"costCoins":100}
+		"vice":{"costIRL":-1,"costCoins":100},
+		"afterglow":{"costIRL":1,"costCoins":100}
 	},
 	"manta":{
 		"manta":{"costIRL":-1,"costCoins":100},
-		"dongle":{"costIRL":1,"costCoins":100}
+		"dongle":{"costIRL":1,"costCoins":100},
+		"cyclone":{"costIRL":1,"costCoins":100}
 	},
 	"goliath":{
 		"goliath":{"costIRL":-1,"costCoins":100},

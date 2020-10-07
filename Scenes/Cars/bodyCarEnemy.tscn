@@ -14,7 +14,7 @@
 extents = Vector2( 13.9717, 23.0475 )
 
 [node name="bodyCarAI" type="KinematicBody2D"]
-scale = Vector2( 4, 4 )
+scale = Vector2( 2, 2 )
 z_as_relative = false
 input_pickable = true
 collision_layer = 0
