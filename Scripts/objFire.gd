@@ -17,10 +17,12 @@ func updateUI(slots):
 	$sprWeapon.modulate = Color(1,1,1) * (1-slots[gunName]["timer"].time_left/slots[gunName]["timer"].wait_time)
 	$labAmmo.text = str(slots[gunName]["ammo"])
 
-func _on_btnFire_mouse_entered():
-	get_tree().call_group("player","fireGun",Globals.getGunInSlotName(slot))
-	modulate = Color(1,0,0)
-
-func _on_btnFire_mouse_exited():
-	get_tree().call_group("player","ceaseGun",Globals.getGunInSlotName(slot))
-	modulate = Color(1,1,1)
+func _on_btnFire_input_event(viewport, event, shape_idx):
+	
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			get_tree().call_group("player","fireGun",Globals.getGunInSlotName(slot))
+			modulate = Color(1,0,0)
+		else:
+			get_tree().call_group("player","ceaseGun",Globals.getGunInSlotName(slot))
+			modulate = Color(1,1,1)

@@ -26,7 +26,7 @@ var maxEnergy = 5
 
 # DEV MODE
 
-var autoTarget = false
+var autoTarget = true
 var autoFire = false
 var freeUpgrades = false
 var invincible = false
