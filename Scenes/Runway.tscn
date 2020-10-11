@@ -128,6 +128,163 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="objFire1" type="Button" parent="areaAttack/contFire" groups=[
+"gunsUI",
+]]
+show_behind_parent = true
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+mouse_filter = 2
+theme = ExtResource( 3 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+slot = 1
+
+[node name="sprWeapon" type="TextureRect" parent="areaAttack/contFire/objFire1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnFire" type="StaticBody2D" parent="areaAttack/contFire/objFire1/sprWeapon"]
+position = Vector2( 75, 75 )
+input_pickable = true
+
+[node name="shapeButton" type="CollisionShape2D" parent="areaAttack/contFire/objFire1/sprWeapon/btnFire"]
+shape = SubResource( 1 )
+
+[node name="labAmmo" type="Label" parent="areaAttack/contFire/objFire1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+text = "0"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="objFire2" type="Button" parent="areaAttack/contFire" groups=[
+"gunsUI",
+]]
+show_behind_parent = true
+margin_top = 204.0
+margin_right = 200.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 200, 200 )
+mouse_filter = 2
+theme = ExtResource( 3 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+slot = 2
+
+[node name="sprWeapon" type="TextureRect" parent="areaAttack/contFire/objFire2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnFire" type="StaticBody2D" parent="areaAttack/contFire/objFire2/sprWeapon"]
+position = Vector2( 75, 75 )
+input_pickable = true
+
+[node name="shapeButton" type="CollisionShape2D" parent="areaAttack/contFire/objFire2/sprWeapon/btnFire"]
+shape = SubResource( 1 )
+
+[node name="labAmmo" type="Label" parent="areaAttack/contFire/objFire2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+text = "0"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="objFire3" type="Button" parent="areaAttack/contFire" groups=[
+"gunsUI",
+]]
+show_behind_parent = true
+margin_left = 204.0
+margin_top = 204.0
+margin_right = 404.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 200, 200 )
+mouse_filter = 2
+theme = ExtResource( 3 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+slot = 3
+
+[node name="sprWeapon" type="TextureRect" parent="areaAttack/contFire/objFire3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnFire" type="StaticBody2D" parent="areaAttack/contFire/objFire3/sprWeapon"]
+position = Vector2( 75, 75 )
+input_pickable = true
+
+[node name="shapeButton" type="CollisionShape2D" parent="areaAttack/contFire/objFire3/sprWeapon/btnFire"]
+shape = SubResource( 1 )
+
+[node name="labAmmo" type="Label" parent="areaAttack/contFire/objFire3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+text = "0"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="areaMove" type="Area2D" parent="."]
 position = Vector2( 250, 1686 )
 gravity_vec = Vector2( 0, 0 )
@@ -182,4 +339,7 @@ stream = ExtResource( 9 )
 volume_db = -10.0
 autoplay = true
 [connection signal="input_event" from="areaAttack/contFire/objFire0/sprWeapon/btnFire" to="areaAttack/contFire/objFire0" method="_on_btnFire_input_event"]
+[connection signal="input_event" from="areaAttack/contFire/objFire1/sprWeapon/btnFire" to="areaAttack/contFire/objFire1" method="_on_btnFire_input_event"]
+[connection signal="input_event" from="areaAttack/contFire/objFire2/sprWeapon/btnFire" to="areaAttack/contFire/objFire2" method="_on_btnFire_input_event"]
+[connection signal="input_event" from="areaAttack/contFire/objFire3/sprWeapon/btnFire" to="areaAttack/contFire/objFire3" method="_on_btnFire_input_event"]
 [connection signal="input_event" from="areaMove" to="areaMove" method="_on_areaMove_input_event"]
