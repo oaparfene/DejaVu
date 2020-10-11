@@ -7,7 +7,8 @@ export(int) var slot
 func _ready():
 	gunName = Globals.getGunInSlotName(slot)
 	if gunName != "empty":
-		$sprWeapon.texture = load("res://Assets/Guns/img_"+gunName+".png")
+		var skinName = Globals.upgs[gunName]["equippedSkin"]
+		$sprWeapon.texture = load("res://Assets/Guns/img_"+skinName+".png")
 	else:
 		visible = false
 
