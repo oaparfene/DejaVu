@@ -48,3 +48,4 @@ func _on_btnSkin_pressed():
 	purchasePopup.configure(resPath, skinName, Globals.getSkinCostIRL(gunName, skinName), Globals.getSkinCostCoins(gunName, skinName), gunName)
 	add_child(purchasePopup)
 	purchasePopup.popup_centered()
+	purchasePopup.rect_position += Vector2(1080, 0)
