@@ -63,6 +63,16 @@ var cars = {
 		"turnRatio":0.7,
 		"slots":4,
 		"mass":30},
+	"dallas":{
+		"displayName":"Dallas",
+		"maxHealth":1500,
+		"unlockCost":9000,
+		"engine":	{"levels":[650, 700, 750, 800, 850, 900], 	    "baseCost":300, 	"mod":1.15},
+		"handling":	{"levels":[3.4, 3.6, 3.8, 4, 4.2, 4.4], 		"baseCost":325, 	"mod":1.10},
+		"armor":	{"levels":[7, 12, 16, 20, 25, 30], 				"baseCost":350, 	"mod":1.10},
+		"turnRatio":0.7,
+		"slots":4,
+		"mass":45},
 	"manta":{
 		"displayName": "Manta",
 		"maxHealth":1000,
@@ -76,13 +86,23 @@ var cars = {
 	"goliath":{
 		"displayName": "Goliath",
 		"maxHealth":2000,
-		"unlockCost":40000,
+		"unlockCost":30000,
 		"engine":	{"levels":[500, 550, 600, 650, 700, 750], 		"baseCost":600, 	"mod":1.15},
 		"handling":	{"levels":[1, 1.2, 1.4, 1.6, 1.8, 2], 			"baseCost":625, 	"mod":1.10},
 		"armor":	{"levels":[25, 30, 35, 40, 45, 50], 			"baseCost":650, 	"mod":1.10},
 		"turnRatio":0.3,
 		"slots":4,
-		"mass":100}
+		"mass":100},
+	"raptor":{
+		"displayName": "Raptor",
+		"maxHealth":800,
+		"unlockCost":40000,
+		"engine":	{"levels":[900, 1050, 1100, 1150, 1200, 1250], 	"baseCost":600, 	"mod":1.15},
+		"handling":	{"levels":[5, 5.2, 5.4, 5.6, 5.8, 6], 			"baseCost":625, 	"mod":1.10},
+		"armor":	{"levels":[0, 4, 8, 12, 16, 20], 				"baseCost":650, 	"mod":1.10},
+		"turnRatio":1,
+		"slots":4,
+		"mass":20},
 }
 
 var skinNameDict = {
@@ -99,10 +119,16 @@ var skinNameDict = {
 		"dongle":{"costIRL":1,"costCoins":100},
 		"cyclone":{"costIRL":1,"costCoins":100}
 	},
+	"dallas":{
+		"dallas":{"costIRL":-1,"costCoins":100},
+	},
 	"goliath":{
 		"goliath":{"costIRL":-1,"costCoins":100},
 		"ballzack":{"costIRL":1,"costCoins":100},
 		"dickinson":{"costIRL":1,"costCoins":100}
+	},
+	"raptor":{
+		"raptor":{"costIRL":-1,"costCoins":100},
 	},
 	"pistol":{
 		"pistol":{"costIRL":-1,"costCoins":100},
