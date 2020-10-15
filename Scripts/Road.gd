@@ -27,6 +27,7 @@ func _ready():
 	car.position = rect_size/2
 	add_child(car)
 	get_tree().call_group("healthUI","updateUI",car.health,car.health)
+	Globals.target = null
 	
 
 func _on_timerSpawn_timeout():
@@ -80,7 +81,16 @@ func _on_timerSpawn_timeout():
 	# Add to scene
 	add_child(bodyCarEnemy)
 	enemyCarArray.remove(0)
+	
+	Globals.getTarget()
 
 
 func _on_sndTheme_finished():
 	$sndTheme.play(9.125)
+
+#func _physics_process(delta):
+#	$camRoad/Label.text = str(Globals.target)
+#	print( str(Globals.target) )
+
+
+

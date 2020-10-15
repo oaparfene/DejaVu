@@ -70,7 +70,9 @@ func tryToShoot(gunName):
 	if slots[gunName]["ammo"] == 0:
 		return
 	var target = Globals.target
-	if slots[gunName]["fire"] == true and slots[gunName]["timer"].time_left == 0 and target != null:
+	if target == null:
+		return
+	if slots[gunName]["fire"] == true and slots[gunName]["timer"].time_left == 0:
 		var projectiles = Guns.getGunBehaviour(slots[gunName],self,target)
 		for bulletData in projectiles:
 			get_parent().add_child(bulletData["projectile"])

@@ -79,7 +79,7 @@ func _on_bodyCarEnemy_input_event(_viewport, event, _shape_idx):
 	
 	if event is InputEventScreenTouch:
 		
-		Globals.setTarget(self)
+		Globals.makeTarget(self)
 
 func reload():
 	gunData["ammo"] = gunData["maxAmmo"]

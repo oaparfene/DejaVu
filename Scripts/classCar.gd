@@ -136,6 +136,8 @@ func damage(dmg):
 		
 		if Globals.target == self:
 			Globals.target = null
+			Globals.getTarget(self)
+		
 		queue_free()
 	
 	#print(name," took ",damage," dmg")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/texRoad.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Levels/img_desert.png" type="Texture" id=2]
@@ -7,11 +7,13 @@
 [ext_resource path="res://Assets/img_safe.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sounds/snd_theme2.wav" type="AudioStream" id=6]
 [ext_resource path="res://Scenes/bodyBorder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ThemeMain.tres" type="Theme" id=8]
 
 [node name="Road" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 8 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,6 +50,20 @@ script = ExtResource( 4 )
 [node name="Sprite" type="Sprite" parent="camRoad"]
 visible = false
 texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="camRoad"]
+visible = false
+margin_left = -538.0
+margin_top = -43.0
+margin_right = 541.0
+margin_bottom = 38.0
+custom_colors/font_color = Color( 1, 0.376471, 0.376471, 1 )
+text = "initial"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="sndTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

@@ -10,7 +10,6 @@ var activeCarIndex:int = 0
 var activeGunIndex:int = 0
 var currentCribLocation = "Garage"
 var currentLevel: int
-var targetPos: int = 0
 var input = false
 
 var carNameArray = []
@@ -540,24 +539,16 @@ func prevGun():
 	activeGunIndex -= 1
 	saveGame()
 
-func nextTarget(change = true):
+func getTarget(exception=null):
 	var targets = AI.getEnemies("survivor")
+	if exception:
+		targets.erase(exception)
 	if targets.empty(): # If there are no targets
 		return
-	if change == false: # If we're not changing
-		if target == null: # If there's no target
-			target = targets[0] # Grab the first target
-			target.targetted = true
-			targetPos = 0
-	else: # If we are changing
-		target.targetted = false
-		targetPos = (targetPos+1)%targets.size()
-		target = targets[targetPos]
-		target.targetted = true
+	if target == null: # If there's no target
+		makeTarget(targets[0]) # Grab the first target
 
-func setTarget(car):
-	if car.team == "survivor":
-		return
+func makeTarget(car):
 	if target != null:
 		target.targetted = false
 	target = car
@@ -769,13 +760,6 @@ func getCoinShopData():
 
 func setCurrentCribLocation(location):
 	currentCribLocation = location
-
-func _physics_process(_delta):
-	#print()
-	if autoTarget == true and target == null:
-		nextTarget(false)
-	if autoFire:
-		fire = true
 
 func toggle(strVar):
 	set(strVar,not get(strVar))
