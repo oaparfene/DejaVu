@@ -17,7 +17,7 @@ func updateUI(slots):
 	$sprWeapon.modulate = Color(1,1,1) * (1-slots[gunName]["timer"].time_left/slots[gunName]["timer"].wait_time)
 	$labAmmo.text = str(slots[gunName]["ammo"])
 
-func _on_btnFire_input_event(viewport, event, shape_idx):
+func _on_btnFire_input_event(_viewport, event, _shape_idx):
 	
 	if event is InputEventScreenTouch:
 		if event.pressed:
