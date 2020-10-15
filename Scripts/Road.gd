@@ -90,7 +90,6 @@ func _on_sndTheme_finished():
 
 #func _physics_process(delta):
 #	$camRoad/Label.text = str(Globals.target)
-#	print( str(Globals.target) )
 
 
 
