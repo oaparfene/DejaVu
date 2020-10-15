@@ -10,6 +10,7 @@ func _on_wpnPopup_about_to_show():
 		if Globals.getUnlocked(gunName):
 			var objGridItem = load_objGridItem.instance()
 			objGridItem.currentItemName = gunName
-			objGridItem.get_node("sprWeapon").texture = load("res://Assets/Guns/img_" + gunName + ".png")
+			var skinName = Globals.upgs[gunName]["equippedSkin"]
+			objGridItem.get_node("sprWeapon").texture = load("res://Assets/Guns/img_" + skinName + ".png")
 			objGridItem.connect("item_selected", get_parent(), "setWeaponSlot")
 			$vBox/gridCtn.add_child(objGridItem)

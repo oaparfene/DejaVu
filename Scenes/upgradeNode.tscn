@@ -3,7 +3,7 @@
 [ext_resource path="res://FjallaOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/upgradeNode.gd" type="Script" id=2]
 [ext_resource path="res://ThemeMain.tres" type="Theme" id=3]
-[ext_resource path="res://Assets/VanHunter/interface/nitro 1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/img_upg_bar_red.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -34,19 +34,85 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="texLevel" type="TextureRect" parent="."]
+[node name="ctnLevel" type="HBoxContainer" parent="."]
 anchor_left = 0.25
 anchor_right = 0.6
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = 16.0
+margin_top = 5.0
 margin_right = -16.0
+margin_bottom = -5.0
 mouse_filter = 2
-texture = ExtResource( 4 )
-stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="upgbar1" type="TextureRect" parent="ctnLevel"]
+visible = false
+margin_right = 40.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="upgbar2" type="TextureRect" parent="ctnLevel"]
+visible = false
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="upgbar3" type="TextureRect" parent="ctnLevel"]
+visible = false
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="upgbar4" type="TextureRect" parent="ctnLevel"]
+visible = false
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="upgbar5" type="TextureRect" parent="ctnLevel"]
+visible = false
+margin_left = 176.0
+margin_right = 216.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="upgbar6" type="TextureRect" parent="ctnLevel"]
+visible = false
+margin_right = 40.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+
+[node name="upgbar7" type="TextureRect" parent="ctnLevel"]
+visible = false
+margin_right = 40.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
 
 [node name="btnUpg" type="Button" parent="."]
 anchor_left = 0.6

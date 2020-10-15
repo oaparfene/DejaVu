@@ -106,7 +106,8 @@ var skinNameDict = {
 		"dickinson":{"costIRL":1,"costCoins":100}
 	},
 	"pistol":{
-		"pistol":{"costIRL":-1,"costCoins":100}
+		"pistol":{"costIRL":-1,"costCoins":100},
+		"sunset":{"costIRL":1,"costCoins":100}
 	},
 	"smg":{
 		"smg":{"costIRL":-1,"costCoins":100}
